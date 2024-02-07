@@ -4,9 +4,12 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>signup</title>
+<title>Insert title here</title>
 </head>
 <body>
-	<h2>Sign up</h2>
+	<form action="saveprojectstatus" method="post">
+		ProjectStatus : <input type="text" name="status"/>
+		<input type="submit" value="Add Status"/>
+	</form>
 </body>
 </html>
