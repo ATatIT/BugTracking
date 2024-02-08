@@ -1,7 +1,10 @@
 package com.arth.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -23,6 +26,13 @@ public class ProjectController {
 		System.out.println(project.getProjecttitle());
 		
 		p.save(project);
-		return "Home";
+		return "redirect:/listproject";
+	}
+	
+	@GetMapping("/listproject")
+	public String listProject(Model model) {
+		List<ProjectEntity> projects = p.findAll();
+		model.addAttribute("p", projects);
+		return "ListProject";
 	}
 }
