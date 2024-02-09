@@ -10,10 +10,8 @@
 <h2>Modules</h2>
 <form action="savemodule" method="post">
 moduleName:<input type="text" name="moduleName" /><br><br>
-<!-- 
 projectId:<input type="text" name="projectId" /><br><br>
 status:<input type="text" name="status" /><br><br>
- -->
 description:<input type="text" name="description" /><br><br>
 docURL:<input type="text" name="docURL" /><br><br>
 estimatedHours:<input type="text" name="estimatedHours" /><br><br>

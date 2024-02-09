@@ -8,6 +8,6 @@
 </head>
 <body>
 <h2>List Module</h2>
-	${m}
+	${m.size()}
 </body>
 </html>

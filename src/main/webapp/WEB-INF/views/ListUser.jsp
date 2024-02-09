@@ -8,6 +8,6 @@
 </head>
 <body>
 <h2>List Users</h2>
-	${u}
+	${u.size()}
 </body>
 </html>

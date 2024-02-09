@@ -10,7 +10,7 @@
 <form action="saveproject" method="post">
 	ProjectTitle :<input type="text" name="projecttitle" /><br><br>
 	Description :<input type="text" name="description" /><br><br>
-	<!-- ProjectStatusId :<input type="text" name="projectStatusId" /><br><br> -->	
+	ProjectStatusId :<input type="text" name="projectStatusId" /><br><br> 
 	DocURL : <input type="text" name="docURL" /><br><br>
 	EstimatedHours : <input type="text" name="estimatedHours" /><br><br>
 	TotalUtilizedHous :	<input type="text" name="totalUtilizedHours" /><br><br>

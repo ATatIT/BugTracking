@@ -8,6 +8,6 @@
 </head>
 <body>
 <h2>Role List</h2>
-${r}
+${r.size()}
 </body>
 </html>

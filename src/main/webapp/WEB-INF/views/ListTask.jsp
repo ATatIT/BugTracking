@@ -8,6 +8,6 @@
 </head>
 <body>
 <h2>List Tasks</h2>
-	${t}
+	${t.size()}
 </body>
 </html>

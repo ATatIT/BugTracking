@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h2>List Project</h2>
-	${p.size()}
+<h2>ListProjectUser</h2>
+	${pu.size()}
 </body>
 </html>

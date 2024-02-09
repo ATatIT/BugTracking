@@ -9,13 +9,9 @@
 <body>
 <h2>Task</h2>
 <form action="savetask" method="post">
-<!-- 
-moduleId:
-projectId:
-status:
-
-Fks
- -->
+moduleId:<input type="text" name="moduleId" /><br><br>
+projectId:<input type="text" name="projectId" /><br><br>
+status:<input type="text" name="status" /><br><br>
 Title:<input type="text" name="title" /><br><br>
 DocURL:<input type="text" name="docURL" /><br><br>
 Description:<input type="text" name="description" /><br><br>

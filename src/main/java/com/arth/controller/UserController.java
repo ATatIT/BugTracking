@@ -16,9 +16,9 @@ public class UserController {
 	@Autowired
 	UserRepository u;
 
-	@GetMapping("/users")
-	public String user() {
-		return "User";
+	@GetMapping("/newuser")
+	public String newUser() {
+		return "NewUser";
 	}
 
 	@PostMapping("/saveuser")

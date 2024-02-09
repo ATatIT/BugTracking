@@ -17,13 +17,13 @@ public class RoleController {
 	@Autowired
 	RoleRepository r;
 
-	@GetMapping("/rolename")
-	public String rolename() {
-		return "RoleName";
+	@GetMapping("/newrole")
+	public String newRole() {
+		return "NewRole";
 	}
 
 	@PostMapping("/saverole")
-	public String saverole(RoleEntity role) {
+	public String saveRole(RoleEntity role) {
 		System.out.println(role.getRoleName());
 		r.save(role);
 		return "redirect:/listrole";
