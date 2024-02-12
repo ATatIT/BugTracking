@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +9,26 @@
 </head>
 <body>
 <h2>ListTaskUser</h2>
-	${tu.size()}
+	
+	<table border="1">
+			<tr>
+				<th>UserID</th>
+				<th>TaskId</th>
+				<th>AssignStatus</th>	
+				<th>StatusId</th>
+				<th>UtilizedHours</th>
+			</tr>
+			
+			<c:forEach items="${tu}" var="taskuser">
+			
+			<tr>
+				<td>${taskuser.userID}</td>
+				<td>${taskuser.taskId}</td>
+				<td>${taskuser.assignStatus}</td>
+				<td>${taskuser.statusId}</td>
+				<td>${taskuser.utilizedHours}</td>
+			</tr>
+			</c:forEach>
+	</table>
 </body>
 </html>

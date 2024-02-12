@@ -24,11 +24,7 @@ public class UserController {
 	@PostMapping("/saveuser")
 	public String saveUser(UserEntity user) {
 
-		System.out.println(user.getFirstname());
-		System.out.println(user.getLastname());
-		System.out.println(user.getEmail());
-		System.out.println(user.getPass());
-
+		
 		u.save(user);
 
 		return "redirect:/listuser";

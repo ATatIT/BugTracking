@@ -9,8 +9,8 @@
 <body>
 <form action="saveuser" method="post">
 	
-		FirstName:<input type="text" name="firstname" /><br><br>
-		LastName:<input type="text" name="lastname" /><br><br>
+		FirstName:<input type="text" name="firstName" /><br><br>
+		LastName:<input type="text" name="lastName" /><br><br>
 		Email:<input type="email" name="email" /><br><br>
 		Password:<input type="password" name="pass" /><br><br>
 		Gender :<input type="text" name="gender" /><br><br> 
