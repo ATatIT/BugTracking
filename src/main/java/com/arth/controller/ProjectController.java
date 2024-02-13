@@ -9,15 +9,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.arth.entity.ProjectEntity;
+import com.arth.entity.ProjectStatusEntity;
 import com.arth.repository.ProjectRepository;
+import com.arth.repository.ProjectStatusRepository;
 
 @Controller
 public class ProjectController {
 	@Autowired
 	ProjectRepository p;
 
-	@GetMapping("/project")
-	public String project() {
+	@Autowired
+	ProjectStatusRepository projectStausRepo;
+	
+	@GetMapping("/newproject")
+	public String project(Model model) {
+		List<ProjectStatusEntity> projectStatuList = projectStausRepo.findAll();
+		model.addAttribute("projectStatuList", projectStatuList);
 		return "NewProject";
 	}
 

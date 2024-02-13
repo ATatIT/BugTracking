@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,6 +21,12 @@
 		City   :<input type="text" name="city" /><br><br>
 		State  :<input type="text" name="state" /><br><br>
 		OTP    :<input type="text" name="otp" /><br><br>
+		Role   :<select name="roleId">
+					<option value="-1">----Select Role----</option>
+					<c:forEach items="${roleList}" var="role" >
+					<option value="${role.roleId}">${role.roleName}</option>
+					</c:forEach>
+				</select><br><br>
 		
 		<input type="submit" value="Add User"/>
 	</form>

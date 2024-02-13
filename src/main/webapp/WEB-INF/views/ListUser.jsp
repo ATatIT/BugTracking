@@ -22,6 +22,7 @@
 				<th>State</th>
 				<th>City</th>
 				<th>Otp</th>
+				<th>RoleId</th>
 			</tr>
 			
 			<c:forEach items="${u}" var="user">
@@ -38,6 +39,7 @@
 				<td>${user.state}</td>
 				<td>${user.city}</td>
 				<td>${user.otp}</td>
+				<td>${user.roleId}</td>
 			</tr>
 			</c:forEach>
 		</table>

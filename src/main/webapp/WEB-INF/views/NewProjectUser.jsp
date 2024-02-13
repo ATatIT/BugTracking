@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,8 +10,18 @@
 <body>
 <h2>ProjectUser</h2>
 <form action="/saveprojectuser" method="post"><br><br>
-UserId: <input type="text" name="userID"/><br><br>
-ProjectId: <input type="text" name="projectId"/><br><br>
+User: <select name="userId">
+		<option>----Select User----</option>
+		<c:forEach items="${userList}" var="user">
+		<option value="${user.userId}">${user.firstName} ${user.lastName}</option>
+		</c:forEach>
+	 </select><br><br>
+Project: <select name="projectId">
+			<option value="-1">----Select Project----</option>
+			<c:forEach items="${projectList}" var="project">
+			<option value="${project.projectId}">${project.projecttitle}</option>
+			</c:forEach>
+		   </select> <br><br>
 AssignStatus: <input type="text" name="assignStatus"/><br><br>
 
 <input type="submit" value="Add ProjectUser"/>
