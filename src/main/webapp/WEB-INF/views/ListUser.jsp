@@ -11,6 +11,7 @@
 <h2>List Users</h2>
 		<table border="1">
 			<tr>
+				<th>UserId</th>
 				<th>FirstName</th>
 				<th>LastName</th>
 				<th>Email</th>	
@@ -23,11 +24,14 @@
 				<th>City</th>
 				<th>Otp</th>
 				<th>RoleId</th>
+				<th>Action</th>
+				
 			</tr>
 			
 			<c:forEach items="${u}" var="user">
 			
 			<tr>
+				<td>${user.userId}</td>
 				<td>${user.firstName}</td>
 				<td>${user.lastName}</td>
 				<td>${user.email}</td>
@@ -40,6 +44,7 @@
 				<td>${user.city}</td>
 				<td>${user.otp}</td>
 				<td>${user.roleId}</td>
+				<td><a href="deleteuser?userId=${user.userId}">Delete</a></td>
 			</tr>
 			</c:forEach>
 		</table>

@@ -12,13 +12,17 @@
 	${r.size()}
 	<table border="1">
 			<tr>
+				<th>RoleId</th>
 				<th>RoleName</th>
+				<th>Action</th>
 			</tr>
 			
 			<c:forEach items="${r}" var="role">
 			
 			<tr>
+				<td>${role.roleId}</td>
 				<td>${role.roleName}</td>
+				<td><a href="deleterole?roleId=${role.roleId}">Delete</a></td>
 			</tr>
 			</c:forEach>
 </body>

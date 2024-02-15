@@ -10,7 +10,7 @@
 <body>
 <h2>NewTaskUser</h2>
 <form action="savetaskuser" method="post">
-User:<select name="userId">
+User:<select name="userID">
 		<option>----Select User----</option>
 		<c:forEach items="${userList}" var="user">
 		<option value="${user.userId}">${user.firstName} ${user.lastName}</option>

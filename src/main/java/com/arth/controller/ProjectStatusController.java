@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.arth.entity.ProjectStatusEntity;
 import com.arth.repository.ProjectStatusRepository;
@@ -34,5 +35,11 @@ public class ProjectStatusController {
 		List<ProjectStatusEntity> projectstatus = s.findAll();
 		model.addAttribute("s", projectstatus);
 		return "ListProjectStatus";
+	}
+	
+	@GetMapping("/deleteprojectstatus")
+	public String deleteProjectStatus(@RequestParam("statusId") Integer statusId) {
+		s.deleteById(statusId);
+		return "redirect:/listprojectstatus";
 	}
 }

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.arth.entity.ProjectStatusEntity;
 import com.arth.entity.TaskEntity;
@@ -57,5 +58,11 @@ public class TaskUserController {
 		List<TaskUserEntity> taskusers = tu.findAll();
 		model.addAttribute("tu", taskusers);
 		return "ListTaskUser";
+	}
+	
+	@GetMapping("/deletetaskuser")
+	public String deleteTaskUser(@RequestParam("taskuserId") Integer taskuserId) {
+		tu.deleteById(taskuserId);
+		return "redirect:/listtaskuser";
 	}
 }

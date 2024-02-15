@@ -12,21 +12,25 @@
 	
 	<table border="1">
 			<tr>
+				<th>TaskUserId</th>
 				<th>UserID</th>
 				<th>TaskId</th>
 				<th>AssignStatus</th>	
 				<th>StatusId</th>
 				<th>UtilizedHours</th>
+				<th>Action</th>
 			</tr>
 			
 			<c:forEach items="${tu}" var="taskuser">
 			
 			<tr>
+				<td>${taskuser.taskUserId}</td>
 				<td>${taskuser.userID}</td>
 				<td>${taskuser.taskId}</td>
 				<td>${taskuser.assignStatus}</td>
 				<td>${taskuser.statusId}</td>
 				<td>${taskuser.utilizedHours}</td>
+				<td><a href="deletetaskuser?taskuserId=${taskuser.taskUserId }">Delete</a></td>
 			</tr>
 			</c:forEach>
 	</table>

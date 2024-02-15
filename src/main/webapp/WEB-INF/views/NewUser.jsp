@@ -14,10 +14,10 @@
 		LastName:<input type="text" name="lastName" /><br><br>
 		Email:<input type="email" name="email" /><br><br>
 		Password:<input type="password" name="pass" /><br><br>
-		Gender :<input type="text" name="gender" /><br><br> 
-		DOB    :<input type="text" name="dob" /><br><br>
+		Gender :Male<input type="radio" name="gender" checked="checked"/> Female<input type="radio" name="gender"/><br><br> 
+		DOB    :<input type="date" name="dob" /><br><br>
 		Contact:<input type="text" name="contact" /><br><br>
-		Address:<input type="text" name="address" /><br><br>
+		Address:<textarea rows="2" cols="20" name="address"></textarea><br><br>
 		City   :<input type="text" name="city" /><br><br>
 		State  :<input type="text" name="state" /><br><br>
 		OTP    :<input type="text" name="otp" /><br><br>

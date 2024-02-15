@@ -9,9 +9,10 @@
 </head>
 <body>
 <h2>List Project</h2>
-	${p.size()}
+
 		<table border="1">
 			<tr>
+				<th>ProjectId</th>
 				<th>ProjectTitle</th>
 				<th>Description</th>
 				<th>ProjectStatusId</th>	
@@ -20,11 +21,13 @@
 				<th>TotalUtilizedHours</th>
 				<th>ProjectStartDate</th>
 				<th>ProjectCompletionDate</th>
+				<th>Action</th>
 			</tr>
 			
 			<c:forEach items="${p}" var="project">
 			
 			<tr>
+				<td>${project.projectId}</td>
 				<td>${project.projecttitle}</td>
 				<td>${project.description}</td>
 				<td>${project.projectStatusId}</td>
@@ -33,6 +36,7 @@
 				<td>${project.totalUtilizedHours}</td>
 				<td>${project.projectStartDate}</td>
 				<td>${project.projectCompletionDate}</td>
+				<td><a href="deleteproject?projectId=${project.projectId}">Delete</a></td>
 			</tr>
 			</c:forEach>
 		</table>
