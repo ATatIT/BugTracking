@@ -59,8 +59,10 @@
 		
 	<!-- header end -->
 		<div class="conatiner-fluid content-inner mt-n6 py-5">
-			
-			<table border="1">			<tr>
+			<div class="row">
+			<h4 class="card-title">List Role</h4>
+				<table class="table table-striped dataTable">			
+			<tr>
 				<th>RoleId</th>
 				<th>RoleName</th>
 				<th>Action</th>
@@ -75,6 +77,9 @@
 			</tr>
 			</c:forEach>
 			</table>
+					
+			</div>
+		
 		</div>
 
 

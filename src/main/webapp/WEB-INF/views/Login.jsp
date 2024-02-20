@@ -51,7 +51,7 @@
 			<div class="row m-0 align-items-center bg-white vh-100">
 				<div class="">
 					<div class="row justify-content-center">
-						<div class="col-md-4">
+						<div class="col-md-6">
 							<div
 								class="card card-transparent shadow-none d-flex justify-content-center mb-0 auth-card">
 								<div class="card-body">
@@ -113,6 +113,7 @@
 													<label for="email" class="form-label">Email</label> <input
 														type="email" class="form-control" id="email" name="email"
 														aria-describedby="email" placeholder=" ">
+														<span style="color:red;"> ${erroremail}</span>
 												</div>
 											</div>
 											<div class="col-lg-12">
@@ -120,11 +121,10 @@
 													<label for="password" class="form-label">Password</label> <input
 														type="password" class="form-control" id="password"
 														name="pass" aria-describedby="password" placeholder=" ">
+														<span style="color:red;"> ${error}</span>
 												</div>
 											</div>
-											<div style="color:red;">
-													 ${error}
-											</div>
+											
 											<div class="col-lg-12 d-flex justify-content-between">	
 												<a href="recoverpw.html">Forgot Password?</a>
 											</div>

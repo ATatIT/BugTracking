@@ -131,8 +131,8 @@
 													<label for="last-name" class="form-label">Gender</label>
 													<div class="form-control">
 														<input type="radio" class="form-check-input "
-															name="gender" checked="checked" />&nbsp;Male &nbsp;<input
-															type="radio" class="form-check-input" name="gender" />&nbsp;Female
+															name="gender" value="Male" />&nbsp;Male &nbsp;<input
+															type="radio" class="form-check-input" name="gender" value="Female"/>&nbsp;Female
 													</div>
 												</div>
 											</div>
@@ -171,7 +171,21 @@
 														placeholder=" ">
 												</div>
 											</div>
+											
+											<div class="col-lg-6">
+												<div class="form-group">
+													<label for="password" class="form-label"> Confirm Password </label>
+													<input type="password" class="form-control" id="confirmpassword" name="confirmPassword"
+														placeholder=""><span style="color:red">${confirmpassword}</span>
+												</div>
+											</div>
 
+											
+
+										</div>
+
+										<div class="row">
+										
 											<div class="col-lg-6">
 												<div class="form-group">
 													<label for="address" class="form-label">Address</label> <input
@@ -179,16 +193,19 @@
 														placeholder=" ">
 												</div>
 											</div>
-
-										</div>
-
-										<div class="row">
+											
 											<div class="col-lg-6">
 												<div class="form-group">
 													<label for="city" class="form-label">City </label> <input
 														type="text" class="form-control" id="city" name="city" placeholder=" ">
 												</div>
 											</div>
+
+
+										</div>
+
+										<div class="row">
+											
 
 											<div class="col-lg-6">
 												<div class="form-group">

@@ -1,6 +1,7 @@
 package com.arth.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,9 @@ public class SessionController {
 	
 	@Autowired
 	UserRepository u;
+	
+	@Autowired
+	BCryptPasswordEncoder encoder;
 	
 	@GetMapping("/")
 	public String welcome() {
@@ -32,22 +36,46 @@ public class SessionController {
 	}
 	
 	@PostMapping("/signup")
-	public String saveUser(UserEntity user) {
+	public String saveUser(UserEntity user, Model model) {
+		
+		if(!user.getPass().equals(user.getConfirmPassword())){
+			model.addAttribute("confirmpassword", "Password & ConfirmPassword must be same");
+			return "Signup";
+		}
+		
 		user.setRoleId(3);
+		
+		//get plain passsword 
+		String plainPassword =user.getPass();
+		
+		//encrypt plainpassword
+		String ecodedPassworg = encoder.encode(plainPassword);
+		
+		//set the password
+		user.setPass(ecodedPassworg);
+		
 		u.save(user);
 		return "redirect:/login";
 	}
 	
 	@PostMapping("/authenticate")
 	public String authenticate(UserEntity user, Model model) {
-		UserEntity loggedInUser = u.findByEmailAndPass(user.getEmail(), user.getPass());
+		UserEntity loggedInUser = u.findByEmail(user.getEmail());
 		System.out.println(loggedInUser);
 		
+		
+		
+		
 		if(loggedInUser == null) {
-			model.addAttribute("error", "Invalid Email or Password!");
+			model.addAttribute("erroremail", "Invalid Email!");
 			return "Login";
 		}else {
-			if(loggedInUser.getRoleId() == 1) {
+			
+			boolean password = encoder.matches(user.getPass(),loggedInUser.getPass());
+			if(password == false) {
+				model.addAttribute("error", "Invalid Password!");
+				return "Login";
+			}else if(loggedInUser.getRoleId() == 1) {
 				//admin
 				return "AdminDashboard";
 			}else if (loggedInUser.getRoleId() == 2) {

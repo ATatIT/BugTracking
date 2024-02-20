@@ -1,11 +1,14 @@
 package com.arth.entity;
 
 
+
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 @Entity
 @Table(name="users" )
@@ -18,6 +21,9 @@ public class UserEntity {
 		private String lastName;
 		private String email;
 		private String pass;
+		
+		@Transient
+		private String confirmPassword;
 		private String gender;
 		private String dob;
 		private Integer contact;
@@ -103,6 +109,12 @@ public class UserEntity {
 		}
 		public void setRoleId(Integer roleId) {
 			this.roleId = roleId;
+		}
+		public String getConfirmPassword() {
+			return confirmPassword;
+		}
+		public void setConfirmPassword(String confirmPassword) {
+			this.confirmPassword = confirmPassword;
 		}
 		
 				
