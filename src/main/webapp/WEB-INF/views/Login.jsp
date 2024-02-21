@@ -105,6 +105,7 @@
 									</a>
 									<h2 class="mb-2 text-center">Sign In</h2>
 									<p class="text-center">Login to stay connected.</p>
+									<p class="text-center" style="color:green;">${update}</p>
 									<form action="authenticate" method="post">
 										<div class="row">
 											<div class="col-lg-12">
@@ -126,7 +127,7 @@
 											</div>
 											
 											<div class="col-lg-12 d-flex justify-content-between">	
-												<a href="recoverpw.html">Forgot Password?</a>
+												<a href="forgotpassword">Forgot Password?</a>
 											</div>
 
 

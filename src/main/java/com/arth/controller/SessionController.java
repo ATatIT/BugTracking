@@ -1,5 +1,6 @@
 package com.arth.controller;
 
+import org.hibernate.sql.ast.tree.expression.DurationUnit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -89,5 +90,47 @@ public class SessionController {
 		return "Login";
 	}
 		
+	@GetMapping("/forgotpassword")
+	public String forgotPassword() {
+		return "ForgotPassword";
+	}
 	
+	@PostMapping("/otpforpassword")
+		public String otpForPassword(UserEntity user) {
+		
+		UserEntity dbUser = u.findByEmail(user.getEmail());
+		if(dbUser != null) {
+			//otp genration & send to email
+			int otpnum = (int) (Math.random() * 1000000);
+			System.err.println("OTP =>"+otpnum);
+			
+			//set otp
+			dbUser.setOtp(otpnum);
+			u.save(dbUser);
+		}
+		return "UpdatePassword";
+	}
+	
+	@PostMapping("/updatepassword")
+	public String updatePassword(UserEntity user, Model model) {
+		if(!user.getPass().equals(user.getConfirmPassword())) {
+			model.addAttribute("confirmpassword", "Password & ConfirmPassword must be same!");
+			return "UpdatePassword";
+		}else {
+			UserEntity dbUser = u.findByEmail(user.getEmail());
+			
+			if(dbUser == null || dbUser.getOtp().intValue() != user.getOtp().intValue()|| dbUser.getOtp()== -1) {
+				model.addAttribute("error", "Invalid OTP & Emial!");
+				return "UpdatePassword";
+			}else {
+				String pailPassword = user.getPass();
+				String encryptPassword = encoder.encode(pailPassword);
+				dbUser.setPass(encryptPassword);
+				dbUser.setOtp(-1);
+				u.save(dbUser);
+				model.addAttribute("update", "Password Updated Successfully");
+			}
+		}
+		return "Login";
+	}
 }

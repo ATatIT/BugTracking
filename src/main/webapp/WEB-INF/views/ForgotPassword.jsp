@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+
+
+
+
 <!doctype html>
 <html lang="en" dir="ltr">
 <head>
@@ -42,17 +46,17 @@
 	</div>
 	<!-- loader END -->
 
-	<div class="wrapper ">
+	<div class="wrapper">
 		<section class="login-content">
 			<div class="row m-0 align-items-center bg-white vh-100">
-
-				<div class="bg-white">
+				<div class="">
 					<div class="row justify-content-center">
-						<div class="col-md-7">
-							<div class="">
+						<div class="col-md-6">
+							<div
+								class="card card-transparent shadow-none d-flex justify-content-center mb-0 auth-card">
 								<div class="card-body">
 									<a href="../../dashboard/index.html"
-										class="navbar-brand d-flex align-items-center mt-5"> <!--Logo start-->
+										class="navbar-brand d-flex align-items-center mb-3"> <!--Logo start-->
 										<div class="logo-main">
 											<div class="logo-normal">
 												<svg class="text-primary icon-30" viewBox="0 0 30 30"
@@ -99,143 +103,41 @@
 
 										<h4 class="logo-title ms-3">Hope UI</h4>
 									</a>
-									<h2 class="mb-5 text-center">Sign Up</h2>
-
-									<form action="signup" method="post">
-
+									<h2 class="mb-2 text-center">Confirm Mail</h2>
+									<form action="otpforpassword" method="post">
 										<div class="row">
-											<div class="col-lg-6">
+											<div class="col-lg-12">
 												<div class="form-group">
-													<label for="full-name" class="form-label">First Name</label>
-													<input type="text" class="form-control" id="full-name" name="firstName"
-														placeholder=" ">
-												</div>
-											</div>
 
-											<div class="col-lg-6">
-												<div class="form-group">
-													<label for="last-name" class="form-label">Last Name</label>
-													<input type="text" class="form-control" id="last-name" name="lastName"
-														placeholder=" ">
-												</div>
-											</div>
-										</div>
-
-										<div class="row">
-											<div class="col-lg-6">
-												<div class="form-group ">
-													<label for="last-name" class="form-label">Gender</label>
-													<div class="form-control">
-														<input type="radio" class="form-check-input "
-															name="gender" value="Male" />&nbsp;Male &nbsp;
-															<input
-															type="radio" class="form-check-input" name="gender" value="Female"/>&nbsp;Female
-													</div>
-												</div>
-											</div>
-											<div class="col-lg-6">
-												<div class="form-group ">
 													<label for="email" class="form-label">Email</label> <input
 														type="email" class="form-control" id="email" name="email"
-														placeholder=" ">
-												</div>
-											</div>
-										</div>
-
-										<div class="row">
-
-											<div class="col-lg-6">
-												<div class="form-group">
-													<label for="phone" class="form-label">Phone No.</label> <input
-														type="text" class="form-control" id="phone" name="contact"
-														placeholder=" ">
-												</div>
-											</div>
-											<div class="col-lg-6">
-												<div class="form-group">
-													<label for="date-of-birth" class="form-label">Date
-														of Birth</label> <input type="date" class="form-control"
-														id="date-of-birth"  name="dob" placeholder=" ">
-												</div>
-											</div>
-										</div>
-
-										<div class="row">
-											<div class="col-lg-6">
-												<div class="form-group">
-													<label for="password" class="form-label">Password </label>
-													<input type="password" class="form-control" id="password" name="pass"
-														placeholder=" ">
-												</div>
-											</div>
-											
-											<div class="col-lg-6">
-												<div class="form-group">
-													<label for="password" class="form-label"> Confirm Password </label>
-													<input type="password" class="form-control" id="confirmpassword" name="confirmPassword"
-														placeholder=""><span style="color:red">${confirmpassword}</span>
-												</div>
-											</div>
-
-											
-
-										</div>
-
-										<div class="row">
-										
-											<div class="col-lg-6">
-												<div class="form-group">
-													<label for="address" class="form-label">Address</label> <input
-														type="text" class="form-control" id="address" name="address"
-														placeholder=" ">
-												</div>
-											</div>
-											
-											<div class="col-lg-6">
-												<div class="form-group">
-													<label for="city" class="form-label">City </label> <input
-														type="text" class="form-control" id="city" name="city" placeholder=" ">
+														aria-describedby="email" placeholder=" "> <span
+														style="color: red;"> ${erroremail}</span>
 												</div>
 											</div>
 
 
-										</div>
 
-										<div class="row">
-											
 
-											<div class="col-lg-6">
-												<div class="form-group">
-													<label for="state" class="form-label">State</label> <input
-														type="text" class="form-control" id="state" name="state"
-														placeholder=" ">
-												</div>
-											</div>
 
 										</div>
 										<div class="d-flex justify-content-center">
-											<button type="submit" formmethod="post"
-												class="btn btn-primary">Sign Up</button>
-											&nbsp;
-											<button type="button" class="btn btn-primary">Cancle</button>
+											<button type="submit" class="btn btn-primary">Continue</button>
 										</div>
+
+
+
 									</form>
 								</div>
-								
-								<p class="mt-3 text-center">
-									Already have an Account <a href="login"
-										class="text-underline">Sign In</a>
-								</p>
 							</div>
 						</div>
-						
 					</div>
+
 				</div>
 
 			</div>
 		</section>
 	</div>
-	
 
 	<!-- Library Bundle Script -->
 	<script src="../../assets/js/core/libs.min.js"></script>
