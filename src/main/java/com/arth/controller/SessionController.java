@@ -59,6 +59,7 @@ public class SessionController {
 		user.setPass(ecodedPassworg);
 		
 		u.save(user);
+		mailerservice.sendWelcomeMassage(user.getEmail(), user.getFirstName());
 		return "redirect:/login";
 	}
 	
