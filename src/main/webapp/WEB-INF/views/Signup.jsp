@@ -147,7 +147,7 @@
 											<div class="col-lg-6">
 												<div class="form-group">
 													<label for="phone" class="form-label">Phone No.</label> <input
-														type="text" class="form-control" id="phone" name="contact"
+														type="tel" class="form-control" id="phone" name="contact"
 														placeholder=" ">
 												</div>
 											</div>

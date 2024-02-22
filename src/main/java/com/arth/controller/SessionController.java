@@ -1,6 +1,5 @@
 package com.arth.controller;
 
-import org.hibernate.sql.ast.tree.expression.DurationUnit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -10,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.arth.entity.UserEntity;
 import com.arth.repository.UserRepository;
+import com.arth.service.MailerService;
 
 
 @Controller
@@ -20,6 +20,9 @@ public class SessionController {
 	
 	@Autowired
 	BCryptPasswordEncoder encoder;
+	
+	@Autowired
+	MailerService mailerservice;
 	
 	@GetMapping("/")
 	public String welcome() {
@@ -103,6 +106,8 @@ public class SessionController {
 			//otp genration & send to email
 			int otpnum = (int) (Math.random() * 1000000);
 			System.err.println("OTP =>"+otpnum);
+			mailerservice.sendMailForOTP(user.getEmail(), otpnum);
+			
 			
 			//set otp
 			dbUser.setOtp(otpnum);

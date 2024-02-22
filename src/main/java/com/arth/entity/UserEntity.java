@@ -26,7 +26,7 @@ public class UserEntity {
 		private String confirmPassword;
 		private String gender;
 		private String dob;
-		private Integer contact;
+		private String contact;
 		private String address;
 		private String city;
 		private String state;
@@ -74,10 +74,10 @@ public class UserEntity {
 		public void setDob(String dob) {
 			this.dob = dob;
 		}
-		public Integer getContact() {
+		public String getContact() {
 			return contact;
 		}
-		public void setContact(Integer contact) {
+		public void setContact(String contact) {
 			this.contact = contact;
 		}
 		public String getAddress() {
