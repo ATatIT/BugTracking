@@ -11,6 +11,8 @@ import com.arth.entity.UserEntity;
 import com.arth.repository.UserRepository;
 import com.arth.service.MailerService;
 
+import jakarta.servlet.http.HttpSession;
+
 
 @Controller
 public class SessionController {
@@ -64,17 +66,17 @@ public class SessionController {
 	}
 	
 	@PostMapping("/authenticate")
-	public String authenticate(UserEntity user, Model model) {
+	public String authenticate(UserEntity user, Model model, HttpSession session) {
 		UserEntity loggedInUser = u.findByEmail(user.getEmail());
 		System.out.println(loggedInUser);
-		
-		
-		
 		
 		if(loggedInUser == null) {
 			model.addAttribute("erroremail", "Invalid Email!");
 			return "Login";
 		}else {
+			
+			session.setAttribute("user", loggedInUser);
+			session.setMaxInactiveInterval(60*5);
 			
 			boolean password = encoder.matches(user.getPass(),loggedInUser.getPass());
 			if(password == false) {
@@ -138,5 +140,11 @@ public class SessionController {
 			}
 		}
 		return "Login";
+	}
+	
+	@GetMapping("/logout")
+	public String logOut(HttpSession session) {
+		session.invalidate();
+		return "redirect:/login";
 	}
 }

@@ -39,60 +39,57 @@
 
 <body class="  ">
 	<!-- loader Start -->
-	<div id="loading">
-		<div class="loader simple-loader">
-			<div class="loader-body"></div>
-		</div>
-	</div>
+	<%@include file="Loder.jsp"%>
 	<!-- loader END -->
-	
+
 	<!-- Slider start -->
-	
+
 	<jsp:include page="AdminSlidebar.jsp"></jsp:include>
-	
+
 	<!-- Slider end -->
-	
+
 	<main class="main-content">
-	<!-- header start -->
-	
+		<!-- header start -->
+
 		<jsp:include page="AdminHeader.jsp"></jsp:include>
-		
-	<!-- header end -->
+
+		<!-- header end -->
 		<div class="conatiner-fluid content-inner mt-n6 py-5">
 			<div class="row">
-			<h4 class="card-title">List Role</h4>
-				<table class="table table-striped dataTable">			
-			<tr>
-				<th>RoleId</th>
-				<th>RoleName</th>
-				<th>Action</th>
-			</tr>
-			
-			<c:forEach items="${r}" var="role">
-			
-			<tr>
-				<td>${role.roleId}</td>
-				<td>${role.roleName}</td>
-				<td><a href="deleterole?roleId=${role.roleId}">Delete</a></td>
-			</tr>
-			</c:forEach>
-			</table>
-					
+				<h4 class="card-title">List Role</h4>
+				<table class="table table-striped dataTable">
+					<tr>
+						<th>RoleId</th>
+						<th>RoleName</th>
+						<th>Action</th>
+					</tr>
+
+					<c:forEach items="${r}" var="role">
+
+						<tr>
+							<td>${role.roleId}</td>
+							<td>${role.roleName}</td>
+							<td><a href="deleterole?roleId=${role.roleId}">Delete</a></td>
+						</tr>
+					</c:forEach>
+				</table>
+
 			</div>
-		
+
 		</div>
 
 
 		<!-- Footer Section Start -->
-		
+
 		<jsp:include page="AdminFooter.jsp"></jsp:include>
-		
+
 		<!-- Footer Section End -->
 	</main>
-	
-	
-	<!-- Wrapper End--><!-- offcanvas start -->
-	
+
+
+	<!-- Wrapper End-->
+	<!-- offcanvas start -->
+
 	<jsp:include page="AdminCanvas.jsp"></jsp:include>
 
 	<!-- Library Bundle Script -->

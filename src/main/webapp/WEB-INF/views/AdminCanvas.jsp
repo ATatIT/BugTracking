@@ -1,15 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!doctype html>
-<html lang="en" dir="ltr">
 
-<head>
-    <meta charset="utf-8">
-
-</head>
-
-<body class="  ">
-    
     <a class="btn btn-fixed-end btn-warning btn-icon btn-setting"
 		data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
 		role="button" aria-controls="offcanvasExample"> <svg width="24"
@@ -351,8 +340,3 @@
 			</div>
 		</div>
 	</div>
-
- 
-</body>
-
-</html>

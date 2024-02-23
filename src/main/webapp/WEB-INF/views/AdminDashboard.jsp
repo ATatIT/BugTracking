@@ -37,26 +37,24 @@
 
 </head>
 
-<body class="  ">
+<body>
 	<!-- loader Start -->
-	<div id="loading">
-		<div class="loader simple-loader">
-			<div class="loader-body"></div>
-		</div>
-	</div>
+	
+	<%@include file="Loder.jsp" %>
+	
 	<!-- loader END -->
 	
 	<!-- Slider start -->
 	
 	<jsp:include page="AdminSlidebar.jsp"></jsp:include>
 	
+	
 	<!-- Slider end -->
 	
 	<main class="main-content">
 	<!-- header start -->
 	
-		<jsp:include page="AdminHeader.jsp"></jsp:include>
-		
+	<jsp:include page="AdminHeader.jsp"></jsp:include>		
 	<!-- header end -->
 	
 		<!-- Nav Header Component Start -->

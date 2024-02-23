@@ -1,14 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<!doctype html>
-<html lang="en" dir="ltr">
-
-<head>
-<meta charset="utf-8">
-
-</head>
-
-<body class="  ">
 
 	<aside
 		class="sidebar sidebar-default sidebar-white sidebar-base navs-rounded-all ">
@@ -272,6 +261,3 @@
 		</div>
 		<div class="sidebar-footer"></div>
 	</aside>
-</body>
-
-</html>

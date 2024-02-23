@@ -39,11 +39,7 @@
 
 <body class="  ">
 	<!-- loader Start -->
-	<div id="loading">
-		<div class="loader simple-loader">
-			<div class="loader-body"></div>
-		</div>
-	</div>
+	<%@include file="Loder.jsp"%>
 	<!-- loader END -->
 
 	<!-- Slider start -->
@@ -61,7 +57,7 @@
 		<div class="conatiner-fluid content-inner mt-n6 py-5">
 				<h4 class="card-title">List User</h4>
 			<div class="row table-responsive border-bottom my-3">
-				<table class="table table-striped dataTable ">
+				<table class="table table-striped dataTable">
 					<tr>
 						<th>UserId</th>
 						<th>FirstName</th>

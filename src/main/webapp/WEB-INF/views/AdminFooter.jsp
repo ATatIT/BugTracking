@@ -1,13 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!doctype html>
-<html lang="en" dir="ltr">
 
-<head>
-    <meta charset="utf-8">
-</head>
-
-<body class="  ">   
         <!-- Footer Section Start -->
         <footer class="footer">
 			<div class="footer-body">
@@ -35,6 +26,3 @@
 			</div>
 		</footer>
         <!-- Footer Section End -->   
-</body>
-
-</html>
