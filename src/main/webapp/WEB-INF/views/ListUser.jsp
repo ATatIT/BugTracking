@@ -54,53 +54,76 @@
 		<jsp:include page="AdminHeader.jsp"></jsp:include>
 
 		<!-- header end -->
-		<div class="conatiner-fluid content-inner mt-n6 py-5">
-				<h4 class="card-title">List User</h4>
-			<div class="row table-responsive border-bottom my-3">
-				<table class="table table-striped dataTable">
-					<tr>
-						<th>UserId</th>
-						<th>FirstName</th>
-						<th>LastName</th>
-						<th>Email</th>
-						<th>Password</th>
-						<th>Gender</th>
-						<th>ContactNum</th>
-						<th>DOB</th>
-						<th>Address</th>
-						<th>State</th>
-						<th>City</th>
-						<th>Otp</th>
-						<th>RoleId</th>
-						<th>Action</th>
+		<div class="mt-5">
 
-					</tr>
+			<div class="conatiner-fluid content-inner mt-n5 py-0">
+				<div class="row mt-3 p-3">
+					<div class="col-sm-12">
+						<div class="card">
+							<div class="card-header d-flex justify-content-between">
+								<div class="header-title">
+									<h4 class="card-title">List User</h4>
+								</div>
+							</div>
+							<div class="card-body">
 
-					<c:forEach items="${u}" var="user">
+								<div class="table-responsive">
+									<div id="datatable_wrapper"
+										class="dataTables_wrapper dt-bootstrap5">
+										<div class="table-responsive border-bottom my-3">
+											<table class="table table-striped dataTable text-dark">
+												<tr class="odd">
+													<th>UserId</th>
+													<th>FirstName</th>
+													<th>LastName</th>
+													<th>Email</th>
+													<th>Password</th>
+													<th>Gender</th>
+													<th>ContactNum</th>
+													<th>DOB</th>
+													<th>Address</th>
+													<th>State</th>
+													<th>City</th>
+													<th>Otp</th>
+													<th>RoleId</th>
+													<th>Action</th>
 
-						<tr>
-							<td>${user.userId}</td>
-							<td>${user.firstName}</td>
-							<td>${user.lastName}</td>
-							<td>${user.email}</td>
-							<td>${user.pass}</td>
-							<td>${user.gender}</td>
-							<td>${user.contact}</td>
-							<td>${user.dob}</td>
-							<td>${user.address}</td>
-							<td>${user.state}</td>
-							<td>${user.city}</td>
-							<td>${user.otp}</td>
-							<td>${user.roleId}</td>
-							<td><a href="deleteuser?userId=${user.userId}">Delete</a></td>
-						</tr>
-					</c:forEach>
+												</tr>
 
-				</table>
+												<c:forEach items="${u}" var="user" varStatus="status">
 
+													<tr class="${status.index % 2 == 0 ? 'even' : 'odd'}">
+														<td>${user.userId}</td>
+														<td>${user.firstName}</td>
+														<td>${user.lastName}</td>
+														<td>${user.email}</td>
+														<td>${user.pass}</td>
+														<td>${user.gender}</td>
+														<td>${user.contact}</td>
+														<td>${user.dob}</td>
+														<td>${user.address}</td>
+														<td>${user.state}</td>
+														<td>${user.city}</td>
+														<td>${user.otp}</td>
+														<td>${user.roleId}</td>
+														<td><a href="deleteuser?userId=${user.userId}">Delete</a></td>
+													</tr>
+												</c:forEach>
+
+
+											</table>
+										</div>
+										<div class="clear"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
-
 		</div>
+
+
 
 
 		<!-- Footer Section Start -->

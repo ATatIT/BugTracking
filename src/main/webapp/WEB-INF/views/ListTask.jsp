@@ -36,7 +36,8 @@
 
 </head>
 
-<body class="  ">
+<body>
+
 	<!-- loader Start -->
 	<%@include file="Loder.jsp"%>
 	<!-- loader END -->
@@ -53,42 +54,64 @@
 		<jsp:include page="AdminHeader.jsp"></jsp:include>
 
 		<!-- header end -->
-		<div class="conatiner-fluid content-inner mt-n6 py-5">
-			<h4 class="card-title">List Task</h4>
-			<div class="row table-responsive border-bottom my-3">
-				<table class="table table-striped dataTable">
-					<tr>
-						<th>TaskId</th>
-						<th>ModuleId</th>
-						<th>ProjectId</th>
-						<th>Status</th>
-						<th>Title</th>
-						<th>Description</th>
-						<th>DocUrl</th>
-						<th>EstimatedHours</th>
-						<th>TotalUtilizedHours</th>
-						<th>Action</th>
-					</tr>
+		<div class="mt-5">
 
-					<c:forEach items="${t}" var="task">
+			<div class="conatiner-fluid content-inner mt-n5 py-0">
+				<div class="row mt-3 p-3">
+					<div class="col-sm-12">
+						<div class="card">
+							<div class="card-header d-flex justify-content-between">
+								<div class="header-title">
+									<h4 class="card-title">List Task</h4>
+								</div>
+							</div>
+							<div class="card-body">
 
-						<tr>
-							<td>${task.taskId}</td>
-							<td>${task.moduleId}</td>
-							<td>${task.projectId}</td>
-							<td>${task.status}</td>
-							<td>${task.title}</td>
-							<td>${task.description}</td>
-							<td>${task.docURL}</td>
-							<td>${task.estimatedHours}</td>
-							<td>${task.totalUtilizedHours}</td>
-							<td><a href="deletetask?taskId=${task.taskId}">Delete</a></td>
-						</tr>
-					</c:forEach>
-				</table>
+								<div class="table-responsive">
+									<div id="datatable_wrapper"
+										class="dataTables_wrapper dt-bootstrap5">
+										<div class="table-responsive border-bottom my-3">
+											<table class="table table-striped dataTable text-dark">
+												<tr class="odd">
+													<th>TaskId</th>
+													<th>ModuleId</th>
+													<th>ProjectId</th>
+													<th>Status</th>
+													<th>Title</th>
+													<th>Description</th>
+													<th>DocUrl</th>
+													<th>EstimatedHours</th>
+													<th>TotalUtilizedHours</th>
+													<th>Action</th>
+												</tr>
 
+												<c:forEach items="${t}" var="task" varStatus="status">
+
+													<tr class="${status.index % 2 == 0 ? 'even' : 'odd'}">
+														<td>${task.taskId}</td>
+														<td>${task.moduleId}</td>
+														<td>${task.projectId}</td>
+														<td>${task.status}</td>
+														<td>${task.title}</td>
+														<td>${task.description}</td>
+														<td>${task.docURL}</td>
+														<td>${task.estimatedHours}</td>
+														<td>${task.totalUtilizedHours}</td>
+														<td><a href="deletetask?taskId=${task.taskId}">Delete</a></td>
+													</tr>
+												</c:forEach>
+
+
+											</table>
+										</div>
+										<div class="clear"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
-
 		</div>
 
 
@@ -139,5 +162,5 @@
 
 </body>
 
-	
+
 </html>

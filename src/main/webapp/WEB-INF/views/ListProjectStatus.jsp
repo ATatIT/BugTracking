@@ -54,29 +54,52 @@
 		<jsp:include page="AdminHeader.jsp"></jsp:include>
 
 		<!-- header end -->
-		<div class="conatiner-fluid content-inner mt-n6 py-5">
-			<h4 class="card-title">List ProjectStatus</h4>
-			<div class="row ">
-				<table class="table table-striped dataTable table-responsive border-bottom my-3">
-					<tr>
-						<th>StatusId</th>
-						<th>Status</th>
-						<th>Action</th>
-					</tr>
+		<div class="mt-5">
 
-					<c:forEach items="${s}" var="pstatus">
+			<div class="conatiner-fluid content-inner mt-n5 py-0">
+				<div class="row mt-3 p-3">
+					<div class="col-sm-12">
+						<div class="card">
+							<div class="card-header d-flex justify-content-between">
+								<div class="header-title">
+									<h4 class="card-title">List ProjectStatus</h4>
+								</div>
+							</div>
+							<div class="card-body">
 
-						<tr>
-							<td>${pstatus.statusId}</td>
-							<td>${pstatus.status}</td>
-							<td><a
-								href="deleteprojectstatus?statusId=${pstatus.statusId}">Delete</a></td>
-						</tr>
-					</c:forEach>
-				</table>
+								<div class="table-responsive">
+									<div id="datatable_wrapper"
+										class="dataTables_wrapper dt-bootstrap5">
+										<div class="table-responsive border-bottom my-3">
+											<table class="table table-striped dataTable text-dark">
+												<tr class="odd">
 
+													<th>StatusId</th>
+													<th>Status</th>
+													<th>Action</th>
+												</tr>
+
+												<c:forEach items="${s}" var="pstatus" varStatus="status">
+
+													<tr class="${status.index % 2 == 0 ? 'even' : 'odd'}">
+														<td>${pstatus.statusId}</td>
+														<td>${pstatus.status}</td>
+														<td><a
+															href="deleteprojectstatus?statusId=${pstatus.statusId}">Delete</a></td>
+													</tr>
+												</c:forEach>
+
+
+											</table>
+										</div>
+										<div class="clear"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
-
 		</div>
 
 

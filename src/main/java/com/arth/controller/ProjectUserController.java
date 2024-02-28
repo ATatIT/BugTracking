@@ -40,14 +40,17 @@ public class ProjectUserController {
 	
 	@PostMapping("/saveprojectuser")
 	public String saveProjectUser(ProjectUserEntity projectuser) {
+		projectuser.setAssignStatus(1);	
 		pu.save(projectuser);
 		return"redirect:/listprojectuser";
 	}
 	
 	@GetMapping("/listprojectuser")
-	public String listProjectUser(Model model) {
-		List<ProjectUserEntity> projectusers = pu.findAll();
-		model.addAttribute("pu", projectusers);
+	public String listProjectUser(Model model, @RequestParam("projectId")Integer projectId) {
+		
+		model.addAttribute("pt", projectRepo.findById(projectId).get());
+		model.addAttribute("pu", userRepo.getUserByProjectId(projectId));
+		
 		return "ListProjectUser";
 	}
 	

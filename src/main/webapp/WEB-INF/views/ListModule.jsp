@@ -36,7 +36,7 @@
 
 </head>
 
-<body >
+<body>
 	<!-- loader Start -->
 	<%@include file="Loder.jsp"%>
 	<!-- loader END -->
@@ -53,38 +53,61 @@
 		<jsp:include page="AdminHeader.jsp"></jsp:include>
 
 		<!-- header end -->
-		<div class="conatiner-fluid content-inner mt-n6 py-5">
-			<h4 class="card-title">List Module</h4>
-			<div class="row table-responsive border-bottom my-3">
-				<table class="table table-striped dataTable">
-					<tr>
-						<th>ModuleId</th>
-						<th>ProjectId</th>
-						<th>Description</th>
-						<th>Status</th>
-						<th>DocURL</th>
-						<th>EstimatedHours</th>
-						<th>TotalUtilizedHours</th>
-						<th>Action</th>
-					</tr>
+		<div class="mt-5">
 
-					<c:forEach items="${m}" var="module">
+			<div class="conatiner-fluid content-inner mt-n5 py-0">
+				<div class="row mt-3 p-3">
+					<div class="col-sm-12">
+						<div class="card">
+							<div class="card-header d-flex justify-content-between">
+								<div class="header-title">
+									<h4 class="card-title">List Module</h4>
+								</div>
+							</div>
+							<div class="card-body">
 
-						<tr>
-							<td>${module.moduleId}</td>
-							<td>${module.projectId}</td>
-							<td>${module.description}</td>
-							<td>${module.status}</td>
-							<td>${module.docURL}</td>
-							<td>${module.estimatedHours}</td>
-							<td>${module.totalUtilizedHours}</td>
-							<td><a href="deletemodule?moduleId=${module.moduleId}">Delete</a></td>
-						</tr>
-					</c:forEach>
-				</table>
+								<div class="table-responsive">
+									<div id="datatable_wrapper"
+										class="dataTables_wrapper dt-bootstrap5">
+										<div class="table-responsive border-bottom my-3">
+											<table class="table table-striped dataTable text-dark">
+												<tr class="odd">
+													<th>ModuleId</th>
+													<th>ProjectId</th>
+													<th>Description</th>
+													<th>Status</th>
+													<th>DocURL</th>
+													<th>EstimatedHours</th>
+													<th>TotalUtilizedHours</th>
+													<th>Action</th>
+												</tr>
 
+												<c:forEach items="${m}" var="module" varStatus="status">
+
+													<tr class="${status.index % 2 == 0 ? 'even' : 'odd'}">
+														<td>${module.moduleId}</td>
+														<td>${module.projectId}</td>
+														<td>${module.description}</td>
+														<td>${module.status}</td>
+														<td>${module.docURL}</td>
+														<td>${module.estimatedHours}</td>
+														<td>${module.totalUtilizedHours}</td>
+														<td><a
+															href="deletemodule?moduleId=${module.moduleId}">Delete</a></td>
+													</tr>
+												</c:forEach>
+
+
+											</table>
+										</div>
+										<div class="clear"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
-
 		</div>
 
 
