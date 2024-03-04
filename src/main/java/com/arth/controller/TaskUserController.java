@@ -49,6 +49,7 @@ public class TaskUserController {
 	
 	@PostMapping("/savetaskuser")
 	public String saveTaskUser(TaskUserEntity taskuser) {
+		taskuser.setAssignStatus(1);
 		tu.save(taskuser);
 		return "redirect:/listtaskuser";
 	}

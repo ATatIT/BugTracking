@@ -15,7 +15,7 @@ public class ModuleEntity {
 	private Integer moduleId;
 	private String moduleName;	
 	private Integer projectId;	
-	private String status;	
+	private Integer status;	
 	private String description;	
 	private String docURL;
 	private Integer estimatedHours;	
@@ -38,10 +38,10 @@ public class ModuleEntity {
 	public void setProjectId(Integer projectId) {
 		this.projectId = projectId;
 	}
-	public String getStatus() {
+	public Integer getStatus() {
 		return status;
 	}
-	public void setStatus(String status) {
+	public void setStatus(Integer status) {
 		this.status = status;
 	}
 	public String getDescription() {

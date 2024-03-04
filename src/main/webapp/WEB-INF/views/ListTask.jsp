@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>BugTracking|Dashboard</title>
+<title>BT|TaskList</title>
 
 <!-- Favicon -->
 <link rel="shortcut icon" href="../assets/images/favicon.ico">
@@ -59,10 +59,11 @@
 			<div class="conatiner-fluid content-inner mt-n5 py-0">
 				<div class="row mt-3 p-3">
 					<div class="col-sm-12">
-						<div class="card">
+						<div class="card mt-4">
 							<div class="card-header d-flex justify-content-between">
 								<div class="header-title">
-									<h4 class="card-title">List Task</h4>
+									<h4 class="card-title">${module.moduleName}'s Task</h4>
+									<div class="mt-2"><a href="newtask?moduleId=${module.moduleId}">Add Tasks</a></div>
 								</div>
 							</div>
 							<div class="card-body">

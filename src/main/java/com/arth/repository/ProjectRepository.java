@@ -8,4 +8,5 @@ import com.arth.entity.ProjectEntity;
 @Repository
 public interface ProjectRepository extends JpaRepository<ProjectEntity, Integer >{
 
+	
 }

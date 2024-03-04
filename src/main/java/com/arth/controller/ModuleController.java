@@ -22,7 +22,7 @@ import com.arth.repository.ProjectStatusRepository;
 public class ModuleController {
 
 	@Autowired
-	ModuleRepository m;
+	ModuleRepository moduleRepo;
 	
 	@Autowired
 	ProjectRepository projectRepo;
@@ -31,9 +31,9 @@ public class ModuleController {
 	ProjectStatusRepository projectStatuRepo;
 	
 	@GetMapping("/newmodule")
-	public String newModule(Model model) {
-		List<ProjectEntity> projectList = projectRepo.findAll();
-		model.addAttribute("projectList", projectList);
+	public String newModule(@RequestParam("projectId") Integer projectId,Model model) {
+		ProjectEntity project = projectRepo.findById(projectId).get();
+		model.addAttribute("project", project);
 		
 		List<ProjectStatusEntity> projectStatusList = projectStatuRepo.findAll();
 		model.addAttribute("projectStatusList", projectStatusList);
@@ -42,20 +42,23 @@ public class ModuleController {
 	
 	@PostMapping("/savemodule")
 	public String saveModule(ModuleEntity module) {
-		m.save(module);
-		return "redirect:/listmodule";
+		moduleRepo.save(module);
+		return "redirect:/listmodule?projectId="+module.getProjectId();
 	}
 	
 	@GetMapping("/listmodule")
-	public String lisrModule(Model model) {
-		List<ModuleEntity> modules = m.findAll();
+	public String lisrModule(@RequestParam("projectId") Integer projectId ,Model model) {
+		List<ModuleEntity> modules = moduleRepo.findByProjectId(projectId);
+		ProjectEntity project = projectRepo.findById(projectId).get();
+		
+		model.addAttribute("project", project);
 		model.addAttribute("m", modules);
 		return "ListModule";
 	}
 	
 	@GetMapping("/deletemodule")
 	public String deleteModule(@RequestParam("moduleId") Integer moduleId) {
-		m.deleteById(moduleId);
+		moduleRepo.deleteById(moduleId);
 		return "redirect:/listmodule";
 	}
 	

@@ -62,7 +62,7 @@
 
 				<div class="row mt-3 p-3">
 					<div class="col-sm-12">
-						<div class="card">
+						<div class="card mt-4">
 							<div class="card-header d-flex justify-content-between">
 								<div class="header-title">
 									<h4 class="card-title">List Project</h4>
@@ -92,7 +92,7 @@
 
 													<tr class="${status.index % 2 == 0 ? 'even' : 'odd'}">
 														<td>${project.projectId}</td>
-														<td>${project.projecttitle}</td>
+														<td><a href="listmodule?projectId=${project.projectId}">${project.projecttitle}</a></td>
 														<td>${project.description}</td>
 														<td>${project.projectStatusId}</td>
 														<td>${project.docURL}</td>

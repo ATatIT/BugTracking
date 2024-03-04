@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>BugTracking|Dashboard</title>
+<title>BT|ModuleList</title>
 
 <!-- Favicon -->
 <link rel="shortcut icon" href="../assets/images/favicon.ico">
@@ -58,14 +58,15 @@
 			<div class="conatiner-fluid content-inner mt-n5 py-0">
 				<div class="row mt-3 p-3">
 					<div class="col-sm-12">
-						<div class="card">
+						<div class="card mt-4">
 							<div class="card-header d-flex justify-content-between">
 								<div class="header-title">
-									<h4 class="card-title">List Module</h4>
+									<h4 class="card-title">${project.projecttitle}'s Modules</h4>
+								<div class="mt-2"><a href="newmodule?projectId=${project.projectId}">Add Modules</a></div>
 								</div>
 							</div>
 							<div class="card-body">
-
+								
 								<div class="table-responsive">
 									<div id="datatable_wrapper"
 										class="dataTables_wrapper dt-bootstrap5">
@@ -73,6 +74,7 @@
 											<table class="table table-striped dataTable text-dark">
 												<tr class="odd">
 													<th>ModuleId</th>
+													<th>Title</th>
 													<th>ProjectId</th>
 													<th>Description</th>
 													<th>Status</th>
@@ -86,6 +88,7 @@
 
 													<tr class="${status.index % 2 == 0 ? 'even' : 'odd'}">
 														<td>${module.moduleId}</td>
+														<td><a href="listtask?moduleId=${module.moduleId}">${module.moduleName}</a></td>
 														<td>${module.projectId}</td>
 														<td>${module.description}</td>
 														<td>${module.status}</td>

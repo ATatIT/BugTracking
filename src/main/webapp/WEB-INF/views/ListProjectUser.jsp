@@ -58,7 +58,7 @@
 			<div class="conatiner-fluid content-inner mt-n5 py-0">
 				<div class="row mt-3 p-3">
 					<div class="col-sm-12">
-						<div class="card">
+						<div class="card mt-4">
 							<div class="card-header d-flex justify-content-between">
 								<div class="header-title">
 									<h4 class="card-title">${pt.projecttitle}</h4>
@@ -87,7 +87,7 @@
 														<td>${puser.email}</td>
 														<td>${puser.roleId}</td>
 														<td><a
-															href="">Delete</a></td>
+															href="">Revoke</a></td>
 													</tr>
 												</c:forEach>
 

@@ -76,7 +76,7 @@ public class SessionController {
 		}else {
 			
 			session.setAttribute("user", loggedInUser);
-			session.setMaxInactiveInterval(60*5);
+			session.setMaxInactiveInterval(60*10);
 			
 			boolean password = encoder.matches(user.getPass(),loggedInUser.getPass());
 			if(password == false) {

@@ -59,7 +59,7 @@
 			<div class="conatiner-fluid content-inner mt-n5 py-0">
 				<div class="row mt-3 p-3">
 					<div class="col-sm-12">
-						<div class="card">
+						<div class="card mt-4">
 							<div class="card-header d-flex justify-content-between">
 								<div class="header-title">
 									<h4 class="card-title">List User</h4>

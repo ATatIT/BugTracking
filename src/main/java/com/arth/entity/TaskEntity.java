@@ -19,8 +19,8 @@ public class TaskEntity {
 	private String title;
 	private String description;
 	private String docURL;
-	private Integer estimatedHours;
-	private Integer totalUtilizedHours;
+	private Float estimatedHours;
+	private Float totalUtilizedHours;
 	public Integer getTaskId() {
 		return taskId;
 	}
@@ -63,16 +63,16 @@ public class TaskEntity {
 	public void setDocURL(String docURL) {
 		this.docURL = docURL;
 	}
-	public Integer getEstimatedHours() {
+	public Float getEstimatedHours() {
 		return estimatedHours;
 	}
-	public void setEstimatedHours(Integer estimatedHours) {
+	public void setEstimatedHours(Float estimatedHours) {
 		this.estimatedHours = estimatedHours;
 	}
-	public Integer getTotalUtilizedHours() {
+	public Float getTotalUtilizedHours() {
 		return totalUtilizedHours;
 	}
-	public void setTotalUtilizedHours(Integer totalUtilizedHours) {
+	public void setTotalUtilizedHours(Float totalUtilizedHours) {
 		this.totalUtilizedHours = totalUtilizedHours;
 	}
 	

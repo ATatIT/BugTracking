@@ -59,10 +59,10 @@
 			<div class="conatiner-fluid content-inner mt-n5 py-0">
 				<div class="row mt-3 p-3">
 					<div class="col-sm-12">
-						<div class="card">
+						<div class="card mt-4">
 							<div class="card-header d-flex justify-content-between">
 								<div class="header-title">
-									<h4 class="card-title">Project User</h4>
+									<h4 class="card-title">Project Allocation</h4>
 								</div>
 							</div>
 							<div class="card-body">
@@ -71,7 +71,7 @@
 									<div class="row">
 
 										<div class="col-md-6 mb-3">
-											<label class="form-label" for="validationDefault04">Select
+											<label class="form-label" for="validationDefault04">
 												Project User</label> <select class="form-select" name="userId">
 												<option>----Select User----</option>
 												<c:forEach items="${userList}" var="user">
@@ -83,7 +83,7 @@
 											</select>
 										</div>
 										<div class="col-md-6 mb-3">
-											<label class="form-label" for="validationDefault04">Select
+											<label class="form-label" for="validationDefault04">
 												Project Title</label> <select class="form-select" name="projectId">
 												<option value="-1">----Select Project----</option>
 												<c:forEach items="${projectList}" var="project">
@@ -94,7 +94,7 @@
 									</div>
 
 									<div class="form-group">
-										<button class="btn btn-primary" type="submit">Submit</button>
+										<button class="btn btn-primary" type="submit">Allocate</button>
 									</div>
 								</form>
 							</div>

@@ -1,6 +1,6 @@
 
         <!-- Footer Section Start -->
-        <footer class="footer">
+        <footer class="footer mt-2">
 			<div class="footer-body">
 				<ul class="left-panel list-inline mb-0 p-0">
 					<li class="list-inline-item"><a

@@ -34,12 +34,12 @@ public class TaskController {
 	ProjectStatusRepository projectStatuRepo;
 	
 	@GetMapping("/newtask")
-	public String newTask(Model model) {
-		List<ModuleEntity> moduleList = moduleRepo.findAll();
-		model.addAttribute("moduleList", moduleList);
+	public String newTask(@RequestParam("moduleId") Integer moduleId,Model model) {
+		ModuleEntity module = moduleRepo.findById(moduleId).get();
+		model.addAttribute("module", module);
 		
-		List<ProjectEntity> projectList = projectRepo.findAll();
-		model.addAttribute("projectList", projectList);
+		ProjectEntity project = projectRepo.findById(module.getProjectId()).get();
+		model.addAttribute("project", project);
 		
 		List<ProjectStatusEntity> projectStatusList = projectStatuRepo.findAll();
 		model.addAttribute("projectStatusList", projectStatusList);
@@ -49,12 +49,16 @@ public class TaskController {
 	@PostMapping("/savetask")
 	public String svaeTask(TaskEntity task) {
 		t.save(task);
-		return "redirect:/listtask";
+		return "redirect:/listtask?moduleId="+task.getModuleId();
 	}
 	
 	@GetMapping("/listtask")
-	public String listTask(Model model) {
-		List<TaskEntity> tasks = t.findAll();
+	public String listTask(@RequestParam("moduleId") Integer moduleId,Model model) {
+		List<TaskEntity> tasks = t.findByModuleId(moduleId);
+		
+		ModuleEntity module = moduleRepo.findById(moduleId).get();
+		
+		model.addAttribute("module", module);
 		model.addAttribute("t", tasks);
 		return "ListTask";
 	}
