@@ -99,8 +99,8 @@
                                                 </svg>
 											</div>
 											<div class="progress-detail">
-												<p class="mb-2">Total Sales</p>
-												<h4 class="counter">$560K</h4>
+												<p class="mb-2">Total Projects</p>
+												<h4 class="counter">${totalProject}</h4>
 											</div>
 										</div>
 									</div>
@@ -121,8 +121,8 @@
                                                 </svg>
 											</div>
 											<div class="progress-detail">
-												<p class="mb-2">Total Profit</p>
-												<h4 class="counter">$185K</h4>
+												<p class="mb-2">Ongoing Project</p>
+												<h4 class="counter">${OngoingProject}</h4>
 											</div>
 										</div>
 									</div>
@@ -143,8 +143,8 @@
                                                 </svg>
 											</div>
 											<div class="progress-detail">
-												<p class="mb-2">Total Cost</p>
-												<h4 class="counter">$375K</h4>
+												<p class="mb-2">Pipeline Projects</p>
+												<h4 class="counter">${pipelineProject}</h4>
 											</div>
 										</div>
 									</div>
@@ -165,8 +165,8 @@
                                                 </svg>
 											</div>
 											<div class="progress-detail">
-												<p class="mb-2">Revenue</p>
-												<h4 class="counter">$742K</h4>
+												<p class="mb-2">Due Project</p>
+												<h4 class="counter">${dueProject}</h4>
 											</div>
 										</div>
 									</div>

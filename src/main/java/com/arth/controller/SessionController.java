@@ -84,7 +84,7 @@ public class SessionController {
 				return "Login";
 			}else if(loggedInUser.getRoleId() == 1) {
 				//admin
-				return "AdminDashboard";
+				return "redirect:/admindashboard";
 			}else if (loggedInUser.getRoleId() == 2) {
 				//manager
 				return "ProjectManagerDashboard";
