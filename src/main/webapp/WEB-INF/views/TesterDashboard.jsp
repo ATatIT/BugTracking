@@ -8,7 +8,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>BT|AdminDashboard</title>
+<title>BT|TesterDashboard</title>
 
 <!-- Favicon -->
 <link rel="shortcut icon" href="../assets/images/favicon.ico">
@@ -38,8 +38,6 @@
 </head>
 
 <body>
-	
-	
 	<!-- loader Start -->
 	
 	<%@include file="Loder.jsp" %>
@@ -48,7 +46,7 @@
 	
 	<!-- Slider start -->
 	
-	<jsp:include page="AdminSlidebar.jsp"></jsp:include>
+	<jsp:include page="DeveloperSlidebar.jsp"></jsp:include>
 	
 	
 	<!-- Slider end -->
@@ -57,7 +55,6 @@
 	<!-- header start -->
 	
 	<jsp:include page="AdminHeader.jsp"></jsp:include>		
-	
 	<!-- header end -->
 	
 		<!-- Nav Header Component Start -->
@@ -102,8 +99,8 @@
                                                 </svg>
 											</div>
 											<div class="progress-detail">
-												<p class="mb-2">Total Projects</p>
-												<h4 class="counter">${totalProject}</h4>
+												<p class="mb-2">Total Sales</p>
+												<h4 class="counter">$560K</h4>
 											</div>
 										</div>
 									</div>
@@ -124,8 +121,8 @@
                                                 </svg>
 											</div>
 											<div class="progress-detail">
-												<p class="mb-2">Ongoing Project</p>
-												<h4 class="counter">${OngoingProject}</h4>
+												<p class="mb-2">Total Profit</p>
+												<h4 class="counter">$185K</h4>
 											</div>
 										</div>
 									</div>
@@ -146,8 +143,8 @@
                                                 </svg>
 											</div>
 											<div class="progress-detail">
-												<p class="mb-2">Pipeline Projects</p>
-												<h4 class="counter">${pipelineProject}</h4>
+												<p class="mb-2">Total Cost</p>
+												<h4 class="counter">$375K</h4>
 											</div>
 										</div>
 									</div>
@@ -168,8 +165,8 @@
                                                 </svg>
 											</div>
 											<div class="progress-detail">
-												<p class="mb-2">Due Project</p>
-												<h4 class="counter">${dueProject}</h4>
+												<p class="mb-2">Revenue</p>
+												<h4 class="counter">$742K</h4>
 											</div>
 										</div>
 									</div>

@@ -18,6 +18,10 @@
 <!-- Aos Animation Css -->
 <link rel="stylesheet" href="../assets/vendor/aos/dist/aos.css">
 
+<!-- DataTables button CSS -->
+<link rel="stylesheet"
+	href="../assets/css/core/datatables.button.min.css">
+
 <!-- Hope Ui Design System Css -->
 <link rel="stylesheet" href="../assets/css/hope-ui.min.css?v=4.0.0">
 
@@ -62,46 +66,57 @@
 						<div class="card mt-4">
 							<div class="card-header d-flex justify-content-between">
 								<div class="header-title">
-									<h4 class="card-title">${module.moduleName}'s Task</h4>
-									<div class="mt-2"><a href="newtask?moduleId=${module.moduleId}">Add Tasks</a></div>
+									<h4 class="card-title">${module.moduleName}'sTask</h4>
+									<div class="mt-2">
+										<a href="newtask?moduleId=${module.moduleId}">Add Tasks</a>
+									</div>
 								</div>
 							</div>
 							<div class="card-body">
-
+								<div id="button-div-id"></div>
 								<div class="table-responsive">
 									<div id="datatable_wrapper"
 										class="dataTables_wrapper dt-bootstrap5">
 										<div class="table-responsive border-bottom my-3">
-											<table class="table table-striped dataTable text-dark">
-												<tr class="odd">
-													<th>TaskId</th>
-													<th>ModuleId</th>
-													<th>ProjectId</th>
-													<th>Status</th>
-													<th>Title</th>
-													<th>Description</th>
-													<th>DocUrl</th>
-													<th>EstimatedHours</th>
-													<th>TotalUtilizedHours</th>
-													<th>Action</th>
-												</tr>
+											<table id="my-table" class="table table-striped"
+												data-toggle="data-table">
+												<thead>
 
-												<c:forEach items="${t}" var="task" varStatus="status">
+													<tr class="odd">
+														<th>TaskId</th>
+														<th>Title</th>
+														<th>ModuleId</th>
+														<th>ProjectId</th>
+														<th>Status</th>
+														<th>Description</th>
+														<th>DocUrl</th>
+														<th>EstimatedHours</th>
+														<th>TotalUtilizedHours</th>
+														<th>Action</th>
 
-													<tr class="${status.index % 2 == 0 ? 'even' : 'odd'}">
-														<td>${task.taskId}</td>
-														<td>${task.moduleId}</td>
-														<td>${task.projectId}</td>
-														<td>${task.status}</td>
-														<td>${task.title}</td>
-														<td>${task.description}</td>
-														<td>${task.docURL}</td>
-														<td>${task.estimatedHours}</td>
-														<td>${task.totalUtilizedHours}</td>
-														<td><a href="deletetask?taskId=${task.taskId}">Delete</a></td>
 													</tr>
-												</c:forEach>
 
+
+												</thead>
+												<tbody>
+													<c:forEach items="${t}" var="task" varStatus="status">
+
+														<tr class="${status.index % 2 == 0 ? 'even' : 'odd'}">
+															<td>${task.taskId}</td>
+															<td><a href="listtaskuser?taskId=${task.taskId}">${task.title}</a></td>
+															<td>${task.moduleId}</td>
+															<td>${task.projectId}</td>
+															<td>${task.status}</td>
+															<td>${task.description}</td>
+															<td>${task.docURL}</td>
+															<td>${task.estimatedHours}</td>
+															<td>${task.totalUtilizedHours}</td>
+															<td><a href="deletetask?taskId=${task.taskId}">Delete</a></td>
+														</tr>
+													</c:forEach>
+
+
+												</tbody>
 
 											</table>
 										</div>
@@ -156,6 +171,21 @@
 
 	<!-- AOS Animation Plugin-->
 	<script src="../assets/vendor/aos/dist/aos.js"></script>
+	
+	<!-- DataTables Button JS -->
+	<script src="../assets/js/dataTables.buttons.min.js"></script>
+	<script src="../assets/js/buttons.bootstrap4.min.js"></script>
+	<!-- Include the JSZip library (for Excel export) -->
+	<script src="../assets/js/jszip.min.js"></script>
+
+	<!-- Include the HTML5 export buttons (CSV, Excel, PDF, Print) -->
+	<script src="../assets/js/buttons.html5.min.js"></script>
+
+	<!-- Include the Button print functionality -->
+	<script src="../assets/js/buttons.print.min.js"></script>
+
+	<!-- Include the Column visibility button -->
+	<script src="../assets/js/buttons.colVis.min.js"></script>
 
 	<!-- App Script -->
 	<script src="../assets/js/hope-ui.js" defer></script>

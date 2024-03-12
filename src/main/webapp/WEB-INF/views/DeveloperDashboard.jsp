@@ -54,7 +54,7 @@
 	<main class="main-content">
 	<!-- header start -->
 	
-	<jsp:include page="AdminHeader.jsp"></jsp:include>		
+	<jsp:include page="DeveloperHeader.jsp"></jsp:include>		
 	<!-- header end -->
 	
 		<!-- Nav Header Component Start -->
@@ -99,8 +99,8 @@
                                                 </svg>
 											</div>
 											<div class="progress-detail">
-												<p class="mb-2">Total Sales</p>
-												<h4 class="counter">$560K</h4>
+												<p class="mb-2">Total Projects</p>
+												<h4 class="counter">	${project}</h4>
 											</div>
 										</div>
 									</div>
@@ -121,8 +121,8 @@
                                                 </svg>
 											</div>
 											<div class="progress-detail">
-												<p class="mb-2">Total Profit</p>
-												<h4 class="counter">$185K</h4>
+												<p class="mb-2">Ongoing Projects</p>
+												<h4 class="counter">${OngoingProject}</h4>
 											</div>
 										</div>
 									</div>
@@ -143,8 +143,8 @@
                                                 </svg>
 											</div>
 											<div class="progress-detail">
-												<p class="mb-2">Total Cost</p>
-												<h4 class="counter">$375K</h4>
+												<p class="mb-2">Pipeline Projects</p>
+												<h4 class="counter">${pipelineProject}</h4>
 											</div>
 										</div>
 									</div>
@@ -165,8 +165,8 @@
                                                 </svg>
 											</div>
 											<div class="progress-detail">
-												<p class="mb-2">Revenue</p>
-												<h4 class="counter">$742K</h4>
+												<p class="mb-2">Due Project</p>
+												<h4 class="counter">${dueProject}</h4>
 											</div>
 										</div>
 									</div>

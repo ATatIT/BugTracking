@@ -1,14 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!doctype html>
-<html lang="en" dir="ltr">
-
+<!DOCTYPE html>
+<html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>BT|Assign Task to User</title>
+<title>BugTracking|Dashboard</title>
 
 <!-- Favicon -->
 <link rel="shortcut icon" href="../assets/images/favicon.ico">
@@ -62,52 +61,49 @@
 						<div class="card mt-4">
 							<div class="card-header d-flex justify-content-between">
 								<div class="header-title">
-									<h4 class="card-title">Task Allocation</h4>
+									<h4 class="card-title">Project </h4>
 								</div>
 							</div>
 							<div class="card-body">
 
-								<form action="savetaskuser" method="post">
-									<div class="row">
+								<div class="table-responsive">
+									<div id="datatable_wrapper"
+										class="dataTables_wrapper dt-bootstrap5">
+										<div class="table-responsive border-bottom my-3">
+											<table class="table table-striped dataTable text-dark">
+												<tr class="odd">
+													<th>FirstName</th>
+												<th>LastName</th>
+												<th>Email</th>
+												<th>Role</th>
+												<th>Action</th>
+												</tr>
 
-										<div class="col-md-6 mb-3">
-											<label class="form-label" for="validationDefault04">
-												Task User</label> <select class="form-select" name="userID">
-												<option value="-1">----Select User----</option>
-												<c:forEach items="${userList}" var="user">
-													<option value="${user.userId}">${user.firstName}
-														${user.lastName}</option>
-												</c:forEach>
-											</select>
-										</div>
-										
-										<div class="col-md-6 mb-3">
-											<label class="form-label" for="validationDefault04">
-												Status</label> <select class="form-select" name="statusId">
-												<option value="-1">----TaskStatus----</option>
-												<c:forEach items="${projectStatusList}" var="projectstatus">
-													<option value="${projectstatus.statusId}">${projectstatus.status}</option>
-												</c:forEach>
-											</select>
-										</div>
-										<div class="col-md-6 mb-3">
-											<label class="form-label" for="validationDefault04">
-												UtilizedHours</label> <input type="text" class="form-control"
-												id="confirmpassword" name="utilizedHours" placeholder="">
-										</div>
-										<input type="hidden" name="taskId" value="${task.taskId}">
-									</div>
+												<c:forEach items="${pu}" var="puser" varStatus="status">
 
-									<div class="form-group">
-										<button class="btn btn-primary" type="submit">Allocate</button>
+													<tr class="${status.index % 2 == 0 ? 'even' : 'odd'}">
+														<td>${puser.firstName}</td>
+														<td>${puser.lastName}</td>
+														<td>${puser.email}</td>
+														<td>${puser.roleId}</td>
+														<td><a
+															href="">Revoke</a></td>
+													</tr>
+												</c:forEach>
+
+
+											</table>
+										</div>
+										<div class="clear"></div>
 									</div>
-								</form>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+
 
 
 		<!-- Footer Section Start -->
@@ -156,5 +152,6 @@
 
 
 </body>
+
 
 </html>

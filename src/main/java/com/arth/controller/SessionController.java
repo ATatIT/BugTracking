@@ -90,8 +90,11 @@ public class SessionController {
 				return "ProjectManagerDashboard";
 			} else if (loggedInUser.getRoleId() == 3) {
 				// developer
-				return "DeveloperDashboard";
-			}	
+				return "redirect:/developerdashboard";
+			}else if (loggedInUser.getRoleId() == 5) {
+				// developer
+				return "redirect:/testerdashboard";
+			}		
 		}	
 		return "Login";
 	}

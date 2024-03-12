@@ -42,7 +42,7 @@ public class ProjectUserController {
 	public String saveProjectUser(ProjectUserEntity projectuser) {
 		projectuser.setAssignStatus(1);	
 		pu.save(projectuser);
-		return"redirect:/listprojectuser";
+		return"redirect:/listprojectuser?projectId="+projectuser.getProjectId();
 	}
 	
 	@GetMapping("/listprojectuser")
@@ -52,6 +52,17 @@ public class ProjectUserController {
 		model.addAttribute("pu", userRepo.getUserByProjectId(projectId));
 		
 		return "ListProjectUser";
+	}
+	
+	@GetMapping("/listallprojectuser")
+	public String listAllProjectUser(Model model) {
+		List<ProjectEntity> allProject = projectRepo.findAll();
+		
+		
+		
+		List<ProjectUserEntity> allProjectUser = pu.findAll();
+		model.addAttribute("allProjectUser", allProjectUser);
+		return "ListAllProjectUser";
 	}
 	
 	@GetMapping("/deleteprojectuser")

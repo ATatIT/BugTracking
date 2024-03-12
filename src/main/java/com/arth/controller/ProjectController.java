@@ -34,7 +34,7 @@ public class ProjectController {
 		System.out.println(project.getProjecttitle());
 		
 		p.save(project);
-		return "redirect:/listproject";
+		return "redirect:/listproject?projectId="+project.getProjectId();
 	}
 	
 	@GetMapping("/listproject")

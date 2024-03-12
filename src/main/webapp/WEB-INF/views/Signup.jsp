@@ -6,7 +6,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Hope UI | Responsive Bootstrap 5 Admin Dashboard Template</title>
+<title>BT|Sign Up</title>
 
 <!-- Favicon -->
 <link rel="shortcut icon" href="../../assets/images/favicon.ico">
@@ -97,7 +97,7 @@
 
 
 
-										<h4 class="logo-title ms-3">Hope UI</h4>
+										<h4 class="logo-title ms-3">Bug Tracking</h4>
 									</a>
 									<h2 class="mb-5 text-center">Sign Up</h2>
 
@@ -217,7 +217,7 @@
 											<button type="submit" formmethod="post"
 												class="btn btn-primary">Sign Up</button>
 											&nbsp;
-											<button type="button" class="btn btn-primary">Cancle</button>
+											<a href=""><button type="button" class="btn btn-primary">Cancle</button></a>
 										</div>
 									</form>
 								</div>

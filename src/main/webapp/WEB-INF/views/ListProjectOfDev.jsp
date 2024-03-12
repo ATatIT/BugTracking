@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
+<!doctype html>
+<html lang="en" dir="ltr">
 
 <head>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>BT|ModuleList</title>
+<title>BT|Developer's Projects</title>
 
 <!-- Favicon -->
 <link rel="shortcut icon" href="../assets/images/favicon.ico">
@@ -40,36 +41,35 @@
 
 </head>
 
-<body>
+<body class="  ">
 	<!-- loader Start -->
 	<%@include file="Loder.jsp"%>
 	<!-- loader END -->
 
 	<!-- Slider start -->
 
-	<jsp:include page="AdminSlidebar.jsp"></jsp:include>
+	<jsp:include page="DeveloperSlidebar.jsp"></jsp:include>
 
 	<!-- Slider end -->
 
 	<main class="main-content">
+
+
 		<!-- header start -->
 
-		<jsp:include page="AdminHeader.jsp"></jsp:include>
+		<jsp:include page="DeveloperHeader.jsp"></jsp:include>
 
 		<!-- header end -->
 		<div class="mt-5">
 
 			<div class="conatiner-fluid content-inner mt-n5 py-0">
+
 				<div class="row mt-3 p-3">
 					<div class="col-sm-12">
 						<div class="card mt-4">
 							<div class="card-header d-flex justify-content-between">
 								<div class="header-title">
-									<h4 class="card-title">${project.projecttitle}'sModules</h4>
-									<div class="mt-2">
-										<a href="newmodule?projectId=${project.projectId}">Add
-											Modules</a>
-									</div>
+									<h4 class="card-title">List Project</h4>
 								</div>
 							</div>
 							<div class="card-body">
@@ -81,36 +81,36 @@
 											<table id="my-table" class="table table-striped"
 												data-toggle="data-table">
 												<thead>
-
 													<tr class="odd">
-														<th>ModuleId</th>
-														<th>Title</th>
 														<th>ProjectId</th>
+														<th>ProjectTitle</th>
 														<th>Description</th>
-														<th>Status</th>
+														<th>ProjectStatusId</th>
 														<th>DocURL</th>
 														<th>EstimatedHours</th>
 														<th>TotalUtilizedHours</th>
-														<th>Action</th>
-													</tr>
+														<th>ProjectStartDate</th>
+														<th>ProjectCompletionDate</th>
 
+													</tr>
 
 
 												</thead>
 												<tbody>
-													<c:forEach items="${m}" var="module" varStatus="status">
+													<c:forEach items="${project}" var="project"
+														varStatus="status">
 
 														<tr class="${status.index % 2 == 0 ? 'even' : 'odd'}">
-															<td>${module.moduleId}</td>
-															<td><a href="listtask?moduleId=${module.moduleId}">${module.moduleName}</a></td>
-															<td>${module.projectId}</td>
-															<td>${module.description}</td>
-															<td>${module.status}</td>
-															<td>${module.docURL}</td>
-															<td>${module.estimatedHours}</td>
-															<td>${module.totalUtilizedHours}</td>
-															<td><a
-																href="deletemodule?moduleId=${module.moduleId}">Delete</a></td>
+															<td>${project.projectId}</td>
+															<td><a href="">${project.projecttitle}</a></td>
+															<td>${project.description}</td>
+															<td>${project.projectStatusId}</td>
+															<td>${project.docURL}</td>
+															<td>${project.estimatedHours}</td>
+															<td>${project.totalUtilizedHours}</td>
+															<td>${project.projectStartDate}</td>
+															<td>${project.projectCompletionDate}</td>
+
 														</tr>
 													</c:forEach>
 
@@ -119,15 +119,72 @@
 
 											</table>
 										</div>
+
 										<div class="clear"></div>
 									</div>
 								</div>
+
 							</div>
+						</div>
+
+						<div class="row">
+
+							<c:forEach items="${project}" var="project">
+
+								<div class="col-lg-4">
+									<div class="card">
+										<div class="card-body">
+											<div class="d-flex justify-content-between mb-4">
+												<div class="">
+													<h2>${project.projecttitle}</h2>
+													<h5>Status:${project.projectStatusId}</h5>
+												</div>
+												<div class="">
+													<div class="badge bg-danger p-4">
+														
+                                       					<h5 class="text-white">${project.projectId}</h5>
+                                   						
+													</div>
+												</div>
+											</div>
+											<div
+												class="d-flex  justify-content-start align-items-center mb-3">
+												<div class="pe-3">
+													<img src="../../assets/images/avatars/icons8-clock-48.png"
+														class="rounded-circle p-1 bg-soft-danger" width="60"
+														height="60" alt="1">
+												</div>
+												<div>
+													<h5 class="">Estimated Hours :
+														${project.estimatedHours}</h5>
+													<h6 class="mb-0">Utillized Hours :
+														${project.totalUtilizedHours}</h6>
+												</div>
+											</div>
+											<div>
+												<small>${project.description}</small>
+
+											</div>
+											<div class="pt-4">
+												<small>Start Date</small>
+												<div class="twit-date">${project.projectStartDate}</div>
+											</div>
+											<div class="pt-3">
+												<small>End Date</small>
+												<div class="twit-date">${project.projectCompletionDate}</div>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</c:forEach>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+
+
 
 
 		<!-- Footer Section Start -->
@@ -185,6 +242,7 @@
 
 	<!-- Include the Column visibility button -->
 	<script src="../assets/js/buttons.colVis.min.js"></script>
+
 
 	<!-- App Script -->
 	<script src="../assets/js/hope-ui.js" defer></script>

@@ -10,7 +10,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Hope UI | Responsive Bootstrap 5 Admin Dashboard Template</title>
+<title>BT|Login</title>
 
 <!-- Favicon -->
 <link rel="shortcut icon" href="../../assets/images/favicon.ico">
@@ -101,7 +101,7 @@
 
 
 
-										<h4 class="logo-title ms-3">Hope UI</h4>
+										<h4 class="logo-title ms-3">Bug Tracking</h4>
 									</a>
 									<h2 class="mb-2 text-center">Sign In</h2>
 									<p class="text-center">Login to stay connected.</p>

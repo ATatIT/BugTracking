@@ -229,10 +229,41 @@ if (typeof Scrollbar !== typeof null) {
 if ($.fn.DataTable) {
   if ($('[data-toggle="data-table"]').length) {
     const table = $('[data-toggle="data-table"]').DataTable({
-      "dom": '<"row align-items-center"<"col-md-6" l><"col-md-6" f>><"table-responsive border-bottom my-3" rt><"row align-items-center" <"col-md-6" i><"col-md-6" p>><"clear">',
+      dom: 'B<"row align-items-center"<"col-md-6" l><"col-md-6" f>><"table-responsive  my-3" rt><"row align-items-center" <"col-md-6" i><"col-md-6" p>><"clear">',
+      buttons: [
+    'copy', // Include copy button
+    'csv', // Include CSV button
+    'excel', // Include Excel button
+    'pdf', // Include PDF button
+    'print', // Include print button
+    'colvis' // Include column visibility button
+  ],
+ initComplete: function(settings, json) {
+            // Append buttons to the container
+            $('#button-div-id').append($('.dt-buttons'));
+        }
     });
   }
 }
+
+/*$('#my-table').DataTable({
+  "dom": 'Bfrtip',
+ // Add the Buttons extension to the DOM
+  
+  buttons: [
+    'copy', // Include copy button
+    'csv', // Include CSV button
+    'excel', // Include Excel button
+    'pdf', // Include PDF button
+    'print', // Include print button
+    'colvis' // Include column visibility button
+  ],
+ initComplete: function(settings, json) {
+            // Append buttons to the container
+            $('#button-div-id').append($('.dt-buttons'));
+        }
+});*/
+
 /*---------------------------------------------------------------------
   Active Class for Pricing Table
 -----------------------------------------------------------------------*/

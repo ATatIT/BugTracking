@@ -8,7 +8,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>BugTracking|Dashboard</title>
+<title>BT|Assign ProjectUser</title>
 
 <!-- Favicon -->
 <link rel="shortcut icon" href="../assets/images/favicon.ico">
@@ -88,6 +88,7 @@
 												<option value="-1">----Select Project----</option>
 												<c:forEach items="${projectList}" var="project">
 													<option value="${project.projectId}">${project.projecttitle}</option>
+													
 												</c:forEach>
 											</select>
 										</div>

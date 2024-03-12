@@ -9,10 +9,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.arth.entity.ProjectEntity;
 import com.arth.entity.ProjectStatusEntity;
 import com.arth.entity.TaskEntity;
 import com.arth.entity.TaskUserEntity;
 import com.arth.entity.UserEntity;
+import com.arth.repository.ProjectRepository;
 import com.arth.repository.ProjectStatusRepository;
 import com.arth.repository.TaskRepository;
 import com.arth.repository.TaskUserRepositoy;
@@ -31,15 +33,20 @@ public class TaskUserController {
 	UserRepository userRepo;
 	
 	@Autowired
+	ProjectRepository projectRepo;
+	
+	@Autowired
 	ProjectStatusRepository projectStausRepo;
 	
 	@GetMapping("/newtaskuser")
-	public String newTaskUser(Model model) {
-		List<UserEntity> userList = userRepo.findAll();
+	public String newTaskUser(@RequestParam("taskId") Integer taskId ,Model model) {
+		
+		
+		TaskEntity task =   taskRepo.findById(taskId).get();
+		List<UserEntity> userList = userRepo.getUserByProjectId(task.getProjectId());
 		model.addAttribute("userList", userList);
 		
-		List<TaskEntity> taskList = taskRepo.findAll();
-		model.addAttribute("taskList", taskList);
+		model.addAttribute("task", task);
 		
 		List<ProjectStatusEntity> projectStatuList = projectStausRepo.findAll();
 		model.addAttribute("projectStatusList", projectStatuList);
@@ -51,13 +58,13 @@ public class TaskUserController {
 	public String saveTaskUser(TaskUserEntity taskuser) {
 		taskuser.setAssignStatus(1);
 		tu.save(taskuser);
-		return "redirect:/listtaskuser";
+		return "redirect:/listtaskuser?taskId="+taskuser.getTaskId();
 	}
 	
 	@GetMapping("/listtaskuser")
-	public String listTaskUser(Model model) {
-		List<TaskUserEntity> taskusers = tu.findAll();
-		model.addAttribute("tu", taskusers);
+	public String listTaskUser(@RequestParam("taskId") Integer taskId,Model model) {
+		model.addAttribute("task", taskRepo.getById(taskId));
+		model.addAttribute("taskuser", userRepo.getUserByTaskId(taskId));
 		return "ListTaskUser";
 	}
 	

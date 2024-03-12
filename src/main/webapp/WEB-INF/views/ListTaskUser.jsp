@@ -1,14 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!doctype html>
-<html lang="en" dir="ltr">
-
+<!DOCTYPE html>
+<html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>BugTracking|Dashboard</title>
+<title>BT|TaskUser</title>
 
 <!-- Favicon -->
 <link rel="shortcut icon" href="../assets/images/favicon.ico">
@@ -18,6 +17,12 @@
 
 <!-- Aos Animation Css -->
 <link rel="stylesheet" href="../assets/vendor/aos/dist/aos.css">
+
+
+
+<!-- DataTables button CSS -->
+<link rel="stylesheet"
+	href="../assets/css/core/datatables.button.min.css">
 
 <!-- Hope Ui Design System Css -->
 <link rel="stylesheet" href="../assets/css/hope-ui.min.css?v=4.0.0">
@@ -33,7 +38,6 @@
 
 <!-- RTL Css -->
 <link rel="stylesheet" href="../assets/css/rtl.min.css">
-
 
 </head>
 
@@ -62,40 +66,45 @@
 						<div class="card mt-4">
 							<div class="card-header d-flex justify-content-between">
 								<div class="header-title">
-									<h4 class="card-title">List TaskUser</h4>
+									<h4 class="card-title">${task.title}'s Developer</h4>
+									<div class="mt-2">
+										<a href="newtaskuser?taskId=${task.taskId}">Assign Task</a>
+									</div>
 								</div>
 							</div>
 							<div class="card-body">
-
+								<div id="button-div-id"></div>
 								<div class="table-responsive">
 									<div id="datatable_wrapper"
 										class="dataTables_wrapper dt-bootstrap5">
 										<div class="table-responsive border-bottom my-3">
-											<table class="table table-striped dataTable text-dark">
-												<tr class="odd">
-													<th>TaskUserId</th>
-													<th>UserID</th>
-													<th>TaskId</th>
-													<th>AssignStatus</th>
-													<th>StatusId</th>
-													<th>UtilizedHours</th>
-													<th>Action</th>
-												</tr>
-
-												<c:forEach items="${tu}" var="taskuser" varStatus="status">
-
-													<tr class="${status.index % 2 == 0 ? 'even' : 'odd'}">
-														<td>${taskuser.taskUserId}</td>
-														<td>${taskuser.userID}</td>
-														<td>${taskuser.taskId}</td>
-														<td>${taskuser.assignStatus}</td>
-														<td>${taskuser.statusId}</td>
-														<td>${taskuser.utilizedHours}</td>
-														<td><a
-															href="deletetaskuser?taskuserId=${taskuser.taskUserId }">Delete</a></td>
+											<table id="my-table" class="table table-striped"
+												data-toggle="data-table">
+												<thead>
+													<tr>
+													<tr class="odd">
+														<th>FirstName</th>
+														<th>LastName</th>
+														<th>Email</th>
+														<th>Role</th>
+														<th>Action</th>
 													</tr>
-												</c:forEach>
 
+													</tr>
+												</thead>
+												<tbody>
+													<c:forEach items="${taskuser}" var="tu" varStatus="status">
+
+														<tr class="${status.index % 2 == 0 ? 'even' : 'odd'}">
+															<td>${tu.firstName}</td>
+															<td>${tu.lastName}</td>
+															<td>${tu.email}</td>
+															<td>${tu.roleId}</td>
+															<td><a href="">Revoke</a></td>
+														</tr>
+													</c:forEach>
+
+												</tbody>
 
 											</table>
 										</div>
@@ -108,6 +117,7 @@
 				</div>
 			</div>
 		</div>
+
 
 
 		<!-- Footer Section Start -->
@@ -151,10 +161,26 @@
 	<!-- AOS Animation Plugin-->
 	<script src="../assets/vendor/aos/dist/aos.js"></script>
 
+	<!-- DataTables Button JS -->
+	<script src="../assets/js/dataTables.buttons.min.js"></script>
+	<script src="../assets/js/buttons.bootstrap4.min.js"></script>
+	<!-- Include the JSZip library (for Excel export) -->
+	<script src="../assets/js/jszip.min.js"></script>
+
+	<!-- Include the HTML5 export buttons (CSV, Excel, PDF, Print) -->
+	<script src="../assets/js/buttons.html5.min.js"></script>
+
+	<!-- Include the Button print functionality -->
+	<script src="../assets/js/buttons.print.min.js"></script>
+
+	<!-- Include the Column visibility button -->
+	<script src="../assets/js/buttons.colVis.min.js"></script>
+
 	<!-- App Script -->
 	<script src="../assets/js/hope-ui.js" defer></script>
 
 
 </body>
+
 
 </html>
