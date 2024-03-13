@@ -7,7 +7,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.arth.entity.RoleEntity;
 import com.arth.entity.UserEntity;
+import com.arth.repository.RoleRepository;
 import com.arth.repository.UserRepository;
 import com.arth.service.MailerService;
 
@@ -25,6 +27,9 @@ public class SessionController {
 	
 	@Autowired
 	MailerService mailerservice;
+	
+	@Autowired
+	RoleRepository roleRepo;
 	
 	@GetMapping("/")
 	public String welcome() {
@@ -75,8 +80,11 @@ public class SessionController {
 			return "Login";
 		}else {
 			
+			RoleEntity role = roleRepo.findById(loggedInUser.getRoleId()).get();
+			session.setAttribute("role", role);
 			session.setAttribute("user", loggedInUser);
 			session.setMaxInactiveInterval(60*10);
+			
 			
 			boolean password = encoder.matches(user.getPass(),loggedInUser.getPass());
 			if(password == false) {

@@ -54,19 +54,22 @@ public class TaskController {
 	
 	@GetMapping("/listtask")
 	public String listTask(@RequestParam("moduleId") Integer moduleId,Model model) {
-		List<TaskEntity> tasks = t.findByModuleId(moduleId);
-		
+		List<TaskEntity> tasks = t.findByModuleId(moduleId);		
 		ModuleEntity module = moduleRepo.findById(moduleId).get();
 		
 		model.addAttribute("module", module);
 		model.addAttribute("t", tasks);
+		
+		ProjectEntity project = projectRepo.findById(module.getProjectId()).get();
+		model.addAttribute("project", project);
 		return "ListTask";
 	}
 	
 	@GetMapping("/deletetask")
 	public String deleteTask(@RequestParam("taskId") Integer taskId) {
+		int moduleId = t.findById(taskId).get().getModuleId();
 		t.deleteById(taskId);
-		return "redirect:/listtask";
+		return "redirect:/listtask?moduleId="+moduleId;
 	}
 	
 }

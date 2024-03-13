@@ -100,7 +100,7 @@
 															<td>${tu.lastName}</td>
 															<td>${tu.email}</td>
 															<td>${tu.roleId}</td>
-															<td><a href="">Revoke</a></td>
+															<td><a href="deletetaskuser?userId=${tu.userId}">Revoke</a></td>
 														</tr>
 													</c:forEach>
 

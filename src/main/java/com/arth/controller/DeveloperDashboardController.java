@@ -2,15 +2,21 @@ package com.arth.controller;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.arth.entity.ModuleEntity;
 import com.arth.entity.ProjectEntity;
+import com.arth.entity.TaskEntity;
 import com.arth.entity.UserEntity;
+import com.arth.repository.ModuleRepository;
 import com.arth.repository.ProjectRepository;
+import com.arth.repository.TaskRepository;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -19,6 +25,12 @@ public class DeveloperDashboardController {
 
 	@Autowired
 	ProjectRepository projectRepo;
+	
+	@Autowired
+	ModuleRepository moduleRepo;
+	
+	@Autowired
+	TaskRepository taskRepo;
 
 	@GetMapping("/developerdashboard")
 	public String developerDashboard(HttpSession session, Model model) {
@@ -58,4 +70,29 @@ public class DeveloperDashboardController {
 		model.addAttribute("project", project);
 		return "ListProjectOfDev";
 	}
+	
+	
+	@GetMapping("/listmoduleofdev")
+	public String listModuleOfDev(@RequestParam("projectId")Integer projectId,Model model) {
+		ProjectEntity project = projectRepo.findById(projectId).get();
+		model.addAttribute("project", project);
+		
+		List<ModuleEntity> module = moduleRepo.findByProjectId(projectId);
+		model.addAttribute("module", module);
+		return "ListModuleOfDev";
+	}
+	
+	@GetMapping("/listtaskofdev")
+	public String listTaskOfDev(@RequestParam("moduleId")Integer moduleId,HttpSession session,Model model) {
+		ModuleEntity module = moduleRepo.findById(moduleId).get();
+		model.addAttribute("module", module);
+		
+		List<TaskEntity> task =  taskRepo.findByModuleId(moduleId);
+		model.addAttribute("task", task);
+		
+		ProjectEntity project = projectRepo.findById(module.getProjectId()).get();
+		model.addAttribute("project", project);
+		return "ListTaskOfDev";
+	}
+	
 }

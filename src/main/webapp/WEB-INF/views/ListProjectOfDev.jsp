@@ -102,7 +102,7 @@
 
 														<tr class="${status.index % 2 == 0 ? 'even' : 'odd'}">
 															<td>${project.projectId}</td>
-															<td><a href="">${project.projecttitle}</a></td>
+															<td><a href="listmoduleofdev?projectId=${project.projectId}">${project.projecttitle}</a></td>
 															<td>${project.description}</td>
 															<td>${project.projectStatusId}</td>
 															<td>${project.docURL}</td>

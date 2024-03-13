@@ -7,8 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.arth.entity.RoleEntity;
 import com.arth.entity.UserEntity;
 import com.arth.repository.ProjectRepository;
+import com.arth.repository.RoleRepository;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -17,21 +19,24 @@ public class AdminDashboardController {
 	@Autowired
 	ProjectRepository projectRepo;
 	
+	
+	
 	@GetMapping("/admindashboard")
 	public String adminDashboard(HttpSession session , Model model) {
-//		UserEntity user = (UserEntity) session.getAttribute("user");
-		
+//	UserEntity user = (UserEntity) session.getAttribute("user");
+	
+	
 		
 		Integer totalProject = (int) projectRepo.count();
 		model.addAttribute("totalProject", totalProject);
 		
-		Integer OngoingProject =  projectRepo.getProjectAccordingToSatatus(3);
+		Integer OngoingProject =  projectRepo.findByProjectStatusId(3).size();
 		model.addAttribute("OngoingProject", OngoingProject);
 		
 		LocalDate d = LocalDate.now();
 		Integer m = d.getMonthValue();
 		
-		Integer pipelineProject =  projectRepo.getProjectAccordingToSatatus(2);
+		Integer pipelineProject =  projectRepo.findByProjectStatusId(2).size();
 		model.addAttribute("pipelineProject", pipelineProject);
 		
 		Integer dueProject = projectRepo.getDueProjects(m);

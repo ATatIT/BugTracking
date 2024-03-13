@@ -66,7 +66,7 @@
 						<div class="card mt-4">
 							<div class="card-header d-flex justify-content-between">
 								<div class="header-title">
-									<h4 class="card-title">${module.moduleName}'sTask</h4>
+									<h4 class="card-title">${project.projecttitle} : ${module.moduleName}'s Task</h4>
 									<div class="mt-2">
 										<a href="newtask?moduleId=${module.moduleId}">Add Tasks</a>
 									</div>

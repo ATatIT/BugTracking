@@ -28,6 +28,9 @@ public class ProjectUserController {
 	@Autowired
 	ProjectRepository projectRepo;
 	
+	@Autowired
+	ProjectUserRepository projectUserRepo;
+	
 	@GetMapping("/newprojectuser")
 	public String newProjectUser(Model model) {
 		List<UserEntity> userList = userRepo.findAll();
@@ -50,19 +53,18 @@ public class ProjectUserController {
 		
 		model.addAttribute("pt", projectRepo.findById(projectId).get());
 		model.addAttribute("pu", userRepo.getUserByProjectId(projectId));
+		model.addAttribute("puhold", userRepo.getUserByProjectIdHold(projectId));
+		model.addAttribute("purevoke", userRepo.getUserByProjectIdRevoke(projectId));
 		
 		return "ListProjectUser";
 	}
 	
-	@GetMapping("/listallprojectuser")
-	public String listAllProjectUser(Model model) {
-		List<ProjectEntity> allProject = projectRepo.findAll();
-		
-		
-		
-		List<ProjectUserEntity> allProjectUser = pu.findAll();
-		model.addAttribute("allProjectUser", allProjectUser);
-		return "ListAllProjectUser";
+	@GetMapping("/projectuserassignstatus")
+	public String projectUserAssignStatus(@RequestParam("projectId")Integer projectId,@RequestParam("userId")Integer userId,@RequestParam("status")Integer status ) {
+		ProjectUserEntity pu = projectUserRepo.findByProjectIdAndUserId(projectId, userId);
+		pu.setAssignStatus(status);
+		projectUserRepo.save(pu);
+		return "redirect:/listprojectuser?projectId="+projectId;
 	}
 	
 	@GetMapping("/deleteprojectuser")
@@ -70,4 +72,15 @@ public class ProjectUserController {
 		pu.deleteById(projectUserId);
 		return"redirect:/listprojectuser";
 	}
+	
+//	@GetMapping("/listallprojectuser")
+//	public String listAllProjectUser(Model model) {
+//		List<ProjectEntity> allProject = projectRepo.findAll();
+//		
+//		
+//		
+//		List<ProjectUserEntity> allProjectUser = pu.findAll();
+//		model.addAttribute("allProjectUser", allProjectUser);
+//		return "ListAllProjectUser";
+//	}
 }

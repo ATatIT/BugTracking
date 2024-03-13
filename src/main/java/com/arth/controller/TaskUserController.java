@@ -63,14 +63,16 @@ public class TaskUserController {
 	
 	@GetMapping("/listtaskuser")
 	public String listTaskUser(@RequestParam("taskId") Integer taskId,Model model) {
-		model.addAttribute("task", taskRepo.getById(taskId));
+		model.addAttribute("task", taskRepo.findById(taskId).get());
 		model.addAttribute("taskuser", userRepo.getUserByTaskId(taskId));
 		return "ListTaskUser";
 	}
 	
 	@GetMapping("/deletetaskuser")
-	public String deleteTaskUser(@RequestParam("taskuserId") Integer taskuserId) {
-		tu.deleteById(taskuserId);
-		return "redirect:/listtaskuser";
+	public String deleteTaskUser(@RequestParam("userId") Integer userId) {
+		TaskUserEntity taskUser = tu.findById(userId).get();
+		TaskEntity task = taskRepo.findById(taskUser.getTaskId()).get();
+		tu.deleteById(taskUser.getTaskUserId());
+		return "redirect:/listtaskuser?taskId="+task.getTaskId();
 	}
 }

@@ -11,13 +11,13 @@ import com.arth.entity.ProjectEntity;
 @Repository
 public interface ProjectRepository extends JpaRepository<ProjectEntity, Integer >{
 
-	@Query(value="select count(*) from project  where project_status_id = :projectStatusId",nativeQuery = true)
-	Integer getProjectAccordingToSatatus(Integer projectStatusId);
+	// for admin
+	List<ProjectEntity> findByProjectStatusId(Integer projectStatusId);
 	
 	@Query(value="select count(*) from project where month(project_completion_date) < :month",nativeQuery = true)
 	Integer getDueProjects(Integer month);
 	
-//	for developer
+	// for developer
 	@Query(value="select count(*) from  project p, projectuser pu where pu.project_id = p.project_id and pu.user_id = :userId",nativeQuery = true)
 	Integer getProjectsByUserId(Integer userId);
 	

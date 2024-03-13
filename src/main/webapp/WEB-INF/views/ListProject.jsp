@@ -111,9 +111,9 @@
 															<td>${project.projectStartDate}</td>
 															<td>${project.projectCompletionDate}</td>
 															<td><a
-																href="deleteproject?projectId=${project.projectId}">Delete</a>|<a
+																href="deleteproject?projectId=${project.projectId}">Delete</a> | <a
 																href="listprojectuser?projectId=${project.projectId}">View
-																	User</a></td>
+																	Team</a></td>
 														</tr>
 													</c:forEach>
 

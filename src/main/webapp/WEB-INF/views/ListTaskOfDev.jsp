@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>BT|ModuleList</title>
+<title>BT|TaskList of Developer</title>
 
 <!-- Favicon -->
 <link rel="shortcut icon" href="../assets/images/favicon.ico">
@@ -41,20 +41,21 @@
 </head>
 
 <body>
+
 	<!-- loader Start -->
 	<%@include file="Loder.jsp"%>
 	<!-- loader END -->
 
 	<!-- Slider start -->
 
-	<jsp:include page="AdminSlidebar.jsp"></jsp:include>
+	<jsp:include page="DeveloperSlidebar.jsp"></jsp:include>
 
 	<!-- Slider end -->
 
 	<main class="main-content">
 		<!-- header start -->
 
-		<jsp:include page="AdminHeader.jsp"></jsp:include>
+		<jsp:include page="DeveloperHeader.jsp"></jsp:include>
 
 		<!-- header end -->
 		<div class="mt-5">
@@ -65,11 +66,7 @@
 						<div class="card mt-4">
 							<div class="card-header d-flex justify-content-between">
 								<div class="header-title">
-									<h4 class="card-title">${project.projecttitle}'s Modules</h4>
-									<div class="mt-2">
-										<a href="newmodule?projectId=${project.projectId}">Add
-											Modules</a>
-									</div>
+									<h4 class="card-title">${project.projecttitle} : 	${module.moduleName}'s Task</h4>
 								</div>
 							</div>
 							<div class="card-body">
@@ -83,35 +80,35 @@
 												<thead>
 
 													<tr class="odd">
-														<th>ModuleId</th>
+														<th>TaskId</th>
 														<th>Title</th>
+														<th>ModuleId</th>
 														<th>ProjectId</th>
-														<th>Description</th>
 														<th>Status</th>
-														<th>DocURL</th>
+														<th>Description</th>
+														<th>DocUrl</th>
 														<th>EstimatedHours</th>
 														<th>TotalUtilizedHours</th>
-														<th>Action</th>
-													</tr>
+														
 
+													</tr>
 
 
 												</thead>
 												<tbody>
-													<c:forEach items="${m}" var="module" varStatus="status">
+													<c:forEach items="${task}" var="task" varStatus="status">
 
 														<tr class="${status.index % 2 == 0 ? 'even' : 'odd'}">
-															<td>${module.moduleId}</td>
-															<td><a href="listtask?moduleId=${module.moduleId}">${module.moduleName}</a></td>
-															<td>${module.projectId}</td>
-															<td>${module.description}</td>
-															<td>${module.status}</td>
-															<td>${module.docURL}</td>
-															<td>${module.estimatedHours}</td>
-															<td>${module.totalUtilizedHours}</td>
-															<td><a
-																href="deletemodule?moduleId=${module.moduleId}">Delete</a></td>
-														</tr>
+															<td>${task.taskId}</td>
+															<td>${task.title}</td>
+															<td>${task.moduleId}</td>
+															<td>${task.projectId}</td>
+															<td>${task.status}</td>
+															<td>${task.description}</td>
+															<td>${task.docURL}</td>
+															<td>${task.estimatedHours}</td>
+															<td>${task.totalUtilizedHours}</td>
+															</tr>
 													</c:forEach>
 
 
@@ -170,7 +167,7 @@
 
 	<!-- AOS Animation Plugin-->
 	<script src="../assets/vendor/aos/dist/aos.js"></script>
-
+	
 	<!-- DataTables Button JS -->
 	<script src="../assets/js/dataTables.buttons.min.js"></script>
 	<script src="../assets/js/buttons.bootstrap4.min.js"></script>
@@ -191,5 +188,6 @@
 
 
 </body>
+
 
 </html>

@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>BT|ModuleList</title>
+<title>BT|ModuleList Of Developer</title>
 
 <!-- Favicon -->
 <link rel="shortcut icon" href="../assets/images/favicon.ico">
@@ -47,14 +47,14 @@
 
 	<!-- Slider start -->
 
-	<jsp:include page="AdminSlidebar.jsp"></jsp:include>
+	<jsp:include page="DeveloperSlidebar.jsp"></jsp:include>
 
 	<!-- Slider end -->
 
 	<main class="main-content">
 		<!-- header start -->
 
-		<jsp:include page="AdminHeader.jsp"></jsp:include>
+		<jsp:include page="DeveloperHeader.jsp"></jsp:include>
 
 		<!-- header end -->
 		<div class="mt-5">
@@ -66,10 +66,7 @@
 							<div class="card-header d-flex justify-content-between">
 								<div class="header-title">
 									<h4 class="card-title">${project.projecttitle}'s Modules</h4>
-									<div class="mt-2">
-										<a href="newmodule?projectId=${project.projectId}">Add
-											Modules</a>
-									</div>
+									
 								</div>
 							</div>
 							<div class="card-body">
@@ -91,27 +88,25 @@
 														<th>DocURL</th>
 														<th>EstimatedHours</th>
 														<th>TotalUtilizedHours</th>
-														<th>Action</th>
+													
 													</tr>
 
 
 
 												</thead>
 												<tbody>
-													<c:forEach items="${m}" var="module" varStatus="status">
+													<c:forEach items="${module}" var="module" varStatus="status">
 
 														<tr class="${status.index % 2 == 0 ? 'even' : 'odd'}">
 															<td>${module.moduleId}</td>
-															<td><a href="listtask?moduleId=${module.moduleId}">${module.moduleName}</a></td>
+															<td><a href="listtaskofdev?moduleId=${module.moduleId}">${module.moduleName}</a></td>
 															<td>${module.projectId}</td>
 															<td>${module.description}</td>
 															<td>${module.status}</td>
 															<td>${module.docURL}</td>
 															<td>${module.estimatedHours}</td>
 															<td>${module.totalUtilizedHours}</td>
-															<td><a
-																href="deletemodule?moduleId=${module.moduleId}">Delete</a></td>
-														</tr>
+																</tr>
 													</c:forEach>
 
 
