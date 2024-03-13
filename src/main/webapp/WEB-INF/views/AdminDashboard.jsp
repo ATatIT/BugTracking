@@ -102,7 +102,7 @@
                                                 </svg>
 											</div>
 											<div class="progress-detail">
-												<p class="mb-2">Total Projects</p>
+												<p class="mb-2"><a href="projects?statusId=0">Total Projects</a></p>
 												<h4 class="counter">${totalProject}</h4>
 											</div>
 										</div>
@@ -124,7 +124,7 @@
                                                 </svg>
 											</div>
 											<div class="progress-detail">
-												<p class="mb-2">Ongoing Project</p>
+												<p class="mb-2"><a href="projects?statusId=3">Ongoing Project</a></p>
 												<h4 class="counter">${OngoingProject}</h4>
 											</div>
 										</div>
@@ -146,7 +146,7 @@
                                                 </svg>
 											</div>
 											<div class="progress-detail">
-												<p class="mb-2">Pipeline Projects</p>
+												<p class="mb-2"><a href="projects?statusId=2">Pipeline Projects</a></p>
 												<h4 class="counter">${pipelineProject}</h4>
 											</div>
 										</div>
@@ -168,7 +168,7 @@
                                                 </svg>
 											</div>
 											<div class="progress-detail">
-												<p class="mb-2">Due Project</p>
+												<p class="mb-2"><a href="projects?statusId=5">Due Project</a></p>
 												<h4 class="counter">${dueProject}</h4>
 											</div>
 										</div>

@@ -33,13 +33,13 @@ public class AdminDashboardController {
 		Integer OngoingProject =  projectRepo.findByProjectStatusId(3).size();
 		model.addAttribute("OngoingProject", OngoingProject);
 		
-		LocalDate d = LocalDate.now();
-		Integer m = d.getMonthValue();
+	
+		Integer m = LocalDate.now().getMonthValue();
 		
 		Integer pipelineProject =  projectRepo.findByProjectStatusId(2).size();
 		model.addAttribute("pipelineProject", pipelineProject);
 		
-		Integer dueProject = projectRepo.getDueProjects(m);
+		Integer dueProject = projectRepo.getDueProjects(m).size();
 		model.addAttribute("dueProject", dueProject);
 		return "AdminDashboard";
 	}

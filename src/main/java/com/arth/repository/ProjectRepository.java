@@ -14,8 +14,8 @@ public interface ProjectRepository extends JpaRepository<ProjectEntity, Integer 
 	// for admin
 	List<ProjectEntity> findByProjectStatusId(Integer projectStatusId);
 	
-	@Query(value="select count(*) from project where month(project_completion_date) < :month",nativeQuery = true)
-	Integer getDueProjects(Integer month);
+	@Query(value="select * from project where month(project_completion_date) < :month",nativeQuery = true)
+	List<ProjectEntity> getDueProjects(Integer month);
 	
 	// for developer
 	@Query(value="select count(*) from  project p, projectuser pu where pu.project_id = p.project_id and pu.user_id = :userId",nativeQuery = true)
