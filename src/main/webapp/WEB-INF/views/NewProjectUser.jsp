@@ -62,7 +62,7 @@
 						<div class="card mt-4">
 							<div class="card-header d-flex justify-content-between">
 								<div class="header-title">
-									<h4 class="card-title">Project Allocation</h4>
+									<h4 class="card-title">${project.projecttitle}'s Team Allocation</h4>
 								</div>
 							</div>
 							<div class="card-body">
@@ -82,7 +82,8 @@
 												</c:forEach>
 											</select>
 										</div>
-										<div class="col-md-6 mb-3">
+										<input type="hidden" name="projectId" value="${project.projectId}">
+										<%-- <div class="col-md-6 mb-3">
 											<label class="form-label" for="validationDefault04">
 												Project Title</label> <select class="form-select" name="projectId">
 												<option value="-1">----Select Project----</option>
@@ -91,7 +92,7 @@
 													
 												</c:forEach>
 											</select>
-										</div>
+										</div> --%>
 									</div>
 
 									<div class="form-group">

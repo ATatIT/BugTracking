@@ -83,7 +83,7 @@
 						</i> <span class="item-name">AdminDashboard</span>
 					</a></li>
 					<li><hr class="hr-horizontal"></li>
-					<li class="nav-item"><a class="nav-link" href="newprojectuser"
+					<li class="nav-item"><a class="nav-link" href="newproject"
 						 target=""> <i class="icon"> <svg
 									width="20" viewBox="0 0 24 24" fill="none"
 									xmlns="http://www.w3.org/2000/svg" class="icon-20">
@@ -100,8 +100,9 @@
 										d="M21.9998 17.3992C21.9998 19.2648 20.4609 20.7777 18.5609 20.7777C16.6621 20.7777 15.1221 19.2648 15.1221 17.3992C15.1221 15.5325 16.6621 14.0195 18.5609 14.0195C20.4609 14.0195 21.9998 15.5325 21.9998 17.3992Z"
 										fill="currentColor"></path>
                                 </svg>
-						</i> <span class="item-name">Assign Project</span>
+						</i> <span class="item-name">Add New Project</span>
 					</a></li>
+					
 					
 									<li class="nav-item"><a class="nav-link" href="newuser"
 						 target=""> <i class="icon"> <svg

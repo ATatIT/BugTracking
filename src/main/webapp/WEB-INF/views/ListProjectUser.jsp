@@ -66,6 +66,9 @@
 							<div class="header-title">
 								<h4 class="card-title">${pt.projecttitle}'s Team</h4>
 							</div>
+							<div class="header-title">
+								<h6 class="card-title"><a href="newprojectuser?projectId=${pt.projectId}">Assing Team Member</a></h6>
+							</div>
 						</div>
 						<div class="card mt-4">
 							<div class="card-header d-flex justify-content-between">

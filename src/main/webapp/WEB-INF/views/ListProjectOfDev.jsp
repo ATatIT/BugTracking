@@ -69,7 +69,7 @@
 						<div class="card mt-4">
 							<div class="card-header d-flex justify-content-between">
 								<div class="header-title">
-									<h4 class="card-title">List Project</h4>
+									<h4 class="card-title">List of Project</h4>
 								</div>
 							</div>
 							<div class="card-body">

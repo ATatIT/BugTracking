@@ -153,6 +153,7 @@ public class SessionController {
 				dbUser.setOtp(-1);
 				u.save(dbUser);
 				model.addAttribute("update", "Password Updated Successfully");
+				mailerservice.sendPasswordUpdatedMassage(dbUser.getEmail(),dbUser.getFirstName());
 			}
 		}
 		return "Login";

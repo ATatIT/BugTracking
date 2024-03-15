@@ -32,12 +32,12 @@ public class ProjectUserController {
 	ProjectUserRepository projectUserRepo;
 	
 	@GetMapping("/newprojectuser")
-	public String newProjectUser(Model model) {
+	public String newProjectUser(@RequestParam("projectId")Integer projectId,Model model) {
 		List<UserEntity> userList = userRepo.findAll();
 		model.addAttribute("userList", userList);
 		
-		List<ProjectEntity> projectList = projectRepo.findAll();
-		model.addAttribute("projectList", projectList);
+		ProjectEntity project = projectRepo.findById(projectId).get();
+		model.addAttribute("project", project);
 		return "NewProjectUser";
 	}
 	

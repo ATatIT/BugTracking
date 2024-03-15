@@ -73,26 +73,36 @@ public class DeveloperDashboardController {
 	
 	
 	@GetMapping("/listmoduleofdev")
-	public String listModuleOfDev(@RequestParam("projectId")Integer projectId,Model model) {
+	public String listModuleOfDev(@RequestParam("projectId")Integer projectId,HttpSession session,Model model) {
+		UserEntity user = (UserEntity) session.getAttribute("user");
+		
 		ProjectEntity project = projectRepo.findById(projectId).get();
 		model.addAttribute("project", project);
 		
-		List<ModuleEntity> module = moduleRepo.findByProjectId(projectId);
+		List<ModuleEntity> module = moduleRepo.findByProjectIdAndUserId(projectId, user.getUserId());
 		model.addAttribute("module", module);
 		return "ListModuleOfDev";
 	}
 	
+	
 	@GetMapping("/listtaskofdev")
 	public String listTaskOfDev(@RequestParam("moduleId")Integer moduleId,HttpSession session,Model model) {
+		UserEntity user = (UserEntity) session.getAttribute("user");
+		
+		ProjectEntity project = projectRepo.findById(moduleRepo.findById(moduleId).get().getProjectId()).get();
+		model.addAttribute("project", project);
+		
 		ModuleEntity module = moduleRepo.findById(moduleId).get();
 		model.addAttribute("module", module);
 		
-		List<TaskEntity> task =  taskRepo.findByModuleId(moduleId);
+		List<TaskEntity> task = taskRepo.findByModuleIdAndUserId(moduleId, user.getUserId());
 		model.addAttribute("task", task);
-		
-		ProjectEntity project = projectRepo.findById(module.getProjectId()).get();
-		model.addAttribute("project", project);
 		return "ListTaskOfDev";
+	}
+	
+	@GetMapping("adddailylog")
+	public String addDailyLog() {
+		return "";
 	}
 	
 }
