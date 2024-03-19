@@ -76,6 +76,11 @@ public class DeveloperDashboardController {
 
 		return "DeveloperDashboard";
 	}
+	
+	@GetMapping("/developerprofile")
+	public String developerProfile() {
+		return "DeveloperProfile";
+	}
 
 	
 	@GetMapping("adddailylog")

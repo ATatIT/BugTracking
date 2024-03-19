@@ -99,7 +99,7 @@
 								<ul class="dropdown-menu dropdown-menu-end"
 									aria-labelledby="navbarDropdown">
 									<li><a class="dropdown-item"
-										href="../dashboard/app/user-profile.html">Profile</a></li>
+										href="developerprofile">Profile</a></li>
 									<li><a class="dropdown-item"
 										href="../dashboard/app/user-privacy-setting.html">Privacy
 											Setting</a></li>

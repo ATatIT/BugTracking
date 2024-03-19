@@ -44,7 +44,7 @@
 
 
 
-						<h4 class="logo-title">Hope UI</h4>
+						<h4 class="logo-title">Bug Tracking</h4>
 					</a>
 					<div class="sidebar-toggle" data-toggle="sidebar"
 						data-active="true">
@@ -99,7 +99,7 @@
 								<ul class="dropdown-menu dropdown-menu-end"
 									aria-labelledby="navbarDropdown">
 									<li><a class="dropdown-item"
-										href="../dashboard/app/user-profile.html">Profile</a></li>
+										href="adminprofile">Profile</a></li>
 									<li><a class="dropdown-item"
 										href="../dashboard/app/user-privacy-setting.html">Privacy
 											Setting</a></li>

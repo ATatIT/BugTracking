@@ -43,4 +43,9 @@ public class AdminDashboardController {
 		model.addAttribute("dueProject", dueProject);
 		return "AdminDashboard";
 	}
+	
+	@GetMapping("/adminprofile")
+	public String adminProfile() {
+		return "AdminProfile";
+	}
 }
