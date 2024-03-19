@@ -44,14 +44,14 @@
 
 	<!-- Slider start -->
 
-	<jsp:include page="AdminSlidebar.jsp"></jsp:include>
+	<jsp:include page="DeveloperSlidebar.jsp"></jsp:include>
 
 	<!-- Slider end -->
 
 	<main class="main-content">
 		<!-- header start -->
 
-		<jsp:include page="AdminHeader.jsp"></jsp:include>
+		<jsp:include page="DeveloperHeader.jsp"></jsp:include>
 
 		<!-- header end -->
 		<div class="mt-5">
@@ -68,28 +68,47 @@
 							<div class="card-body">
 
 								<form class="row g-3" action="savedailylog" method="post">
-									<div class="col-md-6">
-										<label class="form-label">Date</label> <input
-											type="text" class="form-control" id="validationCustom01"
-											name="date" placeholder="date">
+									<div class="row mt-3">
+										<div class="col-md-6">
+											<label class="form-label">Date</label> <input type="text"
+												class="form-control" id="validationCustom01" name="date"
+												value="${date}" readonly="readonly">
+										</div>
+										<div class="col-md-6">
+											<label class="form-label">Add UtilizedHours</label> <input
+												type="text" class="form-control" id="validationCustom02"
+												name="utilizedHours">
+										</div>
 									</div>
-									<div class="col-md-6">
-										<label class="form-label">Add UtilizedHours</label> <input
-											type="text" class="form-control" id="validationCustom02"
-											name="utilizedHours">
+									<div class="row mt-3">
+										<div class="col">
+											<label class="form-label">Update Task's Status</label> <select class="form-select" name="status">
+											<option value="-1">----Update Status----</option>
+											<c:forEach items="${status}" var="status">
+												<option value="${status.statusId}">${status.status}</option>
+											</c:forEach>
+										</select>
+										</div>
 									</div>
-									<div class="col-md-6">
-										<label class="form-label">Description</label>
-										<textarea rows="4" class="form-control" name="description"></textarea>
+									<div class="row mt-3">
+										<div class="col-md-6">
+											<label class="form-label">Description</label>
+											<textarea rows="4" class="form-control" name="description"></textarea>
+										</div>
+										<div class="col-md-6">
+											<label class="form-label">Comment</label>
+											<textarea rows="4" class="form-control" name="comment"></textarea>
+										</div>
 									</div>
-									<div class="col-md-6">
-										<label class="form-label">Comment</label>
-										<textarea rows="4" class="form-control" name="comment"></textarea>
-									</div>
-									
+
+									<input type="hidden" naem="taskId" valur="${task.taskId}">
+									<input type="hidden" naem="moduleId" valur="${module.moduleId}">
+									<input type="hidden" naem="projectId"
+										valur="${project.projectId}"> <input type="hidden"
+										naem="userId" valur="${user.userId}">
 									<div class="col-12">
-										<button class="btn btn-primary" type="submit">Add Project
-											</button>
+										<button class="btn btn-primary" type="submit">Add Log
+										</button>
 									</div>
 								</form>
 							</div>

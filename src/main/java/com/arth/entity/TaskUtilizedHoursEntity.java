@@ -16,8 +16,10 @@ public class TaskUtilizedHoursEntity {
 	private Integer taskId;
 	private Integer moduleId;
 	private Integer projectId;
+	private Integer userId;
 	private String date;
 	private float utilizedHours;
+	private Integer status;
 	private String description;
 	private String comment;
 	public Integer getLogId() {
@@ -67,6 +69,18 @@ public class TaskUtilizedHoursEntity {
 	}
 	public void setComment(String comment) {
 		this.comment = comment;
+	}
+	public Integer getUserId() {
+		return userId;
+	}
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
+	public Integer getStatus() {
+		return status;
+	}
+	public void setStatus(Integer status) {
+		this.status = status;
 	}
 	
 	

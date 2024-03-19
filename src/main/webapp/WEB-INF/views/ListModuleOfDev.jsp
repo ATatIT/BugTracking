@@ -80,15 +80,15 @@
 												<thead>
 
 													<tr class="odd">
-														<th>ModuleId</th>
+														<!-- <th>ModuleId</th> -->
 														<th>Title</th>
-														<th>ProjectId</th>
-														<th>Description</th>
+														<!-- <th>ProjectId</th> -->
+														<!-- <th>Description</th> -->
 														<th>Status</th>
-														<th>DocURL</th>
+														<!-- <th>DocURL</th> -->
 														<th>EstimatedHours</th>
 														<th>TotalUtilizedHours</th>
-													
+														<th>Action</th>
 													</tr>
 
 
@@ -98,14 +98,15 @@
 													<c:forEach items="${module}" var="module" varStatus="status">
 
 														<tr class="${status.index % 2 == 0 ? 'even' : 'odd'}">
-															<td>${module.moduleId}</td>
+															<%-- <td>${module.moduleId}</td> --%>
 															<td><a href="listtaskofdev?moduleId=${module.moduleId}">${module.moduleName}</a></td>
-															<td>${module.projectId}</td>
-															<td>${module.description}</td>
+															<%-- <td>${module.projectId}</td> --%>
+															<%-- <td>${module.description}</td> --%>
 															<td>${module.status}</td>
-															<td>${module.docURL}</td>
+															<%-- <td>${module.docURL}</td> --%>
 															<td>${module.estimatedHours}</td>
 															<td>${module.totalUtilizedHours}</td>
+															<td><a href="viewmoduleofdev?moduleId=${module.moduleId}">View</a></td>
 																</tr>
 													</c:forEach>
 

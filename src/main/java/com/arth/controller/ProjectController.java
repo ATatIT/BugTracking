@@ -12,8 +12,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.arth.entity.ProjectEntity;
 import com.arth.entity.ProjectStatusEntity;
+import com.arth.entity.UserEntity;
 import com.arth.repository.ProjectRepository;
 import com.arth.repository.ProjectStatusRepository;
+import com.fasterxml.jackson.annotation.JsonCreator.Mode;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class ProjectController {
@@ -22,7 +26,8 @@ public class ProjectController {
 
 	@Autowired
 	ProjectStatusRepository projectStausRepo;
-	
+
+	// admin
 	@GetMapping("/newproject")
 	public String project(Model model) {
 		List<ProjectStatusEntity> projectStatuList = projectStausRepo.findAll();
@@ -33,38 +38,62 @@ public class ProjectController {
 	@PostMapping("/saveproject")
 	public String saveproject(ProjectEntity project) {
 		System.out.println(project.getProjecttitle());
-		
+
 		p.save(project);
 		return "redirect:/listproject";
 	}
-	
+
 	@GetMapping("/listproject")
 	public String listProject(Model model) {
 		List<ProjectEntity> projects = p.findAll();
 		model.addAttribute("p", projects);
 		return "ListProject";
 	}
-	
+
 	@GetMapping("deleteproject")
-	public String deleteProject(@RequestParam("projectId")Integer projectId) {
+	public String deleteProject(@RequestParam("projectId") Integer projectId) {
 		p.deleteById(projectId);
 		return "redirect:/listproject";
 	}
-	
+
 	@GetMapping("/projects")
-	public String listProjectByStatus(@RequestParam("statusId")Integer statusId,Model model) {
-		if(statusId == 0) {
+	public String listProjectByStatus(@RequestParam("statusId") Integer statusId, Model model) {
+		if (statusId == 0) {
 			return "redirect:/listproject";
-		}else if(statusId == 5) {
+		} else if (statusId == 5) {
 			Integer m = LocalDate.now().getMonthValue();
 			List<ProjectEntity> dueProject = p.getDueProjects(m);
 			model.addAttribute("p", dueProject);
-		}else if(statusId == 2 || statusId == 3) {
+		} else if (statusId == 2 || statusId == 3) {
 			List<ProjectEntity> projects = p.findByProjectStatusId(statusId);
 			model.addAttribute("p", projects);
-		}else {
+		} else {
 			return "ListProject";
 		}
 		return "ListProject";
+	}
+
+	@GetMapping("/viewproject")
+	public String viewProject(@RequestParam("projectId") Integer projectId, Model model) {
+		ProjectEntity project = p.findById(projectId).get();
+		model.addAttribute("project", project);
+		return "ViewProject";
+	}
+
+// developer---------------------------------------------------------------------------------------------
+	@GetMapping("/listprojectofdev")
+	public String listProjectOfDev(HttpSession session, Model model) {
+		UserEntity user = (UserEntity) session.getAttribute("user");
+		List<ProjectEntity> project = p.getProjectsOfUserId(user.getUserId());
+		model.addAttribute("project", project);
+		return "ListProjectOfDev";
+	}
+
+	// view
+	@GetMapping("/viewprojectofdev")
+	public String viewProjectOfDev(@RequestParam("projectId") Integer projectId, Model model) {
+		ProjectEntity project = p.findById(projectId).get();
+		model.addAttribute("project", project);
+		return "ViewProjectOfDev";
 	}
 }

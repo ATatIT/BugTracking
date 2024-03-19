@@ -81,16 +81,16 @@
 												<thead>
 
 													<tr class="odd">
-														<th>TaskId</th>
+														<!-- <th>TaskId</th> -->
 														<th>Title</th>
-														<th>ModuleId</th>
-														<th>ProjectId</th>
+														<!-- <th>ModuleId</th> -->
+														<!-- <th>ProjectId</th> -->
 														<th>Status</th>
-														<th>Description</th>
-														<th>DocUrl</th>
-														<th>EstimatedHours</th>
-														<th>TotalUtilizedHours</th>
-														
+														<!-- <th>Description</th> -->
+														<!-- <th>DocUrl</th> -->
+														<th>Estimated Hours</th>
+														<th>TotalUtilized Hours</th>
+														<th>Action</th>
 
 													</tr>
 
@@ -100,15 +100,16 @@
 													<c:forEach items="${task}" var="task" varStatus="status">
 
 														<tr class="${status.index % 2 == 0 ? 'even' : 'odd'}">
-															<td>${task.taskId}</td>
+															<%-- <td>${task.taskId}</td> --%>
 															<td><a href="adddailylog?taskId=${task.taskId}&moduleId=${module.moduleId}&projectId=${project.projectId}">${task.title}</a></td>
-															<td>${task.moduleId}</td>
-															<td>${task.projectId}</td>
+															<%-- <td>${task.moduleId}</td> --%>
+															<%-- <td>${task.projectId}</td> --%>
 															<td>${task.status}</td>
-															<td>${task.description}</td>
-															<td>${task.docURL}</td>
+															<%-- <td>${task.description}</td> --%>
+															<%-- <td>${task.docURL}</td> --%>
 															<td>${task.estimatedHours}</td>
 															<td>${task.totalUtilizedHours}</td>
+															<td><a href="viewtaskofdev?taskId=${task.taskId}">View</a></td>
 															</tr>
 													</c:forEach>
 

@@ -14,9 +14,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.arth.entity.ModuleEntity;
 import com.arth.entity.ProjectEntity;
 import com.arth.entity.ProjectStatusEntity;
+import com.arth.entity.UserEntity;
 import com.arth.repository.ModuleRepository;
 import com.arth.repository.ProjectRepository;
 import com.arth.repository.ProjectStatusRepository;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class ModuleController {
@@ -63,4 +66,37 @@ public class ModuleController {
 		return "redirect:/listmodule?projectId="+projectId;
 	}
 	
+	@GetMapping("/viewmodule")
+	public String viewModule(@RequestParam("moduleId") Integer moduleId,Model model) {
+		ModuleEntity module = moduleRepo.findById(moduleId).get();
+		model.addAttribute("module", module);
+		
+		ProjectEntity project = projectRepo.findById(module.getProjectId()).get();
+		model.addAttribute("project", project);
+		return "ViewModule";
+	}
+	
+//developer-------------------------------------------------------------------------------------------------------------
+	@GetMapping("/listmoduleofdev")
+	public String listModuleOfDev(@RequestParam("projectId")Integer projectId,HttpSession session,Model model) {
+		UserEntity user = (UserEntity) session.getAttribute("user");
+		
+		ProjectEntity project = projectRepo.findById(projectId).get();
+		model.addAttribute("project", project);
+		
+		List<ModuleEntity> module = moduleRepo.findByProjectIdAndUserId(projectId, user.getUserId());
+		model.addAttribute("module", module);
+		return "ListModuleOfDev";
+	}
+	
+	//view
+	@GetMapping("/viewmoduleofdev")
+	public String viewModuleOfDev(@RequestParam("moduleId") Integer moduleId,Model model) {
+		ModuleEntity module = moduleRepo.findById(moduleId).get();
+		model.addAttribute("module", module);
+		
+		String project = projectRepo.findById(module.getProjectId()).get().getProjecttitle();
+		model.addAttribute("project", project);
+		return "ViewModuleOfDev";
+	}
 }

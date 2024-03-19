@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
+<!doctype html>
+<html lang="en" dir="ltr">
 
 <head>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>BT|ModuleList</title>
+<title>BT| View Task Details</title>
 
 <!-- Favicon -->
 <link rel="shortcut icon" href="../assets/images/favicon.ico">
@@ -40,7 +41,7 @@
 
 </head>
 
-<body>
+<body class="  ">
 	<!-- loader Start -->
 	<%@include file="Loder.jsp"%>
 	<!-- loader END -->
@@ -52,6 +53,8 @@
 	<!-- Slider end -->
 
 	<main class="main-content">
+
+
 		<!-- header start -->
 
 		<jsp:include page="AdminHeader.jsp"></jsp:include>
@@ -60,75 +63,77 @@
 		<div class="mt-5">
 
 			<div class="conatiner-fluid content-inner mt-n5 py-0">
+
 				<div class="row mt-3 p-3">
 					<div class="col-sm-12">
-						<div class="card mt-4">
-							<div class="card-header d-flex justify-content-between">
+						<div class="mt-4">
+							<div class="card card-body d-flex justify-content-between">
 								<div class="header-title">
-									<h4 class="card-title">${project.projecttitle}'s Modules</h4>
-									<div class="mt-2">
-										<a href="newmodule?projectId=${project.projectId}">Add
-											Modules</a>
-									</div>
+									<h3 class="card-title">View Task</h3>
 								</div>
 							</div>
+
+						</div>
+						<div class="card">
 							<div class="card-body">
-								<div id="button-div-id"></div>
-								<div class="table-responsive">
-									<div id="datatable_wrapper"
-										class="dataTables_wrapper dt-bootstrap5">
-										<div class="table-responsive border-bottom my-3">
-											<table id="my-table" class="table table-striped"
-												data-toggle="data-table">
-												<thead>
-
-													<tr class="odd">
-														<!-- <th>ModuleId</th> -->
-														<th>Title</th>
-														<!-- <th>ProjectId</th> -->
-														<!-- <th>Description</th> -->
-														<th>Status</th>
-														<!-- <th>DocURL</th> -->
-														<th>EstimatedHours</th>
-														<th>TotalUtilizedHours</th>
-														<th>Action</th>
-													</tr>
-
-
-
-												</thead>
-												<tbody>
-													<c:forEach items="${m}" var="module" varStatus="status">
-
-														<tr class="${status.index % 2 == 0 ? 'even' : 'odd'}">
-															<%-- <td>${module.moduleId}</td> --%>
-															<td><a href="listtask?moduleId=${module.moduleId}">${module.moduleName}</a></td>
-															<%-- <td>${module.projectId}</td> --%>
-															<%-- <td>${module.description}</td> --%>
-															<td>${module.status}</td>
-															<%-- <td>${module.docURL}</td> --%>
-															<td>${module.estimatedHours}</td>
-															<td>${module.totalUtilizedHours}</td>
-															<td><a
-																href="deletemodule?moduleId=${module.moduleId}">Delete</a> | <a
-																href="viewmodule?moduleId=${module.moduleId}">View</a></td>
-														</tr>
-													</c:forEach>
-
-
-												</tbody>
-
-											</table>
+								<div class="d-flex justify-content-between mb-4">
+									<div class="row">
+										<div class="">
+											<h3>${task.title}</h3>
+											
 										</div>
-										<div class="clear"></div>
+									</div>
+
+								</div>
+								<div
+									class="d-flex  justify-content-start align-items-center mb-3">
+
+									<div>
+										<h5>
+											Status :
+											<c:if test="${task.status == 1 }">
+												OnHold
+											</c:if><c:if test="${task.status == 2 }">
+												NotStarted
+											</c:if>
+											<c:if test="${task.status == 3 }">
+												OnGoing
+											</c:if>
+											<c:if test="${task.status == 4 }">
+												Complete
+											</c:if>
+										</h5>
+										<br>
+										<h5 class="">Project : ${project}</h5>
+										<h5 class="">Module : ${module}</h5>
+										<br>
+										<h5 class="">Estimated Hours : ${task.estimatedHours}</h5>
+										<h6 class="mb-0">Utillized Hours :
+											${task.totalUtilizedHours}</h6>
 									</div>
 								</div>
+								<div>
+									<h5>Document URL</h5>
+									<small><a href="${task.docURL}">${task.docURL}</a></small>
+
+								</div>
+								<br>
+
+								<div>
+									<h5>Description</h5>
+									<small>${task.description}</small>
+
+								</div>
+
+
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+
+
 
 
 		<!-- Footer Section Start -->
@@ -186,6 +191,7 @@
 
 	<!-- Include the Column visibility button -->
 	<script src="../assets/js/buttons.colVis.min.js"></script>
+
 
 	<!-- App Script -->
 	<script src="../assets/js/hope-ui.js" defer></script>

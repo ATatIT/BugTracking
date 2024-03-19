@@ -82,15 +82,15 @@
 												data-toggle="data-table">
 												<thead>
 													<tr class="odd">
-														<th>ProjectId</th>
+														<!-- <th>ProjectId</th> -->
 														<th>ProjectTitle</th>
-														<th>Description</th>
+														<!-- <th>Description</th> -->
 														<th>ProjectStatusId</th>
-														<th>DocURL</th>
-														<th>EstimatedHours</th>
-														<th>TotalUtilizedHours</th>
-														<th>ProjectStartDate</th>
-														<th>ProjectCompletionDate</th>
+														<!-- <th>DocURL</th> -->
+														<!-- <th>EstimatedHours</th> -->
+														<!-- <th>TotalUtilizedHours</th> -->
+														<th>Start Date</th>
+														<th>Completion Date</th>
 														<th>Action</th>
 													</tr>
 
@@ -100,20 +100,20 @@
 													<c:forEach items="${p}" var="project" varStatus="status">
 
 														<tr class="${status.index % 2 == 0 ? 'even' : 'odd'}">
-															<td>${project.projectId}</td>
+															<%-- <td>${project.projectId}</td> --%>
 															<td><a
 																href="listmodule?projectId=${project.projectId}">${project.projecttitle}</a></td>
-															<td>${project.description}</td>
+															<%-- <td>${project.description}</td> --%>
 															<td>${project.projectStatusId}</td>
-															<td>${project.docURL}</td>
-															<td>${project.estimatedHours}</td>
-															<td>${project.totalUtilizedHours}</td>
+															<%-- <td>${project.docURL}</td> --%>
+															<%-- <td>${project.estimatedHours}</td> --%>
+															<%-- <td>${project.totalUtilizedHours}</td> --%>
 															<td>${project.projectStartDate}</td>
 															<td>${project.projectCompletionDate}</td>
 															<td><a
 																href="deleteproject?projectId=${project.projectId}">Delete</a> | <a
-																href="listprojectuser?projectId=${project.projectId}">View
-																	Team</a></td>
+																href="listprojectuser?projectId=${project.projectId}">Team</a> | <a
+																href="viewproject?projectId=${project.projectId}">View</a></td>
 														</tr>
 													</c:forEach>
 

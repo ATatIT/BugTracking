@@ -13,10 +13,14 @@ import com.arth.entity.ModuleEntity;
 import com.arth.entity.ProjectEntity;
 import com.arth.entity.ProjectStatusEntity;
 import com.arth.entity.TaskEntity;
+import com.arth.entity.UserEntity;
 import com.arth.repository.ModuleRepository;
 import com.arth.repository.ProjectRepository;
 import com.arth.repository.ProjectStatusRepository;
 import com.arth.repository.TaskRepository;
+import com.fasterxml.jackson.annotation.JsonCreator.Mode;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class TaskController {
@@ -72,4 +76,47 @@ public class TaskController {
 		return "redirect:/listtask?moduleId="+moduleId;
 	}
 	
+	@GetMapping("/viewtask")
+	public String viewTask(@RequestParam("taskId") Integer taskId,Model model) {
+		TaskEntity task = t.findById(taskId).get();
+		model.addAttribute("task", task);
+		
+		String module = moduleRepo.findById(task.getModuleId()).get().getModuleName();
+		model.addAttribute("module", module);
+		
+		String project = projectRepo.findById(task.getProjectId()).get().getProjecttitle();
+		model.addAttribute("project", project);
+		return "ViewTask";
+	}
+	
+//developer-------------------------------------------------------------------------------------------
+	@GetMapping("/listtaskofdev")
+	public String listTaskOfDev(@RequestParam("moduleId")Integer moduleId,HttpSession session,Model model) {
+		UserEntity user = (UserEntity) session.getAttribute("user");
+		
+		ProjectEntity project = projectRepo.findById(moduleRepo.findById(moduleId).get().getProjectId()).get();
+		model.addAttribute("project", project);
+		
+		ModuleEntity module = moduleRepo.findById(moduleId).get();
+		model.addAttribute("module", module);
+		
+		List<TaskEntity> task = t.findByModuleIdAndUserId(moduleId, user.getUserId());
+		model.addAttribute("task", task);
+		return "ListTaskOfDev";
+	}
+	
+	//view
+	@GetMapping("/viewtaskofdev")
+	public String viewTaskOfDev(@RequestParam("taskId") Integer taskId,Model model) {
+		
+		TaskEntity task = t.findById(taskId).get();
+		model.addAttribute("task", task);
+		
+		String module = moduleRepo.findById(task.getModuleId()).get().getModuleName();
+		model.addAttribute("module", module);
+		
+		String project = projectRepo.findById(task.getProjectId()).get().getProjecttitle();
+		model.addAttribute("project", project);
+		return"ViewTaskOfDev";
+	}
 }

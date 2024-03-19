@@ -66,7 +66,8 @@
 						<div class="card mt-4">
 							<div class="card-header d-flex justify-content-between">
 								<div class="header-title">
-									<h4 class="card-title">${project.projecttitle} : ${module.moduleName}'s Task</h4>
+									<h4 class="card-title">${project.projecttitle}:
+										${module.moduleName}'s Task</h4>
 									<div class="mt-2">
 										<a href="newtask?moduleId=${module.moduleId}">Add Tasks</a>
 									</div>
@@ -83,13 +84,13 @@
 												<thead>
 
 													<tr class="odd">
-														<th>TaskId</th>
+														<!-- <th>TaskId</th> -->
 														<th>Title</th>
-														<th>ModuleId</th>
-														<th>ProjectId</th>
+														<!-- <th>ModuleId</th> -->
+														<!-- <th>ProjectId</th> -->
 														<th>Status</th>
-														<th>Description</th>
-														<th>DocUrl</th>
+														<!-- <th>Description</th> -->
+														<!-- <th>DocUrl</th> -->
 														<th>EstimatedHours</th>
 														<th>TotalUtilizedHours</th>
 														<th>Action</th>
@@ -102,16 +103,17 @@
 													<c:forEach items="${t}" var="task" varStatus="status">
 
 														<tr class="${status.index % 2 == 0 ? 'even' : 'odd'}">
-															<td>${task.taskId}</td>
+															<%-- <td>${task.taskId}</td> --%>
 															<td><a href="listtaskuser?taskId=${task.taskId}">${task.title}</a></td>
-															<td>${task.moduleId}</td>
-															<td>${task.projectId}</td>
+															<%-- <td>${task.moduleId}</td> --%>
+															<%-- <td>${task.projectId}</td> --%>
 															<td>${task.status}</td>
-															<td>${task.description}</td>
-															<td>${task.docURL}</td>
+															<%-- <td>${task.description}</td> --%>
+															<%-- <td>${task.docURL}</td> --%>
 															<td>${task.estimatedHours}</td>
 															<td>${task.totalUtilizedHours}</td>
-															<td><a href="deletetask?taskId=${task.taskId}">Delete</a></td>
+															<td><a href="deletetask?taskId=${task.taskId}">Delete</a> | <a
+																href="viewtask?taskId=${task.taskId}">View</a></td>
 														</tr>
 													</c:forEach>
 
@@ -171,7 +173,7 @@
 
 	<!-- AOS Animation Plugin-->
 	<script src="../assets/vendor/aos/dist/aos.js"></script>
-	
+
 	<!-- DataTables Button JS -->
 	<script src="../assets/js/dataTables.buttons.min.js"></script>
 	<script src="../assets/js/buttons.bootstrap4.min.js"></script>
