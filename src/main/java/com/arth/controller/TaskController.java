@@ -3,6 +3,7 @@ package com.arth.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.annotation.ReadOnlyProperty;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -87,6 +88,23 @@ public class TaskController {
 		String project = projectRepo.findById(task.getProjectId()).get().getProjecttitle();
 		model.addAttribute("project", project);
 		return "ViewTask";
+	}
+	
+	@GetMapping("/edittask")
+	public String editTask(@RequestParam("taskId")Integer taskId,Model model) {
+		
+		List<ProjectStatusEntity> projectStatusList = projectStatuRepo.findAll();
+		model.addAttribute("projectStatusList", projectStatusList);
+		
+		TaskEntity task = t.findById(taskId).get();
+		model.addAttribute("task", task);
+		
+		String project = projectRepo.findById(task.getProjectId()).get().getProjecttitle();
+		model.addAttribute("project", project);
+		
+		String module = moduleRepo.findById(task.getModuleId()).get().getModuleName();
+		model.addAttribute("module", module);
+		return "EditTask";
 	}
 	
 //developer-------------------------------------------------------------------------------------------

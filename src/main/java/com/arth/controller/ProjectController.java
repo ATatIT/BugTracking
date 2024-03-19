@@ -79,6 +79,19 @@ public class ProjectController {
 		model.addAttribute("project", project);
 		return "ViewProject";
 	}
+	
+	@GetMapping("/editproject")
+	public String editProject(@RequestParam("projectId")Integer projectId , Model model) {
+		
+		List<ProjectStatusEntity> projectStatuList = projectStausRepo.findAll();
+		model.addAttribute("projectStatuList", projectStatuList);
+		
+		ProjectEntity project = p.findById(projectId).get();
+		model.addAttribute("project", project);
+		
+		return "EditProject";
+	}
+	
 
 // developer---------------------------------------------------------------------------------------------
 	@GetMapping("/listprojectofdev")

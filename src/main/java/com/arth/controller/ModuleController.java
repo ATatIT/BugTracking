@@ -76,6 +76,21 @@ public class ModuleController {
 		return "ViewModule";
 	}
 	
+	@GetMapping("/editmodule")
+	public String editModule(@RequestParam("moduleId")Integer moduleId,Model model){
+		
+		List<ProjectStatusEntity> projectStatusList = projectStatuRepo.findAll();
+		model.addAttribute("projectStatusList", projectStatusList);
+		
+		ModuleEntity module = moduleRepo.findById(moduleId).get();
+		model.addAttribute("module", module);
+		
+		String projet = projectRepo.findById(module.getProjectId()).get().getProjecttitle();
+		model.addAttribute("project", projet);
+		
+		return "EditModule";
+	}
+	
 //developer-------------------------------------------------------------------------------------------------------------
 	@GetMapping("/listmoduleofdev")
 	public String listModuleOfDev(@RequestParam("projectId")Integer projectId,HttpSession session,Model model) {

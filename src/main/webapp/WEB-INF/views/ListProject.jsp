@@ -83,9 +83,9 @@
 												<thead>
 													<tr class="odd">
 														<!-- <th>ProjectId</th> -->
-														<th>ProjectTitle</th>
+														<th>Title</th>
 														<!-- <th>Description</th> -->
-														<th>ProjectStatusId</th>
+														<th>Status</th>
 														<!-- <th>DocURL</th> -->
 														<!-- <th>EstimatedHours</th> -->
 														<!-- <th>TotalUtilizedHours</th> -->
@@ -104,16 +104,26 @@
 															<td><a
 																href="listmodule?projectId=${project.projectId}">${project.projecttitle}</a></td>
 															<%-- <td>${project.description}</td> --%>
-															<td>${project.projectStatusId}</td>
+															<td><c:if test="${project.projectStatusId == 1 }">
+												OnHold
+											</c:if> <c:if test="${project.projectStatusId == 2 }">
+												NotStarted
+											</c:if> <c:if test="${project.projectStatusId == 3 }">
+												OnGoing
+											</c:if> <c:if test="${project.projectStatusId == 4 }">
+												Complete
+											</c:if></td>
 															<%-- <td>${project.docURL}</td> --%>
 															<%-- <td>${project.estimatedHours}</td> --%>
 															<%-- <td>${project.totalUtilizedHours}</td> --%>
 															<td>${project.projectStartDate}</td>
 															<td>${project.projectCompletionDate}</td>
 															<td><a
-																href="deleteproject?projectId=${project.projectId}">Delete</a> | <a
-																href="listprojectuser?projectId=${project.projectId}">Team</a> | <a
-																href="viewproject?projectId=${project.projectId}">View</a></td>
+																href="deleteproject?projectId=${project.projectId}">Delete</a>
+																| <a
+																href="listprojectuser?projectId=${project.projectId}">Team</a>
+																| <a href="viewproject?projectId=${project.projectId}">View</a>
+																| <a href="editproject?projectId=${project.projectId}">Edit</a></td>
 														</tr>
 													</c:forEach>
 
@@ -141,9 +151,9 @@
 												</div>
 												<div class="">
 													<div class="badge bg-danger p-4">
-														
-                                       					<h5 class="text-white">${project.projectId}</h5>
-                                   						
+
+														<h5 class="text-white">${project.projectId}</h5>
+
 													</div>
 												</div>
 											</div>

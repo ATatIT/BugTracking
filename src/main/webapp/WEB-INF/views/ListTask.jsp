@@ -107,13 +107,22 @@
 															<td><a href="listtaskuser?taskId=${task.taskId}">${task.title}</a></td>
 															<%-- <td>${task.moduleId}</td> --%>
 															<%-- <td>${task.projectId}</td> --%>
-															<td>${task.status}</td>
+															<td><c:if test="${task.status == 1 }">
+												OnHold
+											</c:if> <c:if test="${task.status == 2 }">
+												NotStarted
+											</c:if> <c:if test="${task.status == 3 }">
+												OnGoing
+											</c:if> <c:if test="${task.status == 4 }">
+												Complete
+											</c:if></td>
 															<%-- <td>${task.description}</td> --%>
 															<%-- <td>${task.docURL}</td> --%>
 															<td>${task.estimatedHours}</td>
 															<td>${task.totalUtilizedHours}</td>
-															<td><a href="deletetask?taskId=${task.taskId}">Delete</a> | <a
-																href="viewtask?taskId=${task.taskId}">View</a></td>
+															<td><a href="deletetask?taskId=${task.taskId}">Delete</a>
+																| <a href="viewtask?taskId=${task.taskId}">View</a> | <a
+																href="edittask?taskId=${task.taskId}">Edit</a></td>
 														</tr>
 													</c:forEach>
 

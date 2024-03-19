@@ -102,7 +102,15 @@
 															<td><a href="listtaskofdev?moduleId=${module.moduleId}">${module.moduleName}</a></td>
 															<%-- <td>${module.projectId}</td> --%>
 															<%-- <td>${module.description}</td> --%>
-															<td>${module.status}</td>
+															<td><c:if test="${module.status == 1 }">
+												OnHold
+											</c:if> <c:if test="${module.status == 2 }">
+												NotStarted
+											</c:if> <c:if test="${module.status == 3 }">
+												OnGoing
+											</c:if> <c:if test="${module.status == 4 }">
+												Complete
+											</c:if></td>
 															<%-- <td>${module.docURL}</td> --%>
 															<td>${module.estimatedHours}</td>
 															<td>${module.totalUtilizedHours}</td>

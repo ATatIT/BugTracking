@@ -61,13 +61,14 @@
 		<div class="mt-5">
 
 			<div class="conatiner-fluid content-inner mt-n5 py-0">
-			
+
 				<div class="row mt-3 p-3">
 					<div class="col-sm-12">
 						<div class="card mt-4">
 							<div class="card-header d-flex justify-content-between">
 								<div class="header-title">
-									<h4 class="card-title">${project.projecttitle} : ${module.moduleName}'s  Task</h4>
+									<h4 class="card-title">${project.projecttitle}:
+										${module.moduleName}'s Task</h4>
 								</div>
 							</div>
 							<div class="card-body">
@@ -101,16 +102,26 @@
 
 														<tr class="${status.index % 2 == 0 ? 'even' : 'odd'}">
 															<%-- <td>${task.taskId}</td> --%>
-															<td><a href="adddailylog?taskId=${task.taskId}&moduleId=${module.moduleId}&projectId=${project.projectId}">${task.title}</a></td>
+															<td><a
+																href="adddailylog?taskId=${task.taskId}&moduleId=${module.moduleId}&projectId=${project.projectId}">${task.title}</a></td>
 															<%-- <td>${task.moduleId}</td> --%>
 															<%-- <td>${task.projectId}</td> --%>
-															<td>${task.status}</td>
+															<td><c:if test="${task.status == 1 }">
+												OnHold
+											</c:if> <c:if test="${task.status == 2 }">
+												NotStarted
+											</c:if> <c:if test="${task.status == 3 }">
+												OnGoing
+											</c:if> <c:if test="${task.status == 4 }">
+												Complete
+											</c:if></td>
+
 															<%-- <td>${task.description}</td> --%>
 															<%-- <td>${task.docURL}</td> --%>
 															<td>${task.estimatedHours}</td>
 															<td>${task.totalUtilizedHours}</td>
 															<td><a href="viewtaskofdev?taskId=${task.taskId}">View</a></td>
-															</tr>
+														</tr>
 													</c:forEach>
 
 
@@ -169,7 +180,7 @@
 
 	<!-- AOS Animation Plugin-->
 	<script src="../assets/vendor/aos/dist/aos.js"></script>
-	
+
 	<!-- DataTables Button JS -->
 	<!-- <script src="../assets/js/dataTables.buttons.min.js"></script>
 	<script src="../assets/js/buttons.bootstrap4.min.js"></script> -->

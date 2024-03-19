@@ -105,13 +105,22 @@
 															<td><a href="listtask?moduleId=${module.moduleId}">${module.moduleName}</a></td>
 															<%-- <td>${module.projectId}</td> --%>
 															<%-- <td>${module.description}</td> --%>
-															<td>${module.status}</td>
+															<td><c:if test="${module.status == 1 }">
+												OnHold
+											</c:if> <c:if test="${module.status == 2 }">
+												NotStarted
+											</c:if> <c:if test="${module.status == 3 }">
+												OnGoing
+											</c:if> <c:if test="${module.status == 4 }">
+												Complete
+											</c:if></td>
 															<%-- <td>${module.docURL}</td> --%>
 															<td>${module.estimatedHours}</td>
 															<td>${module.totalUtilizedHours}</td>
 															<td><a
 																href="deletemodule?moduleId=${module.moduleId}">Delete</a> | <a
-																href="viewmodule?moduleId=${module.moduleId}">View</a></td>
+																href="viewmodule?moduleId=${module.moduleId}">View</a> | <a
+																href="editmodule?moduleId=${module.moduleId}">Edit</a></td>
 														</tr>
 													</c:forEach>
 
