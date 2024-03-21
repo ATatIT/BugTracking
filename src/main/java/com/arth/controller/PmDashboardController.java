@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.arth.entity.ProjectEntity;
+
 import com.arth.entity.UserEntity;
 import com.arth.repository.ProjectRepository;
 import com.arth.repository.UserRepository;
@@ -25,6 +25,8 @@ public class PmDashboardController {
 	
 	@GetMapping("/pmdashboard")
 	public String pmDashboard(HttpSession session,Model model) {
+		
+		//for widgets
 		UserEntity user = (UserEntity) session.getAttribute("user");
 		Integer totalproject = projectRepo.findProjectsByUserId(user.getUserId());
 		model.addAttribute("totalproject", totalproject);
