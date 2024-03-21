@@ -56,7 +56,7 @@ public class DeveloperDashboardController {
 		Integer m = d.getMonthValue();
 
 		UserEntity user = (UserEntity) session.getAttribute("user");
-		Integer project = projectRepo.getProjectsByUserId(user.getUserId());
+		Integer project = projectRepo.findProjectsByUserId(user.getUserId());
 
 		if (project == null) {
 			model.addAttribute("project", "Assing Soon");
@@ -77,11 +77,7 @@ public class DeveloperDashboardController {
 		return "DeveloperDashboard";
 	}
 	
-	@GetMapping("/developerprofile")
-	public String developerProfile() {
-		return "DeveloperProfile";
-	}
-
+	
 	
 	@GetMapping("adddailylog")
 	public String addDailyLog(@RequestParam("taskId")Integer taskId,@RequestParam("moduleId")Integer moduleID,@RequestParam("projectId")Integer projectId,HttpSession session,Model model) {

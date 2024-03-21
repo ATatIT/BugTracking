@@ -3,6 +3,7 @@ package com.arth.controller;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -92,7 +93,14 @@ public class ProjectController {
 		return "EditProject";
 	}
 	
-
+// project manager---------------------------------------------------------------------------------------
+	@GetMapping("/listprojectofpm")
+	public String listProjectOfPm(HttpSession session,Model model) {
+		UserEntity user = (UserEntity) session.getAttribute("user");
+		List<ProjectEntity> project = p.getProjectsOfUserId(user.getUserId());
+		model.addAttribute("project", project);
+		return "ListProjectOfPm";
+	}
 // developer---------------------------------------------------------------------------------------------
 	@GetMapping("/listprojectofdev")
 	public String listProjectOfDev(HttpSession session, Model model) {

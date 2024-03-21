@@ -100,11 +100,11 @@ public class SessionController {
 				return "redirect:/admindashboard";
 			}else if (loggedInUser.getRoleId() == 2) {
 				//manager
-				return "ProjectManagerDashboard";
+				return "redirect:/pmdashboard";
 			} else if (loggedInUser.getRoleId() == 3) {
 				// developer
 				return "redirect:/developerdashboard";
-			}else if (loggedInUser.getRoleId() == 5) {
+			}else if (loggedInUser.getRoleId() == 4) {
 				// developer
 				return "redirect:/testerdashboard";
 			}		

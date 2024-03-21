@@ -97,7 +97,15 @@
 														<td>${puser.firstName}</td>
 														<td>${puser.lastName}</td>
 														<td>${puser.email}</td>
-														<td>${puser.roleId}</td>
+														<td><c:if test="${puser.roleId == 1 }">
+												Admin
+											</c:if> <c:if test="${puser.roleId == 2 }">
+												Project Manager
+											</c:if> <c:if test="${puser.roleId == 3 }">
+												Developer
+											</c:if> <c:if test="${puser.roleId == 4 }">
+												Tester
+											</c:if></td>
 														<td><a href="projectuserassignstatus?userId=${puser.userId}&projectId=${pt.projectId}&status=2">Revoke</a> | <a href="projectuserassignstatus?userId=${puser.userId}&projectId=${pt.projectId}&status=3">Hold</a></td>
 													</tr>
 												</c:forEach>

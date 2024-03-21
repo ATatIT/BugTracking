@@ -99,10 +99,9 @@
 								<ul class="dropdown-menu dropdown-menu-end"
 									aria-labelledby="navbarDropdown">
 									<li><a class="dropdown-item"
-										href="developerprofile">Profile</a></li>
+										href="userprofile">Profile</a></li>
 									<li><a class="dropdown-item"
-										href="../dashboard/app/user-privacy-setting.html">Privacy
-											Setting</a></li>
+										href="updateprofile">Update Profile</a></li>
 									<li>
 										<hr class="dropdown-divider">
 									</li>

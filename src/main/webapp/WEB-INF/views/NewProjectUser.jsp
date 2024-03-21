@@ -62,7 +62,8 @@
 						<div class="card mt-4">
 							<div class="card-header d-flex justify-content-between">
 								<div class="header-title">
-									<h4 class="card-title">${project.projecttitle}'s Team Allocation</h4>
+									<h4 class="card-title">${project.projecttitle}'sTeam
+										Allocation</h4>
 								</div>
 							</div>
 							<div class="card-body">
@@ -75,14 +76,27 @@
 												Project User</label> <select class="form-select" name="userId">
 												<option>----Select User----</option>
 												<c:forEach items="${userList}" var="user">
-													<c:if test="${user.roleId == 3 }">
+													
 														<option value="${user.userId}">${user.firstName}
-															${user.lastName} : ${user.email}</option>
-													</c:if>
+															${user.lastName} : ${user.email} :
+															<c:if test="${user.roleId == 1 }">
+												Admin
+											</c:if>
+															<c:if test="${user.roleId == 2 }">
+												Project Manager
+											</c:if>
+															<c:if test="${user.roleId == 3 }">
+												Developer
+											</c:if>
+															<c:if test="${user.roleId == 4 }">
+												Tester
+											</c:if></option>
+												
 												</c:forEach>
 											</select>
 										</div>
-										<input type="hidden" name="projectId" value="${project.projectId}">
+										<input type="hidden" name="projectId"
+											value="${project.projectId}">
 										<%-- <div class="col-md-6 mb-3">
 											<label class="form-label" for="validationDefault04">
 												Project Title</label> <select class="form-select" name="projectId">

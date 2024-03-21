@@ -16,6 +16,8 @@ import com.arth.repository.RoleRepository;
 import com.arth.repository.UserRepository;
 import com.arth.service.MailerService;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class UserController {
 	@Autowired
@@ -58,6 +60,24 @@ public class UserController {
 		mailerservice.sendWelcomeMassage(user.getEmail(), user.getFirstName());
 		return "redirect:/listuser";
 	}
+	
+	@GetMapping("/userprofile")
+	public String userProfile() {
+		return "UserProfile";
+	}
+	
+	@GetMapping("/updateprofile")
+	public String updateProfile(Model model) {
+		List<RoleEntity> roleList = roleRepo.findAll();
+		model.addAttribute("roleList", roleList);
+		return "UpdateProfile";
+	}
+	
+	@PostMapping("/saveupdateduserprofile")
+	public String saveUdpdatedUserProfilr(UserEntity profile) {
+		u.save(profile);
+		return "redirect:/login";
+	}
 
 	@GetMapping("/listuser")
 	public String listUser(Model model) {
@@ -75,5 +95,16 @@ public class UserController {
 	@GetMapping("/table")
 	public String table() {
 		return "Table";
+	}
+	
+//project manager---------------------------------------------------------------------------------------
+	
+	@GetMapping("/pmlistuser")
+	public String pmListUser(HttpSession session, Model model) {
+		UserEntity user = (UserEntity) session.getAttribute("user");
+		
+		List<UserEntity> pmuser = u.pmTeam(user.getUserId());
+		model.addAttribute("pmuser", pmuser);
+		return "PmListUser";
 	}
 }

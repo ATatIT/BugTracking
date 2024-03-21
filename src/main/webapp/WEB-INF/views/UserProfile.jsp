@@ -44,14 +44,27 @@
 
 	<!-- Slider start -->
 
-	<jsp:include page="AdminSlidebar.jsp"></jsp:include>
+	<c:if test="${role.roleId == 1 }">
+		<jsp:include page="AdminSlidebar.jsp"></jsp:include>
+	</c:if>
+
+	<c:if test="${role.roleId == 3 }">
+		<jsp:include page="DeveloperSlidebar.jsp"></jsp:include>
+	</c:if>
+	
 
 	<!-- Slider end -->
 
 	<main class="main-content">
 		<!-- header start -->
 
-		<jsp:include page="AdminHeader.jsp"></jsp:include>
+		<c:if test="${role.roleId == 1 }">
+			<jsp:include page="AdminHeader.jsp"></jsp:include>
+		</c:if>
+		
+		<c:if test="${role.roleId == 3 }">
+			<jsp:include page="DeveloperHeader.jsp"></jsp:include>
+		</c:if>
 
 		<!-- header end -->
 		<div class="mt-5">

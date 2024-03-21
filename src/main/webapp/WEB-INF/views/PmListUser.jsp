@@ -8,7 +8,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>BugTracking|Dashboard</title>
+<title>BugTracking|Users</title>
 
 <!-- Favicon -->
 <link rel="shortcut icon" href="../assets/images/favicon.ico">
@@ -44,14 +44,14 @@
 
 	<!-- Slider start -->
 
-	<jsp:include page="AdminSlidebar.jsp"></jsp:include>
+	<jsp:include page="PmSlidebar.jsp"></jsp:include>
 
 	<!-- Slider end -->
 
 	<main class="main-content">
 		<!-- header start -->
 
-		<jsp:include page="AdminHeader.jsp"></jsp:include>
+		<jsp:include page="PmHeader.jsp"></jsp:include>
 
 		<!-- header end -->
 		<div class="mt-5">
@@ -62,7 +62,7 @@
 						<div class="card mt-4">
 							<div class="card-header d-flex justify-content-between">
 								<div class="header-title">
-									<h4 class="card-title">List User</h4>
+									<h4 class="card-title">${user.firstName}'s Team</h4>
 								</div>
 							</div>
 							<div class="card-body">
@@ -90,7 +90,7 @@
 
 												</tr>
 
-												<c:forEach items="${u}" var="user" varStatus="status">
+												<c:forEach items="${pmuser}" var="user" varStatus="status">
 
 													<tr class="${status.index % 2 == 0 ? 'even' : 'odd'}">
 														<%-- <td>${user.userId}</td> --%>

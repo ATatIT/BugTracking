@@ -22,6 +22,7 @@ public interface UserRepository extends JpaRepository<UserEntity, Integer> {
 	List<UserEntity> findByGender(String gender);
 	
 	
+	
 	@Query(value = " select u.*  from users u, taskuser tu where u.user_id = tu.userid and tu.task_id = :taskId",nativeQuery = true)
 	List<UserEntity> getUserByTaskId(Integer taskId);
 	
@@ -36,4 +37,8 @@ public interface UserRepository extends JpaRepository<UserEntity, Integer> {
 	//hold user 3
 	@Query(value = "select u.* from users u, projectuser pu where u.user_id = pu.user_id and pu.project_id = :projectId and pu.assign_status = 3",nativeQuery = true)
 	List<UserEntity> getUserByProjectIdHold(Integer projectId);
+	
+	//for pmuser
+	@Query(value="select * from users where user_id in (select user_id from projectuser where project_id in (select project_id from projectuser where user_id  = :userId))",nativeQuery = true)
+	List<UserEntity> pmTeam(Integer userId);
 }

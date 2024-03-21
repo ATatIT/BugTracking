@@ -19,7 +19,7 @@ public interface ProjectRepository extends JpaRepository<ProjectEntity, Integer 
 	
 	// for developer
 	@Query(value="select count(*) from  project p, projectuser pu where pu.project_id = p.project_id and pu.user_id = :userId",nativeQuery = true)
-	Integer getProjectsByUserId(Integer userId);
+	Integer findProjectsByUserId(Integer userId);
 	
 	@Query(value="select p.* from  project p, projectuser pu where pu.project_id = p.project_id and pu.user_id = :userId",nativeQuery = true)
 	List<ProjectEntity> getProjectsOfUserId(Integer userId);
