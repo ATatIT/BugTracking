@@ -99,7 +99,15 @@
 															<td>${tu.firstName}</td>
 															<td>${tu.lastName}</td>
 															<td>${tu.email}</td>
-															<td>${tu.roleId}</td>
+															<td><c:if test="${tu.roleId == 1 }">
+												Admin
+											</c:if> <c:if test="${tu.roleId == 2 }">
+												Project Manager
+											</c:if> <c:if test="${tu.roleId == 3 }">
+												Developer
+											</c:if> <c:if test="${tu.roleId == 4 }">
+												Tester
+											</c:if></td>
 															<td><a href="deletetaskuser?userId=${tu.userId}">Revoke</a></td>
 														</tr>
 													</c:forEach>

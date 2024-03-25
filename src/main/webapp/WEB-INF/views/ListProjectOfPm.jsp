@@ -118,12 +118,10 @@
 															<%-- <td>${project.totalUtilizedHours}</td> --%>
 															<td>${project.projectStartDate}</td>
 															<td>${project.projectCompletionDate}</td>
-															<td><a
-																href="deleteproject?projectId=${project.projectId}">Delete</a>
-																| <a
+															<td><%-- <a
 																href="listprojectuser?projectId=${project.projectId}">Team</a>
-																| <a href="viewproject?projectId=${project.projectId}">View</a>
-																| <a href="editproject?projectId=${project.projectId}">Edit</a></td>
+																|  --%><a href="viewproject?projectId=${project.projectId}">View</a>
+																</td>
 														</tr>
 													</c:forEach>
 

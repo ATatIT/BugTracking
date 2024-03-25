@@ -93,16 +93,16 @@
 									class="theme-color-pink-img img-fluid avatar avatar-50 avatar-rounded">
 									<div class="caption ms-3 d-none d-md-block ">
 										<h6 class="mb-0 caption-title">${user.firstName} ${user.lastName}</h6>
-										<p class="mb-0 caption-sub-title">${user.roleId }</p>
+										<p class="mb-0 caption-sub-title">${role.roleName }</p>
 									</div>
 							</a>
 								<ul class="dropdown-menu dropdown-menu-end"
 									aria-labelledby="navbarDropdown">
 									<li><a class="dropdown-item"
-										href="../dashboard/app/user-profile.html">Profile</a></li>
+										href="userprofile">Profile</a></li>
 									<li><a class="dropdown-item"
-										href="../dashboard/app/user-privacy-setting.html">Privacy
-											Setting</a></li>
+										href="updateprofile">Update Profile
+											</a></li>
 									<li>
 										<hr class="dropdown-divider">
 									</li>

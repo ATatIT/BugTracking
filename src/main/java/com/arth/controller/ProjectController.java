@@ -57,7 +57,7 @@ public class ProjectController {
 		return "redirect:/listproject";
 	}
 
-	@GetMapping("/projects")
+	@GetMapping("/projects") // for dashboard
 	public String listProjectByStatus(@RequestParam("statusId") Integer statusId, Model model) {
 		if (statusId == 0) {
 			return "redirect:/listproject";
@@ -74,7 +74,7 @@ public class ProjectController {
 		return "ListProject";
 	}
 
-	@GetMapping("/viewproject")
+	@GetMapping("/viewproject") //for all
 	public String viewProject(@RequestParam("projectId") Integer projectId, Model model) {
 		ProjectEntity project = p.findById(projectId).get();
 		model.addAttribute("project", project);
@@ -110,11 +110,5 @@ public class ProjectController {
 		return "ListProjectOfDev";
 	}
 
-	// view
-	@GetMapping("/viewprojectofdev")
-	public String viewProjectOfDev(@RequestParam("projectId") Integer projectId, Model model) {
-		ProjectEntity project = p.findById(projectId).get();
-		model.addAttribute("project", project);
-		return "ViewProjectOfDev";
-	}
+	
 }

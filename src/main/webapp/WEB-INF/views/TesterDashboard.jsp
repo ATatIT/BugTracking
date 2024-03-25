@@ -46,7 +46,7 @@
 	
 	<!-- Slider start -->
 	
-	<jsp:include page="DeveloperSlidebar.jsp"></jsp:include>
+	<jsp:include page="TesterSlidebar.jsp"></jsp:include>
 	
 	
 	<!-- Slider end -->
@@ -54,7 +54,7 @@
 	<main class="main-content">
 	<!-- header start -->
 	
-	<jsp:include page="AdminHeader.jsp"></jsp:include>		
+	<jsp:include page="TesterHeader.jsp"></jsp:include>		
 	<!-- header end -->
 	
 		<!-- Nav Header Component Start -->

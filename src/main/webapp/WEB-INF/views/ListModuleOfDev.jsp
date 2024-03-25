@@ -114,7 +114,7 @@
 															<%-- <td>${module.docURL}</td> --%>
 															<td>${module.estimatedHours}</td>
 															<td>${module.totalUtilizedHours}</td>
-															<td><a href="viewmoduleofdev?moduleId=${module.moduleId}">View</a></td>
+															<td><a href="viewmodule?moduleId=${module.moduleId}">View</a></td>
 																</tr>
 													</c:forEach>
 

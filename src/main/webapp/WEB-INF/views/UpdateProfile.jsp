@@ -48,9 +48,17 @@
 	<c:if test="${role.roleId == 1 }">
 		<jsp:include page="AdminSlidebar.jsp"></jsp:include>
 	</c:if>
-
+	
+	<c:if test="${role.roleId == 2 }">
+		<jsp:include page="PmSlidebar.jsp"></jsp:include>
+	</c:if>
+	
 	<c:if test="${role.roleId == 3 }">
 		<jsp:include page="DeveloperSlidebar.jsp"></jsp:include>
+	</c:if>
+	
+	<c:if test="${role.roleId == 4 }">
+		<jsp:include page="TesterSlidebar.jsp"></jsp:include>
 	</c:if>
 
 	<!-- Slider end -->
@@ -61,8 +69,16 @@
 			<jsp:include page="AdminHeader.jsp"></jsp:include>
 		</c:if>
 		
+		<c:if test="${role.roleId == 2 }">
+			<jsp:include page="PmHeader.jsp"></jsp:include>
+		</c:if>
+		
 		<c:if test="${role.roleId == 3 }">
 			<jsp:include page="DeveloperHeader.jsp"></jsp:include>
+		</c:if>
+		
+		<c:if test="${role.roleId == 4 }">
+			<jsp:include page="TesterHeader.jsp"></jsp:include>
 		</c:if>
 
 		<!-- header end -->

@@ -120,7 +120,7 @@
 															<td>${project.projectStartDate}</td>
 															<td>${project.projectCompletionDate}</td>
 															<td><a
-																href="viewprojectofdev?projectId=${project.projectId}">View</a></td>
+																href="viewproject?projectId=${project.projectId}">View</a></td>
 														</tr>
 													</c:forEach>
 

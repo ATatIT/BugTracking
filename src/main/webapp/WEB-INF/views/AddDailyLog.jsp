@@ -101,11 +101,11 @@
 										</div>
 									</div>
 
-									<input type="hidden" naem="taskId" valur="${task.taskId}">
-									<input type="hidden" naem="moduleId" valur="${module.moduleId}">
-									<input type="hidden" naem="projectId"
-										valur="${project.projectId}"> <input type="hidden"
-										naem="userId" valur="${user.userId}">
+									<input type="hidden" name="taskId" value="${task.taskId}">
+									<input type="hidden" name="moduleId" value="${module.moduleId}">
+									<input type="hidden" name="projectId"
+										value="${project.projectId}"> <input type="hidden"
+										name="userId" value="${user.userId}">
 									<div class="col-12">
 										<button class="btn btn-primary" type="submit">Add Log
 										</button>

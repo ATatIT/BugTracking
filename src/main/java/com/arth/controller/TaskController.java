@@ -77,7 +77,7 @@ public class TaskController {
 		return "redirect:/listtask?moduleId="+moduleId;
 	}
 	
-	@GetMapping("/viewtask")
+	@GetMapping("/viewtask")//for all
 	public String viewTask(@RequestParam("taskId") Integer taskId,Model model) {
 		TaskEntity task = t.findById(taskId).get();
 		model.addAttribute("task", task);
@@ -123,18 +123,5 @@ public class TaskController {
 		return "ListTaskOfDev";
 	}
 	
-	//view
-	@GetMapping("/viewtaskofdev")
-	public String viewTaskOfDev(@RequestParam("taskId") Integer taskId,Model model) {
-		
-		TaskEntity task = t.findById(taskId).get();
-		model.addAttribute("task", task);
-		
-		String module = moduleRepo.findById(task.getModuleId()).get().getModuleName();
-		model.addAttribute("module", module);
-		
-		String project = projectRepo.findById(task.getProjectId()).get().getProjecttitle();
-		model.addAttribute("project", project);
-		return"ViewTaskOfDev";
-	}
+	
 }

@@ -120,7 +120,7 @@
 															<%-- <td>${task.docURL}</td> --%>
 															<td>${task.estimatedHours}</td>
 															<td>${task.totalUtilizedHours}</td>
-															<td><a href="viewtaskofdev?taskId=${task.taskId}">View</a></td>
+															<td><a href="viewtask?taskId=${task.taskId}">View</a></td>
 														</tr>
 													</c:forEach>
 

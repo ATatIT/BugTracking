@@ -109,10 +109,12 @@ public class DeveloperDashboardController {
 		
 		tuhRepo.save(dailyLog);
 		
-		/*
-		 * TaskEntity upDateTask = taskRepo.findById(dailyLog.getTaskId()).get();
-		 * upDateTask.setStatus(dailyLog.getStatus());
-		 */
+		// for task status update
+		TaskEntity task = taskRepo.findById(dailyLog.getTaskId()).get();
+		task.setStatus(dailyLog.getStatus());
+		task.setTotalUtilizedHours(task.getTotalUtilizedHours()+dailyLog.getUtilizedHours());
+		taskRepo.save(task);
+		
 		return "redirect:/listtaskofdev?moduleId="+dailyLog.getModuleId();
 	}
 	

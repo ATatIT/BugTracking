@@ -66,7 +66,7 @@ public class ModuleController {
 		return "redirect:/listmodule?projectId="+projectId;
 	}
 	
-	@GetMapping("/viewmodule")
+	@GetMapping("/viewmodule")//for all
 	public String viewModule(@RequestParam("moduleId") Integer moduleId,Model model) {
 		ModuleEntity module = moduleRepo.findById(moduleId).get();
 		model.addAttribute("module", module);
@@ -104,14 +104,5 @@ public class ModuleController {
 		return "ListModuleOfDev";
 	}
 	
-	//view
-	@GetMapping("/viewmoduleofdev")
-	public String viewModuleOfDev(@RequestParam("moduleId") Integer moduleId,Model model) {
-		ModuleEntity module = moduleRepo.findById(moduleId).get();
-		model.addAttribute("module", module);
-		
-		String project = projectRepo.findById(module.getProjectId()).get().getProjecttitle();
-		model.addAttribute("project", project);
-		return "ViewModuleOfDev";
-	}
+	
 }
