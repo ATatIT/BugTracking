@@ -8,7 +8,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>BT|Developer's Projects</title>
+<title>BT|Projects</title>
 
 <!-- Favicon -->
 <link rel="shortcut icon" href="../assets/images/favicon.ico">
@@ -137,58 +137,7 @@
 							</div>
 						</div>
 
-						<div class="row">
-
-							<c:forEach items="${project}" var="project">
-
-								<div class="col-lg-4">
-									<div class="card">
-										<div class="card-body">
-											<div class="d-flex justify-content-between mb-4">
-												<div class="">
-													<h2>${project.projecttitle}</h2>
-													<h5>Status:${project.projectStatusId}</h5>
-												</div>
-												<div class="">
-													<div class="badge bg-danger p-4">
-
-														<h5 class="text-white">${project.projectId}</h5>
-
-													</div>
-												</div>
-											</div>
-											<div
-												class="d-flex  justify-content-start align-items-center mb-3">
-												<div class="pe-3">
-													<img src="../../assets/images/avatars/icons8-clock-48.png"
-														class="rounded-circle p-1 bg-soft-danger" width="60"
-														height="60" alt="1">
-												</div>
-												<div>
-													<h5 class="">Estimated Hours :
-														${project.estimatedHours}</h5>
-													<h6 class="mb-0">Utillized Hours :
-														${project.totalUtilizedHours}</h6>
-												</div>
-											</div>
-											<div>
-												<small>${project.description}</small>
-
-											</div>
-											<div class="pt-4">
-												<small>Start Date</small>
-												<div class="twit-date">${project.projectStartDate}</div>
-											</div>
-											<div class="pt-3">
-												<small>End Date</small>
-												<div class="twit-date">${project.projectCompletionDate}</div>
-											</div>
-
-										</div>
-									</div>
-								</div>
-							</c:forEach>
-						</div>
+						
 					</div>
 				</div>
 			</div>

@@ -87,8 +87,8 @@
 														<!-- <th>Description</th> -->
 														<th>Status</th>
 														<!-- <th>DocURL</th> -->
-														<!-- <th>EstimatedHours</th> -->
-														<!-- <th>TotalUtilizedHours</th> -->
+														<th>EstimatedHours</th>
+														<th>TotalUtilizedHours</th>
 														<th>Start Date</th>
 														<th>Completion Date</th>
 														<th>Action</th>
@@ -114,8 +114,8 @@
 												Complete
 											</c:if></td>
 															<%-- <td>${project.docURL}</td> --%>
-															<%-- <td>${project.estimatedHours}</td> --%>
-															<%-- <td>${project.totalUtilizedHours}</td> --%>
+															<td>${project.estimatedHours}</td>
+															<td>${project.totalUtilizedHours}</td>
 															<td>${project.projectStartDate}</td>
 															<td>${project.projectCompletionDate}</td>
 															<td><a

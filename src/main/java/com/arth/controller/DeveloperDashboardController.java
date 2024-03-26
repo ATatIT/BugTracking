@@ -24,6 +24,7 @@ import com.arth.repository.ProjectStatusRepository;
 import com.arth.repository.ProjectUserRepository;
 import com.arth.repository.TaskRepository;
 import com.arth.repository.TaskUtilizedHoursRepository;
+import com.arth.service.EffortsService;
 import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 
 import jakarta.servlet.http.HttpSession;
@@ -48,6 +49,9 @@ public class DeveloperDashboardController {
 	
 	@Autowired
 	TaskUtilizedHoursRepository tuhRepo;
+	
+	@Autowired
+	EffortsService efforts;
 
 	@GetMapping("/developerdashboard")
 	public String developerDashboard(HttpSession session, Model model) {
@@ -98,7 +102,7 @@ public class DeveloperDashboardController {
 		TaskEntity task = taskRepo.findById(taskId).get();
 		model.addAttribute("task", task);
 		
-		List<ProjectStatusEntity> status =  projectStatusRepo.findAll();
+		List<ProjectStatusEntity> status =  projectStatusRepo.findAll().subList(0, 4);
 		model.addAttribute("status", status);
 		
 		return "AddDailyLog";
@@ -112,9 +116,8 @@ public class DeveloperDashboardController {
 		// for task status update
 		TaskEntity task = taskRepo.findById(dailyLog.getTaskId()).get();
 		task.setStatus(dailyLog.getStatus());
-		task.setTotalUtilizedHours(task.getTotalUtilizedHours()+dailyLog.getUtilizedHours());
 		taskRepo.save(task);
-		
+		efforts.calculateTaskHours(task.getTaskId());
 		return "redirect:/listtaskofdev?moduleId="+dailyLog.getModuleId();
 	}
 	
