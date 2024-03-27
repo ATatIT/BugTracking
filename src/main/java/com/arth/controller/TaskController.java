@@ -46,6 +46,8 @@ public class TaskController {
 		ProjectEntity project = projectRepo.findById(module.getProjectId()).get();
 		model.addAttribute("project", project);
 		
+	
+		
 		List<ProjectStatusEntity> projectStatusList = projectStatuRepo.findAll();
 		model.addAttribute("projectStatusList", projectStatusList);
 		return "NewTask";
@@ -107,6 +109,20 @@ public class TaskController {
 		return "EditTask";
 	}
 	
+//pm--------------------------------------------------------------------------------------------------
+	@GetMapping("/listtaskofpm")
+	public String llistTaskOfPm(@RequestParam("moduleId")Integer moduleId,Model model) {
+		
+		ProjectEntity project = projectRepo.findById(moduleRepo.findById(moduleId).get().getProjectId()).get();
+		model.addAttribute("project", project);
+		
+		ModuleEntity module = moduleRepo.findById(moduleId).get();
+		model.addAttribute("module", module);
+		
+		List<TaskEntity> task = t.findByModuleId(moduleId);
+		model.addAttribute("task", task);
+		return "ListTaskOfPm";
+	}
 //developer-------------------------------------------------------------------------------------------
 	@GetMapping("/listtaskofdev")
 	public String listTaskOfDev(@RequestParam("moduleId")Integer moduleId,HttpSession session,Model model) {
@@ -123,5 +139,18 @@ public class TaskController {
 		return "ListTaskOfDev";
 	}
 	
-	
+//tester----------------------------------------------------------------------------------------------
+	@GetMapping("/listtaskoftester")
+	public String llistTaskOfTester(@RequestParam("moduleId")Integer moduleId,Model model) {
+		
+		ProjectEntity project = projectRepo.findById(moduleRepo.findById(moduleId).get().getProjectId()).get();
+		model.addAttribute("project", project);
+		
+		ModuleEntity module = moduleRepo.findById(moduleId).get();
+		model.addAttribute("module", module);
+		
+		List<TaskEntity> task = t.findByModuleIdAndStatus(moduleId,4); //for completed task
+		model.addAttribute("task", task);
+		return "ListTaskOfTester";
+	}
 }

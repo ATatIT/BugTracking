@@ -110,5 +110,13 @@ public class ProjectController {
 		return "ListProjectOfDev";
 	}
 
+//tester-------------------------------------------------------------------------------------------------
+	@GetMapping("/listprojectoftester")
+	public String listProjectOfTester(HttpSession session,Model model) {
+		UserEntity user = (UserEntity) session.getAttribute("user");
+		List<ProjectEntity> project = p.getProjectsOfUserId(user.getUserId());
+		model.addAttribute("project", project);
+		return "ListProjectOfTester";
+	}
 	
 }

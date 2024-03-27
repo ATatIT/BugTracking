@@ -71,6 +71,7 @@
 										<a href="newtaskuser?taskId=${task.taskId}">Assign Task</a>
 									</div>
 								</div>
+								<div class="header-title"><a href="listtask?moduleId=${task.moduleId}">Back</a></div>
 							</div>
 							<div class="card-body">
 								<div id="button-div-id"></div>

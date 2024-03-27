@@ -92,9 +92,8 @@ public class ModuleController {
 //pm--------------------------------------------------------------------------------------------------------------------
 
 	@GetMapping("/listmoduleofpm")
-	public String listModuleOfPm(@RequestParam("projectId") Integer projectId, HttpSession session, Model model) {
-		UserEntity user = (UserEntity) session.getAttribute("user");
-
+	public String listModuleOfPm(@RequestParam("projectId") Integer projectId, Model model) {
+		
 		ProjectEntity project = projectRepo.findById(projectId).get();
 		model.addAttribute("project", project);
 
@@ -114,6 +113,18 @@ public class ModuleController {
 		List<ModuleEntity> module = moduleRepo.findByProjectIdAndUserId(projectId, user.getUserId());
 		model.addAttribute("module", module);
 		return "ListModuleOfDev";
+	}
+
+//tester----------------------------------------------------------------------------------------------------------------
+	@GetMapping("/listmoduleoftester")
+	public String listModuleOftester(@RequestParam("projectId") Integer projectId, Model model) {
+		
+		ProjectEntity project = projectRepo.findById(projectId).get();
+		model.addAttribute("project", project);
+
+		List<ModuleEntity> module = moduleRepo.findByProjectId(projectId);
+		model.addAttribute("module", module);
+		return "ListModuleOfTester";
 	}
 
 }

@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>BT|ModuleList Of Developer</title>
+<title>BT|Modules</title>
 
 <!-- Favicon -->
 <link rel="shortcut icon" href="../assets/images/favicon.ico">
@@ -68,6 +68,7 @@
 									<h4 class="card-title">${project.projecttitle}'s Modules</h4>
 									
 								</div>
+								<div class="header-title"><a href="listprojectofdev">Back</a></div> 
 							</div>
 							<div class="card-body">
 								<div id="button-div-id"></div>
@@ -110,6 +111,10 @@
 												OnGoing
 											</c:if> <c:if test="${module.status == 4 }">
 												Complete
+											</c:if> <c:if test="${module.status == 5 }">
+												Approved
+											</c:if> <c:if test="${module.status == 6 }">
+												Defected
 											</c:if></td>
 															<%-- <td>${module.docURL}</td> --%>
 															<td>${module.estimatedHours}</td>

@@ -64,6 +64,7 @@
 								<div class="header-title">
 									<h4 class="card-title">${project.projecttitle} / ${module.moduleName} : Task</h4>
 								</div>
+								<div class="header-title"><a href="listtask?moduleId=${module.moduleId}">Back</a></div>
 							</div>
 							<div class="card-body">
 

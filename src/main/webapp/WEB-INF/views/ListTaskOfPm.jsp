@@ -1,14 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!doctype html>
-<html lang="en" dir="ltr">
+<!DOCTYPE html>
 
 <head>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>BugTracking|Dashboard</title>
+<title>BT|Tasks</title>
 
 <!-- Favicon -->
 <link rel="shortcut icon" href="../assets/images/favicon.ico">
@@ -41,33 +40,37 @@
 
 </head>
 
-<body class="  ">
+<body>
+
 	<!-- loader Start -->
 	<%@include file="Loder.jsp"%>
 	<!-- loader END -->
 
 	<!-- Slider start -->
 
-	<jsp:include page="AdminSlidebar.jsp"></jsp:include>
+	<jsp:include page="PmSlidebar.jsp"></jsp:include>
 
 	<!-- Slider end -->
 
 	<main class="main-content">
 		<!-- header start -->
 
-		<jsp:include page="AdminHeader.jsp"></jsp:include>
+		<jsp:include page="PmHeader.jsp"></jsp:include>
 
 		<!-- header end -->
 		<div class="mt-5">
 
 			<div class="conatiner-fluid content-inner mt-n5 py-0">
+
 				<div class="row mt-3 p-3">
 					<div class="col-sm-12">
 						<div class="card mt-4">
 							<div class="card-header d-flex justify-content-between">
 								<div class="header-title">
-									<h4 class="card-title">List User</h4>
+									<h4 class="card-title">${project.projecttitle}:
+										${module.moduleName}'s Task</h4>
 								</div>
+								<div class="header-title"><a href="listmoduleofpm?projectId=${project.projectId}">Back</a></div>
 							</div>
 							<div class="card-body">
 								<div id="button-div-id"></div>
@@ -78,54 +81,52 @@
 											<table id="my-table" class="table table-striped"
 												data-toggle="data-table">
 												<thead>
+
 													<tr class="odd">
-														<!-- <th>UserId</th> -->
-														<th>FirstName</th>
-														<th>LastName</th>
-														<th>Email</th>
-														<!-- <th>Password</th> -->
-														<!-- <th>Gender</th> -->
-														<!-- <th>ContactNum</th> -->
-														<!-- <th>DOB</th> -->
-														<!-- <th>Address</th> -->
-														<!-- <th>State</th> -->
-														<!-- <th>City</th> -->
-														<!-- <th>Otp</th> -->
-														<th>RoleId</th>
+														<!-- <th>TaskId</th> -->
+														<th>Title</th>
+														<!-- <th>ModuleId</th> -->
+														<!-- <th>ProjectId</th> -->
+														<th>Status</th>
+														<!-- <th>Description</th> -->
+														<!-- <th>DocUrl</th> -->
+														<th>Estimated Hours</th>
+														<th>TotalUtilized Hours</th>
 														<th>Action</th>
 
 													</tr>
 
+
 												</thead>
 												<tbody>
-													<c:forEach items="${u}" var="user" varStatus="status">
+													<c:forEach items="${task}" var="task" varStatus="status">
 
 														<tr class="${status.index % 2 == 0 ? 'even' : 'odd'}">
-															<%-- <td>${user.userId}</td> --%>
-															<td>${user.firstName}</td>
-															<td>${user.lastName}</td>
-															<td>${user.email}</td>
-															<%-- <td>${user.pass}</td> --%>
-															<%-- <td>${user.gender}</td> --%>
-															<%-- <td>${user.contact}</td> --%>
-															<%-- <td>${user.dob}</td> --%>
-															<%-- <td>${user.address}</td>
-														<td>${user.state}</td>
-														<td>${user.city}</td>
-														<td>${user.otp}</td> --%>
-															<td><c:if test="${user.roleId == 1 }">
-												Admin
-											</c:if> <c:if test="${user.roleId == 2 }">
-												Project Manager
-											</c:if> <c:if test="${user.roleId == 3 }">
-												Developer
-											</c:if> <c:if test="${user.roleId == 4 }">
-												Tester
+															<%-- <td>${task.taskId}</td> --%>
+															<td><a href="listtaskuserofpm?taskId=${task.taskId}">${task.title}</a> </td>
+															<%-- <td>${task.moduleId}</td> --%>
+															<%-- <td>${task.projectId}</td> --%>
+															<td><c:if test="${task.status == 1 }">
+												OnHold
+											</c:if> <c:if test="${task.status == 2 }">
+												NotStarted
+											</c:if> <c:if test="${task.status == 3 }">
+												OnGoing
+											</c:if> <c:if test="${task.status == 4 }">
+												Complete
+											</c:if> <c:if test="${task.status == 5 }">
+												Approved
+											</c:if> <c:if test="${task.status == 6 }">
+												Defected
 											</c:if></td>
-															<td><a href="deleteuser?userId=${user.userId}">Delete</a></td>
+
+															<%-- <td>${task.description}</td> --%>
+															<%-- <td>${task.docURL}</td> --%>
+															<td>${task.estimatedHours}</td>
+															<td>${task.totalUtilizedHours}</td>
+															<td><a href="viewtask?taskId=${task.taskId}">View</a></td>
 														</tr>
 													</c:forEach>
-
 
 
 												</tbody>
@@ -141,8 +142,6 @@
 				</div>
 			</div>
 		</div>
-
-
 
 
 		<!-- Footer Section Start -->
@@ -185,10 +184,10 @@
 
 	<!-- AOS Animation Plugin-->
 	<script src="../assets/vendor/aos/dist/aos.js"></script>
-	
+
 	<!-- DataTables Button JS -->
-	<script src="../assets/js/dataTables.buttons.min.js"></script>
-	<script src="../assets/js/buttons.bootstrap4.min.js"></script>
+	<!-- <script src="../assets/js/dataTables.buttons.min.js"></script>
+	<script src="../assets/js/buttons.bootstrap4.min.js"></script> -->
 	<!-- Include the JSZip library (for Excel export) -->
 	<script src="../assets/js/jszip.min.js"></script>
 
@@ -206,5 +205,6 @@
 
 
 </body>
+
 
 </html>

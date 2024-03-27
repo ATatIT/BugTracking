@@ -48,12 +48,16 @@ public class EffortsService {
 		moduleRepository.save(module);
 		projectRepository.save(project);
 		
+		//for status updation
 		List<TaskEntity> allTask =  taskRepo.findByModuleId(module.getModuleId());
 		Long notCompletedStatus = allTask.stream().filter(t->t.getStatus()!=4 && t.getStatus()!=5).count();
 		
 		if(notCompletedStatus == 0) {
 			module.setStatus(4);
 			moduleRepository.save(module); 
+		}else {
+			module.setStatus(task.getStatus());
+			moduleRepository.save(module);
 		}
 		
 		

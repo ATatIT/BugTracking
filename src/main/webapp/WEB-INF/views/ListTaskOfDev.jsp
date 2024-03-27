@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>BT|TaskList of Developer</title>
+<title>BT|Tasks</title>
 
 <!-- Favicon -->
 <link rel="shortcut icon" href="../assets/images/favicon.ico">
@@ -70,6 +70,7 @@
 									<h4 class="card-title">${project.projecttitle}:
 										${module.moduleName}'s Task</h4>
 								</div>
+								<div class="header-title"><a href="listmoduleofdev?projectId=${project.projectId}">Back</a></div>
 							</div>
 							<div class="card-body">
 								<div id="button-div-id"></div>
@@ -114,6 +115,10 @@
 												OnGoing
 											</c:if> <c:if test="${task.status == 4 }">
 												Complete
+											</c:if> <c:if test="${task.status == 5 }">
+												Approved
+											</c:if> <c:if test="${task.status == 6 }">
+												Defected
 											</c:if></td>
 
 															<%-- <td>${task.description}</td> --%>

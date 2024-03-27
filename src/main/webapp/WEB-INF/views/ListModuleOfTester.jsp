@@ -1,14 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!doctype html>
-<html lang="en" dir="ltr">
+<!DOCTYPE html>
 
 <head>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>BugTracking|Dashboard</title>
+<title>BT|Modules</title>
 
 <!-- Favicon -->
 <link rel="shortcut icon" href="../assets/images/favicon.ico">
@@ -41,21 +40,21 @@
 
 </head>
 
-<body class="  ">
+<body>
 	<!-- loader Start -->
 	<%@include file="Loder.jsp"%>
 	<!-- loader END -->
 
 	<!-- Slider start -->
 
-	<jsp:include page="AdminSlidebar.jsp"></jsp:include>
+	<jsp:include page="TesterSlidebar.jsp"></jsp:include>
 
 	<!-- Slider end -->
 
 	<main class="main-content">
 		<!-- header start -->
 
-		<jsp:include page="AdminHeader.jsp"></jsp:include>
+		<jsp:include page="TesterHeader.jsp"></jsp:include>
 
 		<!-- header end -->
 		<div class="mt-5">
@@ -66,8 +65,10 @@
 						<div class="card mt-4">
 							<div class="card-header d-flex justify-content-between">
 								<div class="header-title">
-									<h4 class="card-title">List User</h4>
+									<h4 class="card-title">${project.projecttitle}'s Modules</h4>
+									
 								</div>
+								<div class="header-title"><a href="listprojectoftester">Back</a></div>
 							</div>
 							<div class="card-body">
 								<div id="button-div-id"></div>
@@ -78,54 +79,49 @@
 											<table id="my-table" class="table table-striped"
 												data-toggle="data-table">
 												<thead>
-													<tr class="odd">
-														<!-- <th>UserId</th> -->
-														<th>FirstName</th>
-														<th>LastName</th>
-														<th>Email</th>
-														<!-- <th>Password</th> -->
-														<!-- <th>Gender</th> -->
-														<!-- <th>ContactNum</th> -->
-														<!-- <th>DOB</th> -->
-														<!-- <th>Address</th> -->
-														<!-- <th>State</th> -->
-														<!-- <th>City</th> -->
-														<!-- <th>Otp</th> -->
-														<th>RoleId</th>
-														<th>Action</th>
 
+													<tr class="odd">
+														<!-- <th>ModuleId</th> -->
+														<th>Title</th>
+														<!-- <th>ProjectId</th> -->
+														<!-- <th>Description</th> -->
+														<th>Status</th>
+														<!-- <th>DocURL</th> -->
+														<th>EstimatedHours</th>
+														<th>TotalUtilizedHours</th>
+														<th>Action</th>
 													</tr>
+
+
 
 												</thead>
 												<tbody>
-													<c:forEach items="${u}" var="user" varStatus="status">
+													<c:forEach items="${module}" var="module" varStatus="status">
 
 														<tr class="${status.index % 2 == 0 ? 'even' : 'odd'}">
-															<%-- <td>${user.userId}</td> --%>
-															<td>${user.firstName}</td>
-															<td>${user.lastName}</td>
-															<td>${user.email}</td>
-															<%-- <td>${user.pass}</td> --%>
-															<%-- <td>${user.gender}</td> --%>
-															<%-- <td>${user.contact}</td> --%>
-															<%-- <td>${user.dob}</td> --%>
-															<%-- <td>${user.address}</td>
-														<td>${user.state}</td>
-														<td>${user.city}</td>
-														<td>${user.otp}</td> --%>
-															<td><c:if test="${user.roleId == 1 }">
-												Admin
-											</c:if> <c:if test="${user.roleId == 2 }">
-												Project Manager
-											</c:if> <c:if test="${user.roleId == 3 }">
-												Developer
-											</c:if> <c:if test="${user.roleId == 4 }">
-												Tester
+															<%-- <td>${module.moduleId}</td> --%>
+															<td><a href="listtaskoftester?moduleId=${module.moduleId}">${module.moduleName}</a></td>
+															<%-- <td>${module.projectId}</td> --%>
+															<%-- <td>${module.description}</td> --%>
+															<td><c:if test="${module.status == 1 }">
+												OnHold
+											</c:if> <c:if test="${module.status == 2 }">
+												NotStarted
+											</c:if> <c:if test="${module.status == 3 }">
+												OnGoing
+											</c:if> <c:if test="${module.status == 4 }">
+												Complete
+											</c:if> <c:if test="${module.status == 5 }">
+												Approved
+											</c:if> <c:if test="${module.status == 6 }">
+												Defected
 											</c:if></td>
-															<td><a href="deleteuser?userId=${user.userId}">Delete</a></td>
-														</tr>
+															<%-- <td>${module.docURL}</td> --%>
+															<td>${module.estimatedHours}</td>
+															<td>${module.totalUtilizedHours}</td>
+															<td><a href="viewmodule?moduleId=${module.moduleId}">View</a></td>
+																</tr>
 													</c:forEach>
-
 
 
 												</tbody>
@@ -141,8 +137,6 @@
 				</div>
 			</div>
 		</div>
-
-
 
 
 		<!-- Footer Section Start -->
@@ -185,7 +179,7 @@
 
 	<!-- AOS Animation Plugin-->
 	<script src="../assets/vendor/aos/dist/aos.js"></script>
-	
+
 	<!-- DataTables Button JS -->
 	<script src="../assets/js/dataTables.buttons.min.js"></script>
 	<script src="../assets/js/buttons.bootstrap4.min.js"></script>

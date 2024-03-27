@@ -113,6 +113,11 @@
 												OnGoing
 											</c:if> <c:if test="${project.projectStatusId == 4 }">
 												Complete
+											</c:if>
+											<c:if test="${project.projectStatusId == 5 }">
+												Approved
+											</c:if> <c:if test="${project.projectStatusId == 6 }">
+												Defected
 											</c:if></td>
 															<%-- <td>${project.docURL}</td> --%>
 															<td>${project.estimatedHours}</td>

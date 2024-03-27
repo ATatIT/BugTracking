@@ -8,7 +8,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>BT|NewModule</title>
+<title>BT|Bug Reporting</title>
 
 <!-- Favicon -->
 <link rel="shortcut icon" href="../assets/images/favicon.ico">
@@ -44,14 +44,14 @@
 
 	<!-- Slider start -->
 
-	<jsp:include page="AdminSlidebar.jsp"></jsp:include>
+	<jsp:include page="TesterSlidebar.jsp"></jsp:include>
 
 	<!-- Slider end -->
 
 	<main class="main-content">
 		<!-- header start -->
 
-		<jsp:include page="AdminHeader.jsp"></jsp:include>
+		<jsp:include page="TesterHeader.jsp"></jsp:include>
 
 		<!-- header end -->
 		<div class="mt-5">
@@ -62,54 +62,54 @@
 						<div class="card mt-4">
 							<div class="card-header d-flex justify-content-between">
 								<div class="header-title">
-									<h4 class="card-title">${project.projecttitle} : Module</h4>
+									<h4 class="card-title">Bug Reporting</h4>
 								</div>
-								<div class="header-title"><a href="listmodule?projectId=${project.projectId}">Back</a></div>
+								<div class="header-title"><a href="listtaskoftester?moduleId=${module.moduleId}">Back</a></div>
 							</div>
 							<div class="card-body">
 
-								<form class="row g-3" action="savemodule" method="post">
-									<div class="col-md-6">
-										<label class="form-label">Module Title</label> <input
-											type="text" class="form-control" id="validationCustom01"
-											name="moduleName">
+								<form class="row g-3" action="savebugreport" method="post">
+									<div class="row mt-3">
+										<div class="col-md-6">
+											<label class="form-label">Date</label> <input type="text"
+												class="form-control" id="validationCustom01" name="date"
+												value="${date}" readonly="readonly">
+										</div>
+										<div class="col-md-6">
+											<label class="form-label">Task</label> <input
+												type="text" class="form-control" id="validationCustom02"
+												value="${task.title}" readonly="readonly">
+										</div>
 									</div>
-									<div class="col-md-6">
-										<label class="form-label">EstimatedHours</label> <input
-											type="text" class="form-control" id="validationCustom02"
-											name="estimatedHours">
-									</div>
-									<div class="col-md-6">
-										<label class="form-label">TotalUtilizedHours</label> <input
-											type="text" class="form-control" id="validationCustom02"
-											name="totalUtilizedHours">
-									</div>
-									<div class="col-md-6">
-										<label class="form-label">DocumentURL</label> <input
-											type="text" class="form-control" id="validationCustom02"
-											name="docURL">
-									</div>
-									<div class="col-md-6">
-										<label class="form-label">Description</label>
-										<textarea rows="4" class="form-control" name="description"></textarea>
-
-									</div>
-									<div class="col-md-6">
-										<label class="form-label">Status</label> <select class="form-select" name="status">
-											<option value="-1">----Status----</option>
-											<c:forEach items="${projectStatusList}" var="projectstatus">
-												<option value="${projectstatus.statusId}">${projectstatus.status}</option>
+									<div class="row mt-3">
+										<div class="col">
+											<label class="form-label">Report Status</label> <select class="form-select" name="status">
+											<option value="-1">----Report----</option>
+											<c:forEach items="${status}" var="status">
+												<option value="${status.statusId}">${status.status}</option>
 											</c:forEach>
 										</select>
+										</div>
 									</div>
-									
-									<input type="hidden" name="projectId" value="${project.projectId}">
+									<div class="row mt-3">
+										<div class="col-md-6">
+											<label class="form-label">Description</label>
+											<textarea rows="4" class="form-control" name="description"></textarea>
+										</div>
+										<div class="col-md-6">
+											<label class="form-label">Comment</label>
+											<textarea rows="4" class="form-control" name="comment"></textarea>
+										</div>
+									</div>
 
-
-
+									<input type="hidden" name="taskId" value="${task.taskId}">
+									<input type="hidden" name="moduleId" value="${module.moduleId}">
+									<input type="hidden" name="projectId"
+										value="${project.projectId}"> <input type="hidden"
+										name="userId" value="${user.userId}">
 									<div class="col-12">
-										<button class="btn btn-primary" type="submit">Add Module
-											</button>
+										<button class="btn btn-primary" type="submit">Report
+										</button>
 									</div>
 								</form>
 							</div>

@@ -64,6 +64,7 @@
 								<div class="header-title">
 									<h4 class="card-title">Daily Log</h4>
 								</div>
+								<div class="header-title"><a href="listtaskofdev?moduleId=${module.moduleId}">Back</a></div>
 							</div>
 							<div class="card-body">
 

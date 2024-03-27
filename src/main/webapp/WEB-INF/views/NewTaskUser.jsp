@@ -64,6 +64,7 @@
 								<div class="header-title">
 									<h4 class="card-title">Task Allocation</h4>
 								</div>
+								<div class="header-title"><a href="listtaskuser?taskId=${task.taskId}">Back</a></div>
 							</div>
 							<div class="card-body">
 

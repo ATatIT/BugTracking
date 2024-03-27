@@ -75,4 +75,14 @@ public class TaskUserController {
 		tu.deleteById(taskUser.getTaskUserId());
 		return "redirect:/listtaskuser?taskId="+task.getTaskId();
 	}
+	
+//pm------------------------------------------------------------------------------------------------------------------------------
+	@GetMapping("/listtaskuserofpm")
+	public String listTaskUserOfPm(@RequestParam("taskId") Integer taskId,Model model) {
+		model.addAttribute("task", taskRepo.findById(taskId).get());
+		model.addAttribute("taskuser", userRepo.getUserByTaskId(taskId));
+		model.addAttribute("module", taskRepo.findById(taskId).get().getModuleId());
+		return "ListTaskUserOfPm";
+	}
+	
 }

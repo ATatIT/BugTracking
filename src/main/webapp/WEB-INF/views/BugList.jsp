@@ -8,7 +8,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>BugTracking|Dashboard</title>
+<title>BT|BugList</title>
 
 <!-- Favicon -->
 <link rel="shortcut icon" href="../assets/images/favicon.ico">
@@ -53,6 +53,8 @@
 	<!-- Slider end -->
 
 	<main class="main-content">
+
+
 		<!-- header start -->
 
 		<jsp:include page="AdminHeader.jsp"></jsp:include>
@@ -61,12 +63,13 @@
 		<div class="mt-5">
 
 			<div class="conatiner-fluid content-inner mt-n5 py-0">
+
 				<div class="row mt-3 p-3">
 					<div class="col-sm-12">
 						<div class="card mt-4">
 							<div class="card-header d-flex justify-content-between">
 								<div class="header-title">
-									<h4 class="card-title">List User</h4>
+									<h4 class="card-title">Bugs</h4>
 								</div>
 							</div>
 							<div class="card-body">
@@ -79,53 +82,31 @@
 												data-toggle="data-table">
 												<thead>
 													<tr class="odd">
-														<!-- <th>UserId</th> -->
-														<th>FirstName</th>
-														<th>LastName</th>
-														<th>Email</th>
-														<!-- <th>Password</th> -->
-														<!-- <th>Gender</th> -->
-														<!-- <th>ContactNum</th> -->
-														<!-- <th>DOB</th> -->
-														<!-- <th>Address</th> -->
-														<!-- <th>State</th> -->
-														<!-- <th>City</th> -->
-														<!-- <th>Otp</th> -->
-														<th>RoleId</th>
-														<th>Action</th>
+														
+														<th>Task Title</th>
+														<th>Module Title</th>
+														<th>Project Title</th>
+														<th>Status</th>
 
+														<th>Reported Date</th>
+														
+														<th>Action</th>
 													</tr>
+
 
 												</thead>
 												<tbody>
-													<c:forEach items="${u}" var="user" varStatus="status">
-
+													<c:forEach items="${bugs}" var="b" varStatus="status">
 														<tr class="${status.index % 2 == 0 ? 'even' : 'odd'}">
-															<%-- <td>${user.userId}</td> --%>
-															<td>${user.firstName}</td>
-															<td>${user.lastName}</td>
-															<td>${user.email}</td>
-															<%-- <td>${user.pass}</td> --%>
-															<%-- <td>${user.gender}</td> --%>
-															<%-- <td>${user.contact}</td> --%>
-															<%-- <td>${user.dob}</td> --%>
-															<%-- <td>${user.address}</td>
-														<td>${user.state}</td>
-														<td>${user.city}</td>
-														<td>${user.otp}</td> --%>
-															<td><c:if test="${user.roleId == 1 }">
-												Admin
-											</c:if> <c:if test="${user.roleId == 2 }">
-												Project Manager
-											</c:if> <c:if test="${user.roleId == 3 }">
-												Developer
-											</c:if> <c:if test="${user.roleId == 4 }">
-												Tester
-											</c:if></td>
-															<td><a href="deleteuser?userId=${user.userId}">Delete</a></td>
+															<td>${b.title}</td>
+															<td>${b.moduleName}</td>
+															<td>${b.projecttitle}</td>
+															<td>${b.status}</td>
+															<td>${b.date}</td>
+															<td></td>
 														</tr>
+														
 													</c:forEach>
-
 
 
 												</tbody>
@@ -136,6 +117,58 @@
 									</div>
 								</div>
 							</div>
+						</div>
+						<div class="row">
+
+							<c:forEach items="${p}" var="project">
+
+								<div class="col-lg-4">
+									<div class="card">
+										<div class="card-body">
+											<div class="d-flex justify-content-between mb-4">
+												<div class="">
+													<h4>${project.projecttitle}</h4>
+													<h5>Status:${project.projectStatusId}</h5>
+												</div>
+												<div class="">
+													<div class="badge bg-danger p-4">
+
+														<h5 class="text-white">${project.projectId}</h5>
+
+													</div>
+												</div>
+											</div>
+											<div
+												class="d-flex  justify-content-start align-items-center mb-3">
+												<div class="pe-3">
+													<img src="../../assets/images/avatars/icons8-clock-48.png"
+														class="rounded-circle p-1 bg-soft-danger" width="60"
+														height="60" alt="1">
+												</div>
+												<div>
+													<h5 class="">Estimated Hours :
+														${project.estimatedHours}</h5>
+													<h6 class="mb-0">Utillized Hours :
+														${project.totalUtilizedHours}</h6>
+												</div>
+											</div>
+											<div>
+												<small>${project.description}</small>
+
+											</div>
+											<div class="pt-4">
+												<small>Start Date</small>
+												<div class="twit-date">${project.projectStartDate}</div>
+											</div>
+											<div class="pt-3">
+												<small>End Date</small>
+												<div class="twit-date">${project.projectCompletionDate}</div>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</c:forEach>
 						</div>
 					</div>
 				</div>
@@ -185,7 +218,7 @@
 
 	<!-- AOS Animation Plugin-->
 	<script src="../assets/vendor/aos/dist/aos.js"></script>
-	
+
 	<!-- DataTables Button JS -->
 	<script src="../assets/js/dataTables.buttons.min.js"></script>
 	<script src="../assets/js/buttons.bootstrap4.min.js"></script>
@@ -200,6 +233,7 @@
 
 	<!-- Include the Column visibility button -->
 	<script src="../assets/js/buttons.colVis.min.js"></script>
+
 
 	<!-- App Script -->
 	<script src="../assets/js/hope-ui.js" defer></script>

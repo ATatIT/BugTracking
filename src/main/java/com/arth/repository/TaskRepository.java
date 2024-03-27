@@ -13,6 +13,8 @@ public interface TaskRepository extends JpaRepository<TaskEntity, Integer> {
 
 	List<TaskEntity> findByModuleId(Integer moduleId);
 	
+	List<TaskEntity> findByModuleIdAndStatus(Integer moduleId,Integer status);
+	
 	@Query(value=" select t.* from task t join taskuser tu on t.task_id = tu.task_id where t.project_id = :projectId and tu.userid = :userId",nativeQuery = true)
 	List<TaskEntity> findByProjectIdAndUserId(Integer projectId,Integer userId);
 	
