@@ -62,9 +62,11 @@
 						<div class="card mt-4">
 							<div class="card-header d-flex justify-content-between">
 								<div class="header-title">
-									<h4 class="card-title">Bug Reporting</h4>
+									<h4 class="card-title">Bug Reporting for ${task.title}</h4>
 								</div>
-								<div class="header-title"><a href="listtaskoftester?moduleId=${module.moduleId}">Back</a></div>
+								<div class="header-title">
+									<a href="listtaskoftester?moduleId=${module.moduleId}">Back</a>
+								</div>
 							</div>
 							<div class="card-body">
 
@@ -76,19 +78,20 @@
 												value="${date}" readonly="readonly">
 										</div>
 										<div class="col-md-6">
-											<label class="form-label">Task</label> <input
-												type="text" class="form-control" id="validationCustom02"
-												value="${task.title}" readonly="readonly">
+											<label class="form-label">Bug Name</label> <input type="text"
+												class="form-control" id="validationCustom02" name="bugName"
+												placeholder="If bug than fill it else leave it">
 										</div>
 									</div>
 									<div class="row mt-3">
 										<div class="col">
-											<label class="form-label">Report Status</label> <select class="form-select" name="status">
-											<option value="-1">----Report----</option>
-											<c:forEach items="${status}" var="status">
-												<option value="${status.statusId}">${status.status}</option>
-											</c:forEach>
-										</select>
+											<label class="form-label">Report Status</label> <select
+												class="form-select" name="status" id="reportStatus">
+												<option value="-1">----Report----</option>
+												<c:forEach items="${status}" var="status">
+													<option value="${status.statusId}">${status.status}</option>
+												</c:forEach>
+											</select>
 										</div>
 									</div>
 									<div class="row mt-3">
@@ -127,6 +130,21 @@
 		<!-- Footer Section End -->
 	</main>
 
+	<!-- For Bug Reporting -->
+	<script>
+		document.getElementById('reportStatus').addEventListener(
+				'change',
+				function() {
+					var bugNameInput = document
+							.getElementById('validationCustom02');
+					var statusValue = this.value;
+					if (statusValue === '6') {
+						bugNameInput.value = ''; // If "deffected" is selected, leave the field empty
+					} else {
+						bugNameInput.value = 'NA'; // If any other option is selected, set the field to "NA"
+					}
+				});
+	</script>
 
 	<!-- Wrapper End-->
 	<!-- offcanvas start -->

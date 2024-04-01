@@ -117,9 +117,9 @@
 											</c:if> <c:if test="${task.status == 4 }">
 												Complete
 											</c:if> <c:if test="${task.status == 5 }">
-												Approved
+												<span class="text-success">Approved</span>
 											</c:if> <c:if test="${task.status == 6 }">
-												Defected
+												<a class="text-danger" href="viewbug?taskId=${task.taskId}" >Defected</a>
 											</c:if></td>
 															<%-- <td>${task.description}</td> --%>
 															<%-- <td>${task.docURL}</td> --%>

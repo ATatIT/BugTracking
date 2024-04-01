@@ -38,48 +38,48 @@
 </head>
 
 <body>
-	
-	
-	<!-- loader Start -->
-	
-	<%@include file="Loder.jsp" %>
-	
-	<!-- loader END -->
-	
-	<!-- Slider start -->
-	
-	<jsp:include page="AdminSlidebar.jsp"></jsp:include>
-	
-	
-	<!-- Slider end -->
-	
-	<main class="main-content">
-	<!-- header start -->
-	
-	<jsp:include page="AdminHeader.jsp"></jsp:include>		
-	
-	<!-- header end -->
-	
-		<!-- Nav Header Component Start -->
-			<div class="iq-navbar-header" style="height: 215px;">
 
-				<div class="iq-header-img">
-					<img src="../assets/images/dashboard/top-header.png" alt="header"
-						class="theme-color-default-img img-fluid w-100 h-100 animated-scaleX">
-					<img src="../assets/images/dashboard/top-header1.png" alt="header"
-						class="theme-color-purple-img img-fluid w-100 h-100 animated-scaleX">
-					<img src="../assets/images/dashboard/top-header2.png" alt="header"
-						class="theme-color-blue-img img-fluid w-100 h-100 animated-scaleX">
-					<img src="../assets/images/dashboard/top-header3.png" alt="header"
-						class="theme-color-green-img img-fluid w-100 h-100 animated-scaleX">
-					<img src="../assets/images/dashboard/top-header4.png" alt="header"
-						class="theme-color-yellow-img img-fluid w-100 h-100 animated-scaleX">
-					<img src="../assets/images/dashboard/top-header5.png" alt="header"
-						class="theme-color-pink-img img-fluid w-100 h-100 animated-scaleX">
-				</div>
+
+	<!-- loader Start -->
+
+	<%@include file="Loder.jsp"%>
+
+	<!-- loader END -->
+
+	<!-- Slider start -->
+
+	<jsp:include page="AdminSlidebar.jsp"></jsp:include>
+
+
+	<!-- Slider end -->
+
+	<main class="main-content">
+		<!-- header start -->
+
+		<jsp:include page="AdminHeader.jsp"></jsp:include>
+
+		<!-- header end -->
+
+		<!-- Nav Header Component Start -->
+		<div class="iq-navbar-header" style="height: 215px;">
+
+			<div class="iq-header-img">
+				<img src="../assets/images/dashboard/top-header.png" alt="header"
+					class="theme-color-default-img img-fluid w-100 h-100 animated-scaleX">
+				<img src="../assets/images/dashboard/top-header1.png" alt="header"
+					class="theme-color-purple-img img-fluid w-100 h-100 animated-scaleX">
+				<img src="../assets/images/dashboard/top-header2.png" alt="header"
+					class="theme-color-blue-img img-fluid w-100 h-100 animated-scaleX">
+				<img src="../assets/images/dashboard/top-header3.png" alt="header"
+					class="theme-color-green-img img-fluid w-100 h-100 animated-scaleX">
+				<img src="../assets/images/dashboard/top-header4.png" alt="header"
+					class="theme-color-yellow-img img-fluid w-100 h-100 animated-scaleX">
+				<img src="../assets/images/dashboard/top-header5.png" alt="header"
+					class="theme-color-pink-img img-fluid w-100 h-100 animated-scaleX">
 			</div>
-			<!-- Nav Header Component End -->
-	
+		</div>
+		<!-- Nav Header Component End -->
+
 		<div class="conatiner-fluid content-inner mt-n5 py-0">
 			<div class="row">
 				<div class="col-md-12 col-lg-12">
@@ -102,8 +102,10 @@
                                                 </svg>
 											</div>
 											<div class="progress-detail">
-												<p class="mb-2"><a href="projects?statusId=0">Total Projects</a></p>
-												<h4 class="counter">${totalProject} Projects</h4>
+												<p class="mb-2">
+													<a href="projects?statusId=0">Total Projects</a>
+												</p>
+												<h4 class="counter">${totalProject}Projects</h4>
 											</div>
 										</div>
 									</div>
@@ -124,8 +126,10 @@
                                                 </svg>
 											</div>
 											<div class="progress-detail">
-												<p class="mb-2"><a href="projects?statusId=3">Ongoing Project</a></p>
-												<h4 class="counter">${OngoingProject} Projects</h4>
+												<p class="mb-2">
+													<a href="projects?statusId=3">Ongoing Project</a>
+												</p>
+												<h4 class="counter">${OngoingProject}Projects</h4>
 											</div>
 										</div>
 									</div>
@@ -146,8 +150,10 @@
                                                 </svg>
 											</div>
 											<div class="progress-detail">
-												<p class="mb-2"><a href="projects?statusId=2">Pipeline Projects</a></p>
-												<h4 class="counter">${pipelineProject} Projects</h4>
+												<p class="mb-2">
+													<a href="projects?statusId=2">Pipeline Projects</a>
+												</p>
+												<h4 class="counter">${pipelineProject}Projects</h4>
 											</div>
 										</div>
 									</div>
@@ -168,18 +174,40 @@
                                                 </svg>
 											</div>
 											<div class="progress-detail">
-												<p class="mb-2"><a href="projects?statusId=5">Due Project</a></p>
-												<h4 class="counter">${dueProject} Projects</h4>
+												<p class="mb-2">
+													<a href="projects?statusId=5">Due Project</a>
+												</p>
+												<h4 class="counter">${dueProject}Projects</h4>
 											</div>
 										</div>
 									</div>
 								</li>
-								
+
 							</ul>
 							<div class="swiper-button swiper-button-next"></div>
 							<div class="swiper-button swiper-button-prev"></div>
 						</div>
-						Data
+						<div class="">
+
+							<div class="row mt-3 ">
+								<div class="col-sm-12">
+									<div class="card mt-4">
+										<div class="card-header d-flex justify-content-between">
+											<div class="header-title">
+												<h4 class="card-title">Chart</h4>
+											</div>
+										</div>
+										<div class="card-body">
+											<div>
+												<canvas id="myChart"></canvas>
+											</div>
+
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -187,15 +215,16 @@
 
 
 		<!-- Footer Section Start -->
-		
+
 		<jsp:include page="AdminFooter.jsp"></jsp:include>
-		
+
 		<!-- Footer Section End -->
 	</main>
-	
-	
-	<!-- Wrapper End--><!-- offcanvas start -->
-	
+
+
+	<!-- Wrapper End-->
+	<!-- offcanvas start -->
+
 	<jsp:include page="AdminCanvas.jsp"></jsp:include>
 
 	<!-- Library Bundle Script -->
@@ -226,9 +255,35 @@
 	<!-- AOS Animation Plugin-->
 	<script src="../assets/vendor/aos/dist/aos.js"></script>
 
+	<!-- Chart.js -->
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 	<!-- App Script -->
 	<script src="../assets/js/hope-ui.js" defer></script>
 
+	<script>
+		const ctx = document.getElementById('myChart');
+
+		new Chart(ctx,
+				{
+					type : 'bar',
+					data : {
+						labels : [ ${projectName}],
+						datasets : [ {
+							label : '# Hours',
+							data : [ ${estimatedHours}],
+							borderWidth : 2
+						} ]
+					},
+					options : {
+						scales : {
+							y : {
+								beginAtZero : true
+							}
+						}
+					}
+				});
+	</script>
 
 </body>
 

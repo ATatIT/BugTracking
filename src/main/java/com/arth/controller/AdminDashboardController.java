@@ -1,6 +1,7 @@
 package com.arth.controller;
 
 import java.time.LocalDate;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.arth.entity.ProjectEntity;
 import com.arth.entity.RoleEntity;
 import com.arth.entity.UserEntity;
 import com.arth.repository.ProjectRepository;
@@ -44,6 +46,18 @@ public class AdminDashboardController {
 		
 		Integer dueProject = projectRepo.getDueProjects(m).size();
 		model.addAttribute("dueProject", dueProject);
+		
+		// for chart------------------------------------------------------------
+		
+		List<ProjectEntity> project = projectRepo.findAll();
+		String projectName = ""; 
+		String estimatedHours = "";
+		for (ProjectEntity p : project) {
+			projectName = projectName + "'" + p.getProjecttitle() + "'," ;
+			estimatedHours = estimatedHours + p.getEstimatedHours() + ",";
+		}
+		model.addAttribute("projectName", projectName);
+		model.addAttribute("estimatedHours", estimatedHours);
 		return "AdminDashboard";
 	}
 	

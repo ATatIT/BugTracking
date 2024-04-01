@@ -8,7 +8,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>BT|BugList</title>
+<title>BT|Bugs</title>
 
 <!-- Favicon -->
 <link rel="shortcut icon" href="../assets/images/favicon.ico">
@@ -48,7 +48,7 @@
 
 	<!-- Slider start -->
 
-	<jsp:include page="AdminSlidebar.jsp"></jsp:include>
+	<jsp:include page="TesterSlidebar.jsp"></jsp:include>
 
 	<!-- Slider end -->
 
@@ -57,7 +57,7 @@
 
 		<!-- header start -->
 
-		<jsp:include page="AdminHeader.jsp"></jsp:include>
+		<jsp:include page="TesterHeader.jsp"></jsp:include>
 
 		<!-- header end -->
 		<div class="mt-5">
@@ -82,14 +82,11 @@
 												data-toggle="data-table">
 												<thead>
 													<tr class="odd">
-														
-														<th>Task Title</th>
-														<th>Module Title</th>
-														<th>Project Title</th>
-														<th>Status</th>
-
-														<th>Reported Date</th>
-														
+														<th>BugId</th>
+														<th>Task</th>
+														<th>Module</th>
+														<th>Project</th>
+														<th>User</th>
 														<th>Action</th>
 													</tr>
 
@@ -97,15 +94,14 @@
 												</thead>
 												<tbody>
 													<c:forEach items="${bugs}" var="b" varStatus="status">
+
 														<tr class="${status.index % 2 == 0 ? 'even' : 'odd'}">
+															<td>${b.bug.bugId}</td>
 															<td>${b.title}</td>
 															<td>${b.moduleName}</td>
-															<td>${b.projecttitle}</td>
-															<td>${b.status}</td>
-															<td>${b.date}</td>
-															<td></td>
+															<td>${b.projectTitle}</td>
+															<td>View</td>
 														</tr>
-														
 													</c:forEach>
 
 

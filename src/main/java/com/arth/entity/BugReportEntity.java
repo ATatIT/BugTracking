@@ -5,7 +5,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
 
 @Entity
 @Table(name = "bugreport")
@@ -14,6 +13,7 @@ public class BugReportEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer bugId;
+	private String bugName;
 	private Integer taskId;
 	private Integer moduleId;
 	private Integer projectId;
@@ -22,14 +22,6 @@ public class BugReportEntity {
 	private Integer status;
 	private String description;
 	private String comment;
-	
-	@Transient
-	private String projecttitle;
-	@Transient
-	private String moduleName;	
-	@Transient
-	private String title;
-	
 	public Integer getBugId() {
 		return bugId;
 	}
@@ -84,23 +76,11 @@ public class BugReportEntity {
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
-	public String getProjecttitle() {
-		return projecttitle;
+	public String getBugName() {
+		return bugName;
 	}
-	public void setProjecttitle(String projecttitle) {
-		this.projecttitle = projecttitle;
-	}
-	public String getModuleName() {
-		return moduleName;
-	}
-	public void setModuleName(String moduleName) {
-		this.moduleName = moduleName;
-	}
-	public String getTitle() {
-		return title;
-	}
-	public void setTitle(String title) {
-		this.title = title;
+	public void setBugName(String bugName) {
+		this.bugName = bugName;
 	}
 	
 	

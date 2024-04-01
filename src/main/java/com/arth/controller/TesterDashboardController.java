@@ -1,6 +1,7 @@
 package com.arth.controller;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.arth.dto.BugReportDto;
 import com.arth.entity.BugReportEntity;
 import com.arth.entity.ModuleEntity;
 import com.arth.entity.ProjectEntity;
@@ -107,9 +109,20 @@ public class TesterDashboardController {
 	}
 	
 	@GetMapping("/buglist")
-	public String bugList(Model model) {
-		List<BugReportEntity> bugs = bugReportRepo.findAllBugs();
+	public String bugList(HttpSession session,Model model) {
+		List<BugReportDto> bugs = bugReportRepo.findAllBugsWithDetails();
 		model.addAttribute("bugs", bugs);
 		return "BugList"; 
+	}
+	
+	@GetMapping("/viewbug")
+	public String viewBug(@RequestParam("taskId") Integer taskId,Model model) {
+		
+		List<Integer> status = Arrays.asList(6);
+		List<BugReportEntity> bugs = bugReportRepo.findByTaskIdAndStatusIn(taskId,status);
+		model.addAttribute("bugs", bugs);
+		
+		model.addAttribute("task", taskRepo.findById(taskId).get());
+		return "ViewBug";
 	}
 }
