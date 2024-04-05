@@ -105,7 +105,7 @@
 												<p class="mb-2">
 													<a href="projects?statusId=0">Total Projects</a>
 												</p>
-												<h4 class="counter">${totalProject}Projects</h4>
+												<h4 class="counter">${totalProject} Projects</h4>
 											</div>
 										</div>
 									</div>
@@ -129,7 +129,7 @@
 												<p class="mb-2">
 													<a href="projects?statusId=3">Ongoing Project</a>
 												</p>
-												<h4 class="counter">${OngoingProject}Projects</h4>
+												<h4 class="counter">${OngoingProject} Projects</h4>
 											</div>
 										</div>
 									</div>
@@ -153,7 +153,7 @@
 												<p class="mb-2">
 													<a href="projects?statusId=2">Pipeline Projects</a>
 												</p>
-												<h4 class="counter">${pipelineProject}Projects</h4>
+												<h4 class="counter">${pipelineProject} Projects</h4>
 											</div>
 										</div>
 									</div>
@@ -177,7 +177,7 @@
 												<p class="mb-2">
 													<a href="projects?statusId=5">Due Project</a>
 												</p>
-												<h4 class="counter">${dueProject}Projects</h4>
+												<h4 class="counter">${dueProject} Projects</h4>
 											</div>
 										</div>
 									</div>
@@ -190,21 +190,47 @@
 						<div class="">
 
 							<div class="row mt-3 ">
-								<div class="col-sm-12">
-									<div class="card mt-4">
-										<div class="card-header d-flex justify-content-between">
+								<div class="col-md-12">
+									<div class="card aos-init aos-animate" data-aos="fade-up"
+										data-aos-delay="800">
+										<div
+											class="flex-wrap card-header d-flex justify-content-between align-items-center">
 											<div class="header-title">
-												<h4 class="card-title">Chart</h4>
+												<h4 class="card-title">Project Hours</h4>
+
 											</div>
+											<div class="d-flex align-items-center align-self-center">
+												<div class="d-flex align-items-center text-primary">
+													<svg class="icon-12" xmlns="http://www.w3.org/2000/svg"
+														width="12" viewBox="0 0 24 24" fill="currentColor">
+                           <g>
+                              <circle cx="12" cy="12" r="8"
+															fill="currentColor"></circle>
+                           </g>
+                        </svg>
+													<div class="ms-2">
+														<span class="text-gray">Utilized Hours</span>
+													</div>
+												</div>
+												<div class="d-flex align-items-center ms-3 text-info">
+													<svg class="icon-12" xmlns="http://www.w3.org/2000/svg"
+														width="12" viewBox="0 0 24 24" fill="currentColor">
+                           <g>
+                              <circle cx="12" cy="12" r="8"
+															fill="currentColor"></circle>
+                           </g>
+                        </svg>
+													<div class="ms-2">
+														<span class="text-gray">Estimated Hours</span>
+													</div>
+												</div>
+											</div>
+
 										</div>
 										<div class="card-body">
-											<div>
-												<canvas id="myChart"></canvas>
-											</div>
-
+											<div id="d-main" class="d-main" style="min-height: 260px;"></div>
 										</div>
 									</div>
-
 								</div>
 							</div>
 						</div>
@@ -238,6 +264,26 @@
 
 	<!-- mapchart Script -->
 	<script src="../assets/js/charts/vectore-chart.js"></script>
+
+	<script>
+    var projectNameList = [
+        <c:forEach items="${projectName}" var="p" varStatus="loop">
+            "${p}"<c:if test="${!loop.last}">,</c:if>
+        </c:forEach>
+    ];
+    var projectEstHu = [
+        <c:forEach items="${estimatedHours}" var="eh" varStatus="loop">
+            "${eh}"<c:if test="${!loop.last}">,</c:if>
+        </c:forEach>
+    ];
+    var projectTotHu = [
+        <c:forEach items="${totalUh}" var="th" varStatus="loop">
+            "${th}"<c:if test="${!loop.last}">,</c:if>
+        </c:forEach>
+    ];
+	</script>
+
+
 	<script src="../assets/js/charts/dashboard.js"></script>
 
 	<!-- fslightbox Script -->
@@ -261,6 +307,7 @@
 	<!-- App Script -->
 	<script src="../assets/js/hope-ui.js" defer></script>
 
+	<!-- For chart -->
 	<script>
 		const ctx = document.getElementById('myChart');
 
@@ -272,7 +319,7 @@
 						datasets : [ {
 							label : '# Hours',
 							data : [ ${estimatedHours}],
-							borderWidth : 2
+							borderWidth : 1
 						} ]
 					},
 					options : {
@@ -284,6 +331,8 @@
 					}
 				});
 	</script>
+
+
 
 </body>
 

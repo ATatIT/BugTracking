@@ -97,7 +97,8 @@
 
 												</thead>
 												<tbody>
-													<c:forEach items="${project}" var="project" varStatus="status">
+													<c:forEach items="${project}" var="project"
+														varStatus="status">
 
 														<tr class="${status.index % 2 == 0 ? 'even' : 'odd'}">
 															<%-- <td>${project.projectId}</td> --%>
@@ -122,10 +123,13 @@
 															<%-- <td>${project.totalUtilizedHours}</td> --%>
 															<td>${project.projectStartDate}</td>
 															<td>${project.projectCompletionDate}</td>
-															<td><%-- <a
+															<td>
+																<%-- <a
 																href="listprojectuser?projectId=${project.projectId}">Team</a>
-																|  --%><a href="viewproject?projectId=${project.projectId}">View</a>
-																</td>
+																|  --%>
+																<a href="viewproject?projectId=${project.projectId}">View</a>
+																| <a href="viewallbugs?projectId=${project.projectId}">Bugs</a>
+															</td>
 														</tr>
 													</c:forEach>
 

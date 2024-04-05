@@ -19,6 +19,7 @@ public class BugReportEntity {
 	private Integer projectId;
 	private Integer userId;
 	private String date;
+	private String approveDate;
 	private Integer status;
 	private String description;
 	private String comment;
@@ -81,6 +82,12 @@ public class BugReportEntity {
 	}
 	public void setBugName(String bugName) {
 		this.bugName = bugName;
+	}
+	public String getApproveDate() {
+		return approveDate;
+	}
+	public void setApproveDate(String approveDate) {
+		this.approveDate = approveDate;
 	}
 	
 	

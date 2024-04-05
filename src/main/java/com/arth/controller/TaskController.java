@@ -1,5 +1,6 @@
 package com.arth.controller;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -149,7 +150,8 @@ public class TaskController {
 		ModuleEntity module = moduleRepo.findById(moduleId).get();
 		model.addAttribute("module", module);
 		
-		List<TaskEntity> task = t.findByModuleIdAndStatus(moduleId,4); //for completed task
+		List<Integer> status = Arrays.asList(4,5);//for complete or aprrove
+		List<TaskEntity> task = t.findByModuleIdAndStatusIn(moduleId,status); //for completed task
 		model.addAttribute("task", task);
 		return "ListTaskOfTester";
 	}

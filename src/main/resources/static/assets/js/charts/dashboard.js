@@ -114,17 +114,21 @@ if (document.querySelectorAll('#d-activity').length) {
     })
   }
 if (document.querySelectorAll('#d-main').length) {
+
+	
   const options = {
       series: [{
-          name: 'total',
-          data: [94, 80, 94, 80, 94, 80, 94]
+          name: 'utilized',
+          data: projectTotHu
       }, {
-          name: 'pipline',
-          data: [72, 60, 84, 60, 74, 60, 78]
+          name: 'estimated',
+          data: projectEstHu
       }],
       chart: {
+		  
           fontFamily: '"Inter", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
-          height: 245,
+          height: 245 , // Change the height to 400 pixels
+   
           type: 'area',
           toolbar: {
               show: false
@@ -168,7 +172,7 @@ if (document.querySelectorAll('#d-main').length) {
           lines: {
               show: false  //or just here to disable only x axis grids
           },
-          categories: ["Jan", "Feb", "Mar", "Apr", "Jun", "Jul", "Aug"]
+          categories: projectNameList,
       },
       grid: {
           show: false,

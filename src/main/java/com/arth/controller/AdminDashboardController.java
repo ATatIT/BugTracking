@@ -52,12 +52,15 @@ public class AdminDashboardController {
 		List<ProjectEntity> project = projectRepo.findAll();
 		String projectName = ""; 
 		String estimatedHours = "";
+		String totalUh = "";
 		for (ProjectEntity p : project) {
-			projectName = projectName + "'" + p.getProjecttitle() + "'," ;
+			projectName = projectName + p.getProjecttitle() + "," ;
 			estimatedHours = estimatedHours + p.getEstimatedHours() + ",";
+			totalUh = totalUh + p.getTotalUtilizedHours() + ",";
 		}
 		model.addAttribute("projectName", projectName);
 		model.addAttribute("estimatedHours", estimatedHours);
+		model.addAttribute("totalUh", totalUh);
 		return "AdminDashboard";
 	}
 	

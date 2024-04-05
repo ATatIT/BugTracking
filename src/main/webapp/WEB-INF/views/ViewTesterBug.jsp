@@ -8,7 +8,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>BT|Bugs</title>
+<title>BT|View Bug</title>
 
 <!-- Favicon -->
 <link rel="shortcut icon" href="../assets/images/favicon.ico">
@@ -48,7 +48,21 @@
 
 	<!-- Slider start -->
 
-	<jsp:include page="TesterSlidebar.jsp"></jsp:include>
+	<c:if test="${role.roleId == 1 }">
+		<jsp:include page="AdminSlidebar.jsp"></jsp:include>
+	</c:if>
+
+	<c:if test="${role.roleId == 2 }">
+		<jsp:include page="PmSlidebar.jsp"></jsp:include>
+	</c:if>
+
+	<c:if test="${role.roleId == 3 }">
+		<jsp:include page="DeveloperSlidebar.jsp"></jsp:include>
+	</c:if>
+
+	<c:if test="${role.roleId == 4 }">
+		<jsp:include page="TesterSlidebar.jsp"></jsp:include>
+	</c:if>
 
 	<!-- Slider end -->
 
@@ -57,106 +71,84 @@
 
 		<!-- header start -->
 
-		<jsp:include page="TesterHeader.jsp"></jsp:include>
+		<c:if test="${role.roleId == 1 }">
+			<jsp:include page="AdminHeader.jsp"></jsp:include>
+		</c:if>
+
+		<c:if test="${role.roleId == 2 }">
+			<jsp:include page="PmHeader.jsp"></jsp:include>
+		</c:if>
+
+		<c:if test="${role.roleId == 3 }">
+			<jsp:include page="DeveloperHeader.jsp"></jsp:include>
+		</c:if>
+
+		<c:if test="${role.roleId == 4 }">
+			<jsp:include page="TesterHeader.jsp"></jsp:include>
+		</c:if>
 
 		<!-- header end -->
 		<div class="mt-5">
 
 			<div class="conatiner-fluid content-inner mt-n5 py-0">
+
 				<div class="row mt-3 p-3">
 					<div class="col-sm-12">
-						<div class="card card-body d-flex justify-content-between">
-							<div class="header-title">
-								<h4 class="card-title">Bugs</h4>
-							</div>
-						</div>
-						<div class="card mt-4">
-							<div class="card-header d-flex justify-content-between">
-								<div class="header-title">
-									<h4 class="card-title">Defected</h4>
+						<div class="mt-4">
+							<div class="card card-body d-flex justify-content-between">
+								<div class="header-title d-flex align-items-center">
+									<h3 class="card-title" style="margin-right: 10px;">Bug
+										Details</h3>
+									<c:if test="${role.roleId == 4 }">
+										<a class="card-title"
+											href="buglist?projectId=${bug.projectId }"
+											style="margin-left: auto;">Back</a>
+									</c:if>
+
 								</div>
 							</div>
+
+
+						</div>
+						<div class="card">
 							<div class="card-body">
-								<div id="button-div-id"></div>
-								<div class="table-responsive">
-									<div id="datatable_wrapper"
-										class="dataTables_wrapper dt-bootstrap5">
-										<div class="table-responsive border-bottom my-3">
-											<table id="my-table"
-												class="table table-striped dataTable text-dark">
-												<tr class="odd">
-													<th>Bug</th>
-													<th>Date</th>
-													<th>Task</th>
-													<th>Module</th>
-													<th>Project</th>
-													<th>Action</th>
-												</tr>
-
-
-												<c:forEach items="${bugs}" var="b" varStatus="status">
-													<c:if test="${b.status == 6 }">
-													<tr class="${status.index % 2 == 0 ? 'even' : 'odd'}">
-														<td>${b.bugName}</td>
-														<td>${b.date}</td>
-														<td>${b.title}</td>
-														<td>${b.moduleName}</td>
-														<td>${b.projectTitle}</td>
-														<td><a
-															href="viewtesterbug?bugId=${b.bugId}&taskId=${b.taskId}">View</a></td>
-													</tr></c:if>
-												</c:forEach>
-
-
-
-											</table>
+								<div class="d-flex justify-content-between mb-4">
+									<div class="row">
+										<div class="">
+											<h3>Bug : ${bug.bugName}</h3>
 										</div>
-										<div class="clear"></div>
 									</div>
 								</div>
-							</div>
-						</div>
-						<div class="card mt-4">
-							<div class="card-header d-flex justify-content-between">
-								<div class="header-title">
-									<h4 class="card-title">Approved</h4>
-								</div>
-							</div>
-							<div class="card-body">
+								<div>
+									<div>
+										<h5>Date:</h5>
+										<small>${bug.date}</small>
 
-								<div class="table-responsive">
-									<div id="datatable_wrapper"
-										class="dataTables_wrapper dt-bootstrap5">
-										<div class="table-responsive border-bottom my-3">
-											<table class="table table-striped dataTable text-dark">
-												<tr class="odd">
-													<th>Bug</th>
-													<th>Date</th>
-													<th>Task</th>
-													<th>Module</th>
-													<th>Project</th>
-													<th>Action</th>
-												</tr>
+									</div>
 
-												<c:forEach items="${bugs}" var="b" varStatus="status">
-													<c:if test="${b.status == 5 }">
-													<tr class="${status.index % 2 == 0 ? 'even' : 'odd'}">
-														<td>${b.bugName}</td>
-														<td>${b.date}</td>
-														<td>${b.title}</td>
-														<td>${b.moduleName}</td>
-														<td>${b.projectTitle}</td>
-														<td><a
-															href="viewtesterbug?bugId=${b.bugId}&taskId=${b.taskId}">View</a></td>
-													</tr></c:if>
-												</c:forEach>
+									<div>
+										<h5>Approve Date:</h5>
+										<small><c:if test="${bug.approveDate != null }">${bug.approveDate }</c:if>
+											<c:if test="${bug.approveDate == null }">Not Approved</c:if></small>
+
+									</div>
 
 
-											</table>
-										</div>
-										<div class="clear"></div>
+									<div>
+										<h5>Description:</h5>
+										<small>${bug.description}</small>
+
+									</div>
+
+									<div>
+										<h5>Comment:</h5>
+										<small>${bug.comment}</small>
+
 									</div>
 								</div>
+
+
+
 							</div>
 						</div>
 					</div>

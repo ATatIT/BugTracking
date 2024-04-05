@@ -115,7 +115,7 @@
 											</c:if> <c:if test="${task.status == 4 }">
 												Complete
 											</c:if> <c:if test="${task.status == 5 }">
-												Approved
+												<span class="text-success">Approved</span> 
 											</c:if> <c:if test="${task.status == 6 }">
 												Defected
 											</c:if></td>

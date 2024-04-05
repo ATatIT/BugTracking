@@ -241,8 +241,7 @@ if ($.fn.DataTable) {
  initComplete: function(settings, json) {
             // Append buttons to the container
             $('#button-div-id').append($('.dt-buttons'));
-        }
-        
+        },    
     });
   }
 }

@@ -1,10 +1,14 @@
 package com.arth.controller;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.config.Task;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -93,7 +97,15 @@ public class TesterDashboardController {
 
 		List<ProjectStatusEntity> status = projectStatusRepo.findAll().subList(4, 6);
 		model.addAttribute("status", status);
-		return "BugReport";
+		
+		BugReportEntity bug = bugReportRepo.findByProjectIdAndModuleIdAndTaskIdAndStatus(projectId, moduleID, taskId,6);	
+		if (bug != null  ) {
+			model.addAttribute("bug", bug);
+			return "UpdateBugReport";
+		}else {
+			
+			return "BugReport";
+		}
 	}
 
 	@PostMapping("/savebugreport")
@@ -109,20 +121,69 @@ public class TesterDashboardController {
 	}
 	
 	@GetMapping("/buglist")
-	public String bugList(HttpSession session,Model model) {
-		List<BugReportDto> bugs = bugReportRepo.findAllBugsWithDetails();
+	public String bugList(@RequestParam("projectId") Integer projectId,HttpSession session,Model model) {
+		UserEntity user = (UserEntity) session.getAttribute("user");
+		List<Integer> status = Arrays.asList(5,6); 
+		List<TaskEntity> tasks = taskRepo.findAllTasksByProjectId(projectId);
+		List<BugReportDto> bugs = new ArrayList<>();
+		for (TaskEntity task : tasks) {
+	        bugs.addAll(bugReportRepo.findAllBugsWithDetailsByTaskIdAndStatus(task.getTaskId(), status));
+	    }
 		model.addAttribute("bugs", bugs);
 		return "BugList"; 
 	}
 	
-	@GetMapping("/viewbug")
+	@GetMapping("/viewbug")//genral
 	public String viewBug(@RequestParam("taskId") Integer taskId,Model model) {
 		
 		List<Integer> status = Arrays.asList(6);
-		List<BugReportEntity> bugs = bugReportRepo.findByTaskIdAndStatusIn(taskId,status);
-		model.addAttribute("bugs", bugs);
 		
+		List<BugReportDto> bugs = bugReportRepo.findAllBugsWithDetailsByTaskIdAndStatus(taskId,status);
+		List<BugReportDto> dev = bugReportRepo.findAllBugswithDeveloper(taskId);
+		
+		model.addAttribute("bugs", bugs);
 		model.addAttribute("task", taskRepo.findById(taskId).get());
+		
+		Map<Integer, String> bugIdToSortedNames = new HashMap<>();
+
+		for (BugReportDto bug : dev) {
+		    int bugId = bug.getBugId();
+		    String firstName = bug.getFirstName();
+		    bugIdToSortedNames.merge(bugId, firstName, (oldValue, newValue) -> oldValue + ", " + newValue);
+		}
+		model.addAttribute("dev", bugIdToSortedNames);
 		return "ViewBug";
+	}
+	
+	@GetMapping("/viewtesterbug")//fortester
+	public String viewTesterBug(@RequestParam("bugId")Integer bugId,@RequestParam("taskId")Integer taskId,Model model) {
+		BugReportEntity bug = bugReportRepo.findByBugIdAndTaskId(bugId, taskId);
+		model.addAttribute("bug", bug);
+		return "ViewTesterBug";
+	}
+	
+	//for admin
+	@GetMapping("/viewallbugs")
+	public String viewAllBugs(@RequestParam("projectId")Integer projectId,Model model) {
+		//defected
+		List<Integer> status = Arrays.asList(5,6); 
+	    List<TaskEntity> tasks = taskRepo.findAllTasksByProjectId(projectId);
+	    List<BugReportDto> bugs = new ArrayList<>();
+	    Map<Integer, String> bugIdToSortedNames = new HashMap<>();
+
+	    for (TaskEntity task : tasks) {
+	        bugs.addAll(bugReportRepo.findAllBugsWithDetailsByTaskIdAndStatus(task.getTaskId(), status));
+	        List<BugReportDto> dev = bugReportRepo.findAllBugswithDeveloper(task.getTaskId());
+	        for (BugReportDto bug : dev) {
+	            int bugId = bug.getBugId();
+	            String firstName = bug.getFirstName();
+	            bugIdToSortedNames.merge(bugId, firstName, (oldValue, newValue) -> oldValue + ", " + newValue);
+	        }
+	    }
+
+	    model.addAttribute("bugs", bugs);
+	    model.addAttribute("task", tasks); 
+	    model.addAttribute("dev", bugIdToSortedNames);
+		return "ViewAllBugs";
 	}
 }
