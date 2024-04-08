@@ -38,11 +38,11 @@ if (document.querySelectorAll('#myChart').length) {
 if (document.querySelectorAll('#d-activity').length) {
     const options = {
       series: [{
-        name: 'Successful deals',
-        data: [30, 50, 35, 60, 40, 60, 60, 30, 50, 35,]
+        name: 'Solved bugs',
+        data: approveBug
       }, {
-        name: 'Failed deals',
-        data: [40, 50, 55, 50, 30, 80, 30, 40, 50, 55]
+        name: 'Current bugs',
+        data: bug
       }],
       chart: {
         type: 'bar',
@@ -73,10 +73,10 @@ if (document.querySelectorAll('#d-activity').length) {
         colors: ['transparent']
       },
       xaxis: {
-        categories: ['S', 'M', 'T', 'W', 'T', 'F', 'S', 'M', 'T', 'W'],
+        categories: projectName,
         labels: {
-          minHeight:20,
-          maxHeight:20,
+          minHeight:25,
+          maxHeight:25,
           style: {
             colors: "#8A92A6",
           },
@@ -100,7 +100,7 @@ if (document.querySelectorAll('#d-activity').length) {
       tooltip: {
         y: {
           formatter: function (val) {
-            return "$ " + val + " thousands"
+            return val + " Hours"
           }
         }
       }
@@ -149,8 +149,8 @@ if (document.querySelectorAll('#d-main').length) {
         show: true,
         labels: {
           show: true,
-          minWidth: 19,
-          maxWidth: 19,
+          minWidth: 30,
+          maxWidth: 30,
           style: {
             colors: "#8A92A6",
           },
@@ -162,8 +162,8 @@ if (document.querySelectorAll('#d-main').length) {
       },
       xaxis: {
           labels: {
-              minHeight:22,
-              maxHeight:22,
+              minHeight:25,
+              maxHeight:25,
               show: true,
               style: {
                 colors: "#8A92A6",

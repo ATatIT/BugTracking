@@ -13,4 +13,9 @@ public interface BugReportDto {
 	String getDescription();
 	String getComment();
 	String getFirstName();
+	
+	//for chart
+	float getUtilizedHours();
+	Integer getApproveBugs();
+	Integer getBugs();
 }

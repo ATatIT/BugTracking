@@ -105,7 +105,7 @@
 												<p class="mb-2">
 													<a href="projects?statusId=0">Total Projects</a>
 												</p>
-												<h4 class="counter">${totalProject} Projects</h4>
+												<h4 class="counter">${totalProject}Projects</h4>
 											</div>
 										</div>
 									</div>
@@ -129,7 +129,7 @@
 												<p class="mb-2">
 													<a href="projects?statusId=3">Ongoing Project</a>
 												</p>
-												<h4 class="counter">${OngoingProject} Projects</h4>
+												<h4 class="counter">${OngoingProject}Projects</h4>
 											</div>
 										</div>
 									</div>
@@ -153,7 +153,7 @@
 												<p class="mb-2">
 													<a href="projects?statusId=2">Pipeline Projects</a>
 												</p>
-												<h4 class="counter">${pipelineProject} Projects</h4>
+												<h4 class="counter">${pipelineProject}Projects</h4>
 											</div>
 										</div>
 									</div>
@@ -177,7 +177,7 @@
 												<p class="mb-2">
 													<a href="projects?statusId=5">Due Project</a>
 												</p>
-												<h4 class="counter">${dueProject} Projects</h4>
+												<h4 class="counter">${dueProject}Projects</h4>
 											</div>
 										</div>
 									</div>
@@ -234,6 +234,54 @@
 								</div>
 							</div>
 						</div>
+						<div class="">
+
+							<div class="row mt-3 ">
+								<div class="col-md-12">
+									<div class="card aos-init aos-animate" data-aos="fade-up"
+										data-aos-delay="800">
+										<div
+											class="flex-wrap card-header d-flex justify-content-between align-items-center">
+											<div class="header-title">
+												<h4 class="card-title">Bug Tracker</h4>
+
+											</div>
+											<div class="d-flex align-items-center align-self-center">
+												<div class="d-flex align-items-center text-primary">
+													<svg class="icon-12" xmlns="http://www.w3.org/2000/svg"
+														width="12" viewBox="0 0 24 24" fill="currentColor">
+                           <g>
+                              <circle cx="12" cy="12" r="8"
+															fill="currentColor"></circle>
+                           </g>
+                        </svg>
+													<div class="ms-2">
+														<span class="text-gray"> Solved Bugs</span>
+													</div>
+												</div>
+												<div class="d-flex align-items-center ms-3 text-info">
+													<svg class="icon-12" xmlns="http://www.w3.org/2000/svg"
+														width="12" viewBox="0 0 24 24" fill="currentColor">
+                           <g>
+                              <circle cx="12" cy="12" r="8"
+															fill="currentColor"></circle>
+                           </g>
+                        </svg>
+													<div class="ms-2">
+														<span class="text-gray">Bugs</span>
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<div class="card-body">
+											<div id="d-activity" class="d-activity"
+												style="min-height: 245px;"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -264,8 +312,8 @@
 
 	<!-- mapchart Script -->
 	<script src="../assets/js/charts/vectore-chart.js"></script>
-
 	<script>
+	/* chart-one */
     var projectNameList = [
         <c:forEach items="${projectName}" var="p" varStatus="loop">
             "${p}"<c:if test="${!loop.last}">,</c:if>
@@ -281,8 +329,24 @@
             "${th}"<c:if test="${!loop.last}">,</c:if>
         </c:forEach>
     ];
+    
+    /* chart-two */
+    var projectName = [
+        <c:forEach items="${projectNameForBug}" var="p" varStatus="loop">
+            "${p}"<c:if test="${!loop.last}">,</c:if>
+        </c:forEach>
+    ];
+    var approveBug = [
+        <c:forEach items="${approveBugs}" var="eh" varStatus="loop">
+            "${eh}"<c:if test="${!loop.last}">,</c:if>
+        </c:forEach>
+    ];
+    var bug = [
+        <c:forEach items="${bug}" var="th" varStatus="loop">
+            "${th}"<c:if test="${!loop.last}">,</c:if>
+        </c:forEach>
+     ];
 	</script>
-
 
 	<script src="../assets/js/charts/dashboard.js"></script>
 
@@ -306,33 +370,6 @@
 
 	<!-- App Script -->
 	<script src="../assets/js/hope-ui.js" defer></script>
-
-	<!-- For chart -->
-	<script>
-		const ctx = document.getElementById('myChart');
-
-		new Chart(ctx,
-				{
-					type : 'bar',
-					data : {
-						labels : [ ${projectName}],
-						datasets : [ {
-							label : '# Hours',
-							data : [ ${estimatedHours}],
-							borderWidth : 1
-						} ]
-					},
-					options : {
-						scales : {
-							y : {
-								beginAtZero : true
-							}
-						}
-					}
-				});
-	</script>
-
-
 
 </body>
 

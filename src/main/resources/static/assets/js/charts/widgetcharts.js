@@ -439,15 +439,15 @@ if($('#chart').length) {
 if($('#extrachart').length) {
   const options = {
     series: [{
-    name: 'Net Profit',
-    data: [44, 55, 57, 56, 61, 58]
-  }, {
+    name: 'Your Utilized Hours',
+    data: projectTotHuDev
+  }, /*{
     name: 'Revenue',
     data: [76, 85, 101, 98, 87, 105]
   }, {
     name: 'Free Cash Flow',
     data: [35, 41, 36, 26, 45, 48]
-  }],
+  }*/],
     chart: {
     type: 'bar',
     height: 250,
@@ -457,7 +457,7 @@ if($('#extrachart').length) {
   },
   plotOptions: {
     bar: {
-      horizontal: false,
+      horizontal: true,
       columnWidth: '55%',
       borderRadius: 5,
     },
@@ -472,11 +472,11 @@ if($('#extrachart').length) {
     colors: ['transparent']
   },
   xaxis: {
-    categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+    categories: projectNameListDev,
   },
   yaxis: {
     title: {
-      text: '$ (thousands)'
+      text: '(Hours)'
     }
   },
   fill: {
@@ -486,12 +486,71 @@ if($('#extrachart').length) {
   tooltip: {
     y: {
       formatter: function (val) {
-        return "$ " + val + " thousands"
+        return val + " Hours"
       }
     }
   }
   };  
   const chart = new ApexCharts(document.querySelector("#extrachart"), options);
+  chart.render();
+}
+
+if($('#extrachart1').length) {
+  const options = {
+    series: [{
+    name: 'Estimated Hours',
+    data: projectEstHu
+  }, {
+    name: 'Utilized Hours',
+    data: projectTotHu
+  },/* {
+    name: 'Free Cash Flow',
+    data: [35, 41, 36, 26, 45, 48]
+  }*/],
+    chart: {
+    type: 'bar',
+    height: 250,
+    sparkline:{
+      enabled:true
+    }
+  },
+  plotOptions: {
+    bar: {
+      horizontal: true,
+      columnWidth: '55%',
+      borderRadius: 5,
+    },
+  },
+  dataLabels: {
+    enabled: false
+  },
+  stroke: {
+    show: true,
+    width: 2,
+    curve: 'smooth',
+    colors: ['transparent']
+  },
+  xaxis: {
+    categories: projectNameList,
+  },
+  yaxis: {
+    title: {
+      text: '(Hours)'
+    }
+  },
+  fill: {
+    opacity: 1,
+    colors:['#344ed1', '#b91d12', '#d48918']
+  },
+  tooltip: {
+    y: {
+      formatter: function (val) {
+        return val + " Hours"
+      }
+    }
+  }
+  };  
+  const chart = new ApexCharts(document.querySelector("#extrachart1"), options);
   chart.render();
 }
 /*-------------- Service Chart ----------------*/

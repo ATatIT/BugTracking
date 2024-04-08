@@ -39,44 +39,48 @@
 
 <body>
 	<!-- loader Start -->
-	
-	<%@include file="Loder.jsp" %>
-	
+
+	<%@include file="Loder.jsp"%>
+
 	<!-- loader END -->
-	
+
 	<!-- Slider start -->
-	
+
 	<jsp:include page="DeveloperSlidebar.jsp"></jsp:include>
-	
-	
+
+
 	<!-- Slider end -->
-	
+
 	<main class="main-content">
-	
-	<!-- header start -->
-	<jsp:include page="DeveloperHeader.jsp"></jsp:include>		
-	<!-- header end -->
-	
+
+		<!-- header start -->
+		<jsp:include page="DeveloperHeader.jsp"></jsp:include>
+		<!-- header end -->
+
 		<!-- Nav Header Component Start -->
-			<div class="iq-navbar-header" style="height: 215px;">
-              <div class="container-fluid iq-container">
-                  <div class="row">
-                      <div class="col-md-12">
-                          
-                      </div>
-                  </div>
-              </div>
-              <div class="iq-header-img">
-                  <img src="../assets/images/dashboard/top-header.png" alt="header" class="theme-color-default-img img-fluid w-100 h-100 animated-scaleX">
-                  <img src="../assets/images/dashboard/top-header1.png" alt="header" class="theme-color-purple-img img-fluid w-100 h-100 animated-scaleX">
-                  <img src="../assets/images/dashboard/top-header2.png" alt="header" class="theme-color-blue-img img-fluid w-100 h-100 animated-scaleX">
-                  <img src="../assets/images/dashboard/top-header3.png" alt="header" class="theme-color-green-img img-fluid w-100 h-100 animated-scaleX">
-                  <img src="../assets/images/dashboard/top-header4.png" alt="header" class="theme-color-yellow-img img-fluid w-100 h-100 animated-scaleX">
-                  <img src="../assets/images/dashboard/top-header5.png" alt="header" class="theme-color-pink-img img-fluid w-100 h-100 animated-scaleX">
-              </div>
-          </div>
-			<!-- Nav Header Component End -->
-	
+		<div class="iq-navbar-header" style="height: 215px;">
+			<div class="container-fluid iq-container">
+				<div class="row">
+					<div class="col-md-12"></div>
+				</div>
+			</div>
+			<div class="iq-header-img">
+				<img src="../assets/images/dashboard/top-header.png" alt="header"
+					class="theme-color-default-img img-fluid w-100 h-100 animated-scaleX">
+				<img src="../assets/images/dashboard/top-header1.png" alt="header"
+					class="theme-color-purple-img img-fluid w-100 h-100 animated-scaleX">
+				<img src="../assets/images/dashboard/top-header2.png" alt="header"
+					class="theme-color-blue-img img-fluid w-100 h-100 animated-scaleX">
+				<img src="../assets/images/dashboard/top-header3.png" alt="header"
+					class="theme-color-green-img img-fluid w-100 h-100 animated-scaleX">
+				<img src="../assets/images/dashboard/top-header4.png" alt="header"
+					class="theme-color-yellow-img img-fluid w-100 h-100 animated-scaleX">
+				<img src="../assets/images/dashboard/top-header5.png" alt="header"
+					class="theme-color-pink-img img-fluid w-100 h-100 animated-scaleX">
+			</div>
+		</div>
+		<!-- Nav Header Component End -->
+
 		<div class="conatiner-fluid content-inner mt-n5 py-0">
 			<div class="row">
 				<div class="col-md-12 col-lg-12">
@@ -171,12 +175,32 @@
 										</div>
 									</div>
 								</li>
-								
+
 							</ul>
 							<div class="swiper-button swiper-button-next"></div>
 							<div class="swiper-button swiper-button-prev"></div>
 						</div>
-						Data
+						<div class="">
+
+							<div class="row mt-3 ">
+								<div class="col-md-12">
+									<div class="card aos-init aos-animate" data-aos="fade-up"
+										data-aos-delay="800">
+										<div class="card-header d-flex justify-content-between">
+											<div class="header-title">
+												<h4 class="card-title">Utilized Hours</h4>
+
+
+											</div>
+										</div>
+										<div class="card-body">
+
+											<div id="extrachart" style="min-height: 250px;"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -184,15 +208,16 @@
 
 
 		<!-- Footer Section Start -->
-		
+
 		<jsp:include page="AdminFooter.jsp"></jsp:include>
-		
+
 		<!-- Footer Section End -->
 	</main>
-	
-	
-	<!-- Wrapper End--><!-- offcanvas start -->
-	
+
+
+	<!-- Wrapper End-->
+	<!-- offcanvas start -->
+
 	<jsp:include page="AdminCanvas.jsp"></jsp:include>
 
 	<!-- Library Bundle Script -->
@@ -202,12 +227,24 @@
 	<script src="../assets/js/core/external.min.js"></script>
 
 	<!-- Widgetchart Script -->
+	<script>
+    var projectNameListDev = [
+        <c:forEach items="${projectName}" var="p" varStatus="loop">
+            "${p}"<c:if test="${!loop.last}">,</c:if>
+        </c:forEach>
+    ];
+    var projectTotHuDev = [
+        <c:forEach items="${totalUh}" var="th" varStatus="loop">
+            "${th}"<c:if test="${!loop.last}">,</c:if>
+        </c:forEach>
+    ];
+	</script>
 	<script src="../assets/js/charts/widgetcharts.js"></script>
 
 	<!-- mapchart Script -->
 	<script src="../assets/js/charts/vectore-chart.js"></script>
 	<script src="../assets/js/charts/dashboard.js"></script>
-
+	
 	<!-- fslightbox Script -->
 	<script src="../assets/js/plugins/fslightbox.js"></script>
 

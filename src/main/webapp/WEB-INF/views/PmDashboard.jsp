@@ -38,48 +38,48 @@
 </head>
 
 <body>
-	
-	
-	<!-- loader Start -->
-	
-	<%@include file="Loder.jsp" %>
-	
-	<!-- loader END -->
-	
-	<!-- Slider start -->
-	
-	<jsp:include page="PmSlidebar.jsp"></jsp:include>
-	
-	
-	<!-- Slider end -->
-	
-	<main class="main-content">
-	<!-- header start -->
-	
-	<jsp:include page="PmHeader.jsp"></jsp:include>		
-	
-	<!-- header end -->
-	
-		<!-- Nav Header Component Start -->
-			<div class="iq-navbar-header" style="height: 215px;">
 
-				<div class="iq-header-img">
-					<img src="../assets/images/dashboard/top-header.png" alt="header"
-						class="theme-color-default-img img-fluid w-100 h-100 animated-scaleX">
-					<img src="../assets/images/dashboard/top-header1.png" alt="header"
-						class="theme-color-purple-img img-fluid w-100 h-100 animated-scaleX">
-					<img src="../assets/images/dashboard/top-header2.png" alt="header"
-						class="theme-color-blue-img img-fluid w-100 h-100 animated-scaleX">
-					<img src="../assets/images/dashboard/top-header3.png" alt="header"
-						class="theme-color-green-img img-fluid w-100 h-100 animated-scaleX">
-					<img src="../assets/images/dashboard/top-header4.png" alt="header"
-						class="theme-color-yellow-img img-fluid w-100 h-100 animated-scaleX">
-					<img src="../assets/images/dashboard/top-header5.png" alt="header"
-						class="theme-color-pink-img img-fluid w-100 h-100 animated-scaleX">
-				</div>
+
+	<!-- loader Start -->
+
+	<%@include file="Loder.jsp"%>
+
+	<!-- loader END -->
+
+	<!-- Slider start -->
+
+	<jsp:include page="PmSlidebar.jsp"></jsp:include>
+
+
+	<!-- Slider end -->
+
+	<main class="main-content">
+		<!-- header start -->
+
+		<jsp:include page="PmHeader.jsp"></jsp:include>
+
+		<!-- header end -->
+
+		<!-- Nav Header Component Start -->
+		<div class="iq-navbar-header" style="height: 215px;">
+
+			<div class="iq-header-img">
+				<img src="../assets/images/dashboard/top-header.png" alt="header"
+					class="theme-color-default-img img-fluid w-100 h-100 animated-scaleX">
+				<img src="../assets/images/dashboard/top-header1.png" alt="header"
+					class="theme-color-purple-img img-fluid w-100 h-100 animated-scaleX">
+				<img src="../assets/images/dashboard/top-header2.png" alt="header"
+					class="theme-color-blue-img img-fluid w-100 h-100 animated-scaleX">
+				<img src="../assets/images/dashboard/top-header3.png" alt="header"
+					class="theme-color-green-img img-fluid w-100 h-100 animated-scaleX">
+				<img src="../assets/images/dashboard/top-header4.png" alt="header"
+					class="theme-color-yellow-img img-fluid w-100 h-100 animated-scaleX">
+				<img src="../assets/images/dashboard/top-header5.png" alt="header"
+					class="theme-color-pink-img img-fluid w-100 h-100 animated-scaleX">
 			</div>
-			<!-- Nav Header Component End -->
-	
+		</div>
+		<!-- Nav Header Component End -->
+
 		<div class="conatiner-fluid content-inner mt-n5 py-0">
 			<div class="row">
 				<div class="col-md-12 col-lg-12">
@@ -102,7 +102,9 @@
                                                 </svg>
 											</div>
 											<div class="progress-detail">
-												<p class="mb-2"><a href="projects?statusId=0">Total Projects</a></p>
+												<p class="mb-2">
+													<a>Total Projects</a>
+												</p>
 												<h4 class="counter">${totalproject} Projects</h4>
 											</div>
 										</div>
@@ -124,7 +126,9 @@
                                                 </svg>
 											</div>
 											<div class="progress-detail">
-												<p class="mb-2"><a href="projects?statusId=3">Ongoing Project</a></p>
+												<p class="mb-2">
+													<a>Ongoing Project</a>
+												</p>
 												<h4 class="counter">${OngoingProject} Projects</h4>
 											</div>
 										</div>
@@ -146,7 +150,9 @@
                                                 </svg>
 											</div>
 											<div class="progress-detail">
-												<p class="mb-2"><a href="projects?statusId=2">Pipeline Projects</a></p>
+												<p class="mb-2">
+													<a>Pipeline Projects</a>
+												</p>
 												<h4 class="counter">${pipelineProject} Projects</h4>
 											</div>
 										</div>
@@ -168,7 +174,9 @@
                                                 </svg>
 											</div>
 											<div class="progress-detail">
-												<p class="mb-2"><a href="projects?statusId=5">Due Project</a></p>
+												<p class="mb-2">
+													<a>Due Project</a>
+												</p>
 												<h4 class="counter">${dueProject} Projects</h4>
 											</div>
 										</div>
@@ -244,7 +252,75 @@
 							<div class="swiper-button swiper-button-next"></div>
 							<div class="swiper-button swiper-button-prev"></div>
 						</div>
-						Data
+						<div class="">
+
+							<div class="row mt-3 ">
+								<div class="col-md-12">
+									<div class="card aos-init aos-animate" data-aos="fade-up"
+										data-aos-delay="800">
+										<div class="card-header d-flex justify-content-between">
+											<div class="header-title">
+												<h4 class="card-title">Project Hours</h4>
+
+
+											</div>
+										</div>
+										<div class="card-body">
+
+											<div id="extrachart1" style="min-height: 250px;"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="">
+
+							<div class="row mt-3 ">
+								<div class="col-md-12">
+									<div class="card aos-init aos-animate" data-aos="fade-up"
+										data-aos-delay="800">
+										<div
+											class="flex-wrap card-header d-flex justify-content-between align-items-center">
+											<div class="header-title">
+												<h4 class="card-title">Bug Tracker</h4>
+
+											</div>
+											<div class="d-flex align-items-center align-self-center">
+												<div class="d-flex align-items-center text-primary">
+													<svg class="icon-12" xmlns="http://www.w3.org/2000/svg"
+														width="12" viewBox="0 0 24 24" fill="currentColor">
+                           <g>
+                              <circle cx="12" cy="12" r="8"
+															fill="currentColor"></circle>
+                           </g>
+                        </svg>
+													<div class="ms-2">
+														<span class="text-gray"> Solved Bugs</span>
+													</div>
+												</div>
+												<div class="d-flex align-items-center ms-3 text-info">
+													<svg class="icon-12" xmlns="http://www.w3.org/2000/svg"
+														width="12" viewBox="0 0 24 24" fill="currentColor">
+                           <g>
+                              <circle cx="12" cy="12" r="8"
+															fill="currentColor"></circle>
+                           </g>
+                        </svg>
+													<div class="ms-2">
+														<span class="text-gray">Bugs</span>
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<div class="card-body">
+											<div id="d-activity" class="d-activity"
+												style="min-height: 245px;"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -252,21 +328,56 @@
 
 
 		<!-- Footer Section Start -->
-		
+
 		<jsp:include page="AdminFooter.jsp"></jsp:include>
-		
+
 		<!-- Footer Section End -->
 	</main>
-	
-	
-	<!-- Wrapper End--><!-- offcanvas start -->
-	
+
+
+	<!-- Wrapper End-->
+	<!-- offcanvas start -->
+
 	<jsp:include page="AdminCanvas.jsp"></jsp:include>
 
 	<!-- Library Bundle Script -->
 	<script src="../assets/js/core/libs.min.js"></script>
 
 	<!-- External Library Bundle Script -->
+	<script>
+    var projectNameList = [
+        <c:forEach items="${projectName}" var="p" varStatus="loop">
+            "${p}"<c:if test="${!loop.last}">,</c:if>
+        </c:forEach>
+    ];
+    var projectEstHu = [
+        <c:forEach items="${estimatedHours}" var="eh" varStatus="loop">
+            "${eh}"<c:if test="${!loop.last}">,</c:if>
+        </c:forEach>
+    ];
+    var projectTotHu = [
+        <c:forEach items="${totalUh}" var="th" varStatus="loop">
+            "${th}"<c:if test="${!loop.last}">,</c:if>
+        </c:forEach>
+    ];
+    
+    //chat-two
+    var projectName = [
+	        <c:forEach items="${projectNameForBug}" var="p" varStatus="loop">
+	            "${p}"<c:if test="${!loop.last}">,</c:if>
+	        </c:forEach>
+	    ];
+	    var approveBug = [
+	        <c:forEach items="${approveBugs}" var="eh" varStatus="loop">
+	            "${eh}"<c:if test="${!loop.last}">,</c:if>
+	        </c:forEach>
+	    ];
+	    var bug = [
+	        <c:forEach items="${bug}" var="th" varStatus="loop">
+	            "${th}"<c:if test="${!loop.last}">,</c:if>
+	        </c:forEach>
+	     ];
+	</script>
 	<script src="../assets/js/core/external.min.js"></script>
 
 	<!-- Widgetchart Script -->
@@ -274,6 +385,7 @@
 
 	<!-- mapchart Script -->
 	<script src="../assets/js/charts/vectore-chart.js"></script>
+
 	<script src="../assets/js/charts/dashboard.js"></script>
 
 	<!-- fslightbox Script -->
@@ -293,6 +405,9 @@
 
 	<!-- App Script -->
 	<script src="../assets/js/hope-ui.js" defer></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 
 
 </body>

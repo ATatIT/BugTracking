@@ -10,7 +10,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Hope UI | Responsive Bootstrap 5 Admin Dashboard Template</title>
+<title>BT|Forgot Password</title>
 
 <!-- Favicon -->
 <link rel="shortcut icon" href="../../assets/images/favicon.ico">
@@ -101,7 +101,7 @@
 
 
 
-										<h4 class="logo-title ms-3">Hope UI</h4>
+										<h4 class="logo-title ms-3">Bug Tracking</h4>
 									</a>
 									<h2 class="mb-2 text-center">Confirm Mail</h2>
 									<form action="otpforpassword" method="post">
@@ -123,6 +123,7 @@
 										</div>
 										<div class="d-flex justify-content-center">
 											<button type="submit" class="btn btn-primary">Continue</button>
+										&nbsp;<a href="login" class="btn btn-primary">Back</a>
 										</div>
 
 

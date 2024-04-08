@@ -1,6 +1,7 @@
 package com.arth.controller;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -9,9 +10,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.arth.dto.BugReportDto;
 import com.arth.entity.ProjectEntity;
 import com.arth.entity.RoleEntity;
 import com.arth.entity.UserEntity;
+import com.arth.repository.BugReportRepository;
 import com.arth.repository.ProjectRepository;
 import com.arth.repository.RoleRepository;
 
@@ -24,6 +27,9 @@ public class AdminDashboardController {
 	
 	@Autowired
 	RoleRepository roleRepo;
+	
+	@Autowired
+	BugReportRepository bugReportRepo;
 	
 	
 	@GetMapping("/admindashboard")
@@ -61,6 +67,24 @@ public class AdminDashboardController {
 		model.addAttribute("projectName", projectName);
 		model.addAttribute("estimatedHours", estimatedHours);
 		model.addAttribute("totalUh", totalUh);
+		
+		List<Integer> projectId = new ArrayList<>();
+		for (ProjectEntity p : project) {
+			projectId.add(p.getProjectId());
+		}
+		List<BugReportDto> bugs = bugReportRepo.getBugsAccordingProjects(projectId);
+		String projectNameForBug = ""; 
+		String approveBugs = "";
+		String bug = "";
+		for (BugReportDto b : bugs) {
+			projectNameForBug = projectNameForBug + b.getProjectTitle() + "," ;
+			approveBugs = approveBugs + b.getApproveBugs() + ",";
+			bug = bug + b.getBugs() + ",";
+		}
+		model.addAttribute("projectNameForBug", projectNameForBug);
+		model.addAttribute("approveBugs", approveBugs);
+		model.addAttribute("bug", bug);
+				
 		return "AdminDashboard";
 	}
 	

@@ -64,10 +64,13 @@
 					<div class="col-sm-12">
 						<div class="card card-body d-flex justify-content-between">
 							<div class="header-title">
-								<h4 class="card-title">${pt.projecttitle}'s Team</h4>
+								<h4 class="card-title">${pt.projecttitle}'sTeam</h4>
 							</div>
 							<div class="header-title">
-								<h6 class="card-title"><a href="newprojectuser?projectId=${pt.projectId}">Assing Team Member</a></h6>
+								<h6 class="card-title">
+									<a href="newprojectuser?projectId=${pt.projectId}">Assing
+										Team Member</a>
+								</h6>
 							</div>
 						</div>
 						<div class="card mt-4">
@@ -77,12 +80,13 @@
 								</div>
 							</div>
 							<div class="card-body">
-									<div id="button-div-id"></div>
+								<div id="button-div-id"></div>
 								<div class="table-responsive">
 									<div id="datatable_wrapper"
 										class="dataTables_wrapper dt-bootstrap5">
 										<div class="table-responsive border-bottom my-3">
-											<table id="my-table" class="table table-striped dataTable text-dark">
+											<table id="my-table"
+												class="table table-striped dataTable text-dark">
 												<tr class="odd">
 													<th>FirstName</th>
 													<th>LastName</th>
@@ -106,7 +110,10 @@
 											</c:if> <c:if test="${puser.roleId == 4 }">
 												Tester
 											</c:if></td>
-														<td><a href="projectuserassignstatus?userId=${puser.userId}&projectId=${pt.projectId}&status=2">Revoke</a> | <a href="projectuserassignstatus?userId=${puser.userId}&projectId=${pt.projectId}&status=3">Hold</a></td>
+														<td><a
+															href="projectuserassignstatus?userId=${puser.userId}&projectId=${pt.projectId}&status=2">Revoke</a>
+															| <a
+															href="projectuserassignstatus?userId=${puser.userId}&projectId=${pt.projectId}&status=3">Hold</a></td>
 													</tr>
 												</c:forEach>
 
@@ -146,7 +153,10 @@
 														<td>${puser.lastName}</td>
 														<td>${puser.email}</td>
 														<td>${puser.roleId}</td>
-														<td><a href="projectuserassignstatus?userId=${puser.userId}&projectId=${pt.projectId}&status=1">Re-Assign</a> | <a href="projectuserassignstatus?userId=${puser.userId}&projectId=${pt.projectId}&status=2">Revoke</a></td>
+														<td><a
+															href="projectuserassignstatus?userId=${puser.userId}&projectId=${pt.projectId}&status=1">Re-Assign</a>
+															| <a
+															href="projectuserassignstatus?userId=${puser.userId}&projectId=${pt.projectId}&status=2">Revoke</a></td>
 													</tr>
 												</c:forEach>
 
@@ -179,14 +189,18 @@
 													<th>Action</th>
 												</tr>
 
-												<c:forEach items="${purevoke}" var="puser" varStatus="status">
+												<c:forEach items="${purevoke}" var="puser"
+													varStatus="status">
 
 													<tr class="${status.index % 2 == 0 ? 'even' : 'odd'}">
 														<td>${puser.firstName}</td>
 														<td>${puser.lastName}</td>
 														<td>${puser.email}</td>
 														<td>${puser.roleId}</td>
-														<td><a href="projectuserassignstatus?userId=${puser.userId}&projectId=${pt.projectId}&status=1">Re-Assign</a> | <a href="projectuserassignstatus?userId=${puser.userId}&projectId=${pt.projectId}&status=3">Hold</a></td>
+														<td><a
+															href="projectuserassignstatus?userId=${puser.userId}&projectId=${pt.projectId}&status=1">Re-Assign</a>
+															| <a
+															href="projectuserassignstatus?userId=${puser.userId}&projectId=${pt.projectId}&status=3">Hold</a></td>
 													</tr>
 												</c:forEach>
 
@@ -245,8 +259,8 @@
 
 	<!-- AOS Animation Plugin-->
 	<script src="../assets/vendor/aos/dist/aos.js"></script>
-	
-	
+
+
 	<!-- DataTables Button JS -->
 	<script src="../assets/js/dataTables.buttons.min.js"></script>
 	<script src="../assets/js/buttons.bootstrap4.min.js"></script>

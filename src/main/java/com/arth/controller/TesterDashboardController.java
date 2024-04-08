@@ -73,6 +73,26 @@ public class TesterDashboardController {
 
 		Integer pipelineProject = projectRepo.getProjectsByUserIdAccordingToStatus(user.getUserId(), 2);
 		model.addAttribute("pipelineProject", pipelineProject);
+		
+		//for chart
+		List<ProjectEntity> projects = projectRepo.getProjectsOfUserId(user.getUserId());
+		List<Integer> projectId = new ArrayList<>();
+		for (ProjectEntity p : projects) {
+			projectId.add(p.getProjectId());
+		}
+		List<BugReportDto> bugs = bugReportRepo.getBugsAccordingProjects(projectId);
+		String projectNameForBug = ""; 
+		String approveBugs = "";
+		String bug = "";
+		for (BugReportDto b : bugs) {
+			projectNameForBug = projectNameForBug + b.getProjectTitle() + "," ;
+			approveBugs = approveBugs + b.getApproveBugs() + ",";
+			bug = bug + b.getBugs() + ",";
+		}
+		model.addAttribute("projectNameForBug", projectNameForBug);
+		model.addAttribute("approveBugs", approveBugs);
+		model.addAttribute("bug", bug);
+		
 		return "TesterDashboard";
 	}
 

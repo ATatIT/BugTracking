@@ -1,14 +1,18 @@
 package com.arth.controller;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-
+import com.arth.dto.BugReportDto;
+import com.arth.entity.ProjectEntity;
 import com.arth.entity.UserEntity;
+import com.arth.repository.BugReportRepository;
 import com.arth.repository.ProjectRepository;
 import com.arth.repository.UserRepository;
 
@@ -22,6 +26,9 @@ public class PmDashboardController {
 	
 	@Autowired
 	UserRepository userRepo;
+	
+	@Autowired
+	BugReportRepository bugReportRepo;
 	
 	@GetMapping("/pmdashboard")
 	public String pmDashboard(HttpSession session,Model model) {
@@ -42,6 +49,41 @@ public class PmDashboardController {
 		model.addAttribute("pipelineProject", pipelineProject);
 		
 		model.addAttribute("team", userRepo.pmTeam(user.getUserId()).size());
+		
+		// for chart------------------------------------------------------------
+		
+				List<ProjectEntity> project = projectRepo.getProjectsOfUserId(user.getUserId());
+				String projectName = ""; 
+				String estimatedHours = "";
+				String totalUh = "";
+				for (ProjectEntity p : project) {
+					projectName = projectName + p.getProjecttitle() + "," ;
+					estimatedHours = estimatedHours + p.getEstimatedHours() + ",";
+					totalUh = totalUh + p.getTotalUtilizedHours() + ",";
+				}
+				model.addAttribute("projectName", projectName);
+				model.addAttribute("estimatedHours", estimatedHours);
+				model.addAttribute("totalUh", totalUh);
+				
+				
+				List<Integer> projectId = new ArrayList<>();
+				for (ProjectEntity p : project) {
+					projectId.add(p.getProjectId());
+				}
+				List<BugReportDto> bugs = bugReportRepo.getBugsAccordingProjects(projectId);
+				String projectNameForBug = ""; 
+				String approveBugs = "";
+				String bug = "";
+				for (BugReportDto b : bugs) {
+					projectNameForBug = projectNameForBug + b.getProjectTitle() + "," ;
+					approveBugs = approveBugs + b.getApproveBugs() + ",";
+					bug = bug + b.getBugs() + ",";
+				}
+				model.addAttribute("projectNameForBug", projectNameForBug);
+				model.addAttribute("approveBugs", approveBugs);
+				model.addAttribute("bug", bug);	
+				
+
 		return "PmDashboard";
 	}
 }

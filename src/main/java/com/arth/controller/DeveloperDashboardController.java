@@ -1,6 +1,7 @@
 package com.arth.controller;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.arth.dto.taskutilizedHoursDto;
 import com.arth.entity.ModuleEntity;
 import com.arth.entity.ProjectEntity;
 import com.arth.entity.ProjectStatusEntity;
@@ -77,7 +79,24 @@ public class DeveloperDashboardController {
 
 		Integer pipelineProject = projectRepo.getProjectsByUserIdAccordingToStatus(user.getUserId(), 2);
 		model.addAttribute("pipelineProject", pipelineProject);
-
+		
+		//for chart
+		List<ProjectEntity> projects = projectRepo.getProjectsOfUserId(user.getUserId());
+		List<Integer> projectId = new ArrayList<>() ;
+		for (ProjectEntity p : projects) {
+			projectId.add(p.getProjectId());
+		}
+	
+		List<taskutilizedHoursDto> tuhAcordingUser  = tuhRepo.totalTaskTimeByProjectIdAccordingToUser(user.getUserId(), projectId);
+		String projectName = ""; 
+		String totalUh = "";
+		for (taskutilizedHoursDto p : tuhAcordingUser) {
+			projectName = projectName + p.getProjectTitle() + "," ;
+			totalUh = totalUh + p.getUtilizedHours() + ",";
+		}
+		
+		model.addAttribute("projectName", projectName);
+		model.addAttribute("totalUh", totalUh);
 		return "DeveloperDashboard";
 	}
 	
