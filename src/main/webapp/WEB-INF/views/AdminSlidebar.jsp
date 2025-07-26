@@ -140,7 +140,7 @@
 										d="M21.9998 17.3992C21.9998 19.2648 20.4609 20.7777 18.5609 20.7777C16.6621 20.7777 15.1221 19.2648 15.1221 17.3992C15.1221 15.5325 16.6621 14.0195 18.5609 14.0195C20.4609 14.0195 21.9998 15.5325 21.9998 17.3992Z"
 										fill="currentColor"></path>
                                 </svg>
-						</i> <span class="item-name">ListProject</span>
+						</i> <span class="item-name">List Project</span>
 					</a></li>
 					<li class="nav-item"><a class="nav-link" href="listrole"
 						 target=""> <i class="icon"> <svg
@@ -159,7 +159,7 @@
 										d="M21.9998 17.3992C21.9998 19.2648 20.4609 20.7777 18.5609 20.7777C16.6621 20.7777 15.1221 19.2648 15.1221 17.3992C15.1221 15.5325 16.6621 14.0195 18.5609 14.0195C20.4609 14.0195 21.9998 15.5325 21.9998 17.3992Z"
 										fill="currentColor"></path>
                                 </svg>
-						</i> <span class="item-name">ListRole</span>
+						</i> <span class="item-name">List Role</span>
 					</a></li>
 					<li class="nav-item"><a class="nav-link" href="listuser"
 						 > <i class="icon"> <svg
@@ -178,7 +178,7 @@
 										d="M21.9998 17.3992C21.9998 19.2648 20.4609 20.7777 18.5609 20.7777C16.6621 20.7777 15.1221 19.2648 15.1221 17.3992C15.1221 15.5325 16.6621 14.0195 18.5609 14.0195C20.4609 14.0195 21.9998 15.5325 21.9998 17.3992Z"
 										fill="currentColor"></path>
                                 </svg>
-						</i> <span class="item-name">ListUser</span>
+						</i> <span class="item-name">List User</span>
 					</a></li>
 				
 				</ul>

@@ -1,6 +1,7 @@
 package com.arth.bean;
 
-public class roleBean {
+public class
+roleBean {
 	private String roleId;
 	private String roleName;
 
